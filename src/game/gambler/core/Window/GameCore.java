@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 public class GameCore implements Growing.Draw{
 
     public static void main(String[] args) {
-        new GameCore().run();
+        new GameCore();
     }
 
     private Growing growing;

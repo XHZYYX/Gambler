@@ -1,4 +1,4 @@
-package game.gambler.part.Scene;
+package game.gambler.core.Render;
 
 import org.dom4j.Document;
 import org.dom4j.Element;

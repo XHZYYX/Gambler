@@ -1,4 +1,4 @@
-package game.gambler.part.Scene;
+package game.gambler.core.Render;
 
 public class TileLayer {
     int width;
