@@ -2,9 +2,9 @@ package game.gambler.part.Scene;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
-import ruoji_engine.core.Render.Graphics.RGraphicsBase;
-import ruoji_engine.core.Util.Debug;
-import ruoji_engine.core.Util.XMLBoot;
+//import game.gambler.core.Render.Graphics.RGraphicsBase;
+import game.gambler.core.Util.Debug;
+import game.gambler.core.Util.XMLBoot;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static ruoji_engine.core.Util.ImageUtil.getImageUtil;
+import static game.gambler.core.Util.ImageUtil.getImageUtil;
 
 public class TileMap {
 
@@ -157,7 +157,7 @@ public class TileMap {
         return new ImageIcon(fileName).getImage();
     }
 
-    public void draw(RGraphicsBase g){
+    public void draw(Graphics2D g){
         //gid 对应的图片 TileImage
         //图层 TileLayers
         //首先遍历图层集合
@@ -173,7 +173,7 @@ public class TileMap {
             int arr[][] = tileLayer.getTile();
             for(int x=0; x<arr.length; x++) {
                 for(int y=0; y<arr[x].length; y++) {
-                   g.drawImage(TileImage.get(arr[x][y]),y*tilewidth,x*tileheight);
+                   g.drawImage(TileImage.get(arr[x][y]),y*tilewidth,x*tileheight,null);
                    //rx+y*texture.getWidth(),ry+texture.getHeight()*x, texture
                 }
             }
