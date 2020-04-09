@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64a3da8d-1b83-4259-aab1-1a43416c0bc2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/core/Adaptor/ListenerAdaptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/core/Util/Debug.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/core/Util/FrameRate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/core/Util/XMLBoot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/part/Input/InputManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/part/Message/MessageManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/part/Scene/TileLayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/part/Scene/TileMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/part/Scene/TileSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/part/UI/ImageButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gambler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gambler.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,13 +25,57 @@
     <favorites_list name="Gambler" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Util/Debug.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#3211#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game/gambler/part/UI/ImageButton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="111" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -40,6 +93,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/game/gambler/core/Util/Debug.java" />
+        <option value="$PROJECT_DIR$/src/game/gambler/part/UI/ImageButton.java" />
       </list>
     </option>
   </component>
@@ -67,9 +122,9 @@
   <component name="MavenRunner">
     <option name="jreName" value="1.8" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1116" />
+    <option name="width" value="813" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -110,7 +165,23 @@
               <item name="Gambler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="Util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gambler" type="462c0819:PsiDirectoryNode" />
               <item name="part" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="part" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -122,7 +193,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.gitignore" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586428498351" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586428781602" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -130,6 +201,18 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="game.gambler.part.UI" />
+      <recent name="game.gambler.part.Message" />
+      <recent name="game.gambler.part.Input" />
+      <recent name="game.gambler.core.Adaptor" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Gambler\src\game\gambler\part\Scene" />
+      <recent name="E:\Gambler\src\game\gambler\core\Util" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -155,7 +238,7 @@
       <updated>1586396083605</updated>
       <workItem from="1586396091831" duration="3866000" />
       <workItem from="1586403304673" duration="1428000" />
-      <workItem from="1586405418228" duration="2068000" />
+      <workItem from="1586405418228" duration="2548000" />
     </task>
     <task id="LOCAL-00001" summary="gitTest">
       <created>1586396943407</created>
@@ -178,11 +261,25 @@
       <option name="project" value="LOCAL" />
       <updated>1586427846885</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="建立程序基本结构">
+      <created>1586428378827</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586428378828</updated>
+    </task>
+    <task id="LOCAL-00005" summary="建立程序基本结构">
+      <created>1586428545972</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586428545972</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7362000" />
+    <option name="totallyTimeSpent" value="7842000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -194,10 +291,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="830" extended-state="0" />
+    <frame x="-6" y="0" width="912" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.31811896" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.26932085" />
       <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.15482573" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -234,22 +331,51 @@
     <MESSAGE value="gitTest" />
     <MESSAGE value=".gitignore" />
     <MESSAGE value="测试文件删除" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试文件删除" />
+    <MESSAGE value="建立程序基本结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="建立程序基本结构" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/gitTest.java" />
     <entry file="file://$PROJECT_DIR$/src/xx.java" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Util.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Util/Debug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#3211#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/UI/ImageButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="111" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
