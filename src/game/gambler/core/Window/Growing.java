@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ruoji_engine.core.Window;
+package game.gambler.core.Window;
 
 import java.awt.Color;
 import java.awt.DisplayMode;
