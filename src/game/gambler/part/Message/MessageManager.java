@@ -12,7 +12,6 @@ public class MessageManager {
         return _instance;
     }
 
-
     private  Queue<Message> MessageQueue = new LinkedBlockingQueue<>();
 
     public Message currentMessage=null;
@@ -28,7 +27,9 @@ public class MessageManager {
 
 
 
+    public void init(){
 
+    }
 
 
     public void update(){

@@ -3,7 +3,7 @@ package game.gambler.part.UI;
 public class UIManager {
 
     private static UIManager _instance;
-    public UIManager getInstance(){
+    public static UIManager getInstance(){
         if(_instance==null){
             _instance = new UIManager();
         }
@@ -16,7 +16,15 @@ public class UIManager {
     //人物
 
 
+    public void init(){
 
+    }
+    public void update(){
+
+    }
+    public void draw(){
+
+    }
 
 
 

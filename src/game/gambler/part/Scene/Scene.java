@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @author fukang
  */
-public class Scene extends JPanel {
+public  class Scene extends JPanel {
 
     String SceneName;
     //包括玩家和怪物
@@ -103,7 +103,7 @@ public class Scene extends JPanel {
 
     public void stop(){
         this.running = false;
-        sceneRender.stop();
+       // sceneRender.stop();
     }
     /*
     * 渲染顺序应该为

@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64a3da8d-1b83-4259-aab1-1a43416c0bc2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/game/gambler/StartGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/gambler/core/Render/Animation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/gambler/core/Render/Sprite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/gambler/part/Scene/Scene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/gambler/part/Scene/SceneManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/images/icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/gambler/core/GameCore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gambler/core/Window/GameCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/core/Window/GameCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gambler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gambler.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gambler/part/Scene/TileLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/core/Render/TileLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gambler/part/Scene/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/core/Render/TileMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gambler/part/Scene/TileSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/core/Render/TileSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gambler/part/Message/MessageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/part/Message/MessageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gambler/part/Scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/part/Scene/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gambler/part/Scene/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/part/Scene/SceneManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gambler/part/UI/UIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gambler/part/UI/UIManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,61 +24,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/gambler/StartGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="980">
-              <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#610#611#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/ActiveRender/GameWindowTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Scene/SceneManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="22" column="8" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="14" />
+            <state relative-caret-position="43">
+              <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
               <folding>
-                <element signature="e#340#341#0" expanded="true" />
-                <element signature="e#367#368#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#881#1031#0" expanded="true" />
+                <element signature="e#1030#1031#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/gambler/part/UI/UIManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -89,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/GameCore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-106">
-              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+            <state relative-caret-position="-791">
+              <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
               <folding>
                 <element signature="e#429#430#0" expanded="true" />
                 <element signature="e#459#460#0" expanded="true" />
@@ -99,20 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/Growing.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2937">
-              <caret line="125" column="20" lean-forward="true" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Message/MessageManager.java">
+        <entry file="file://$PROJECT_DIR$/src/game/gambler/core/GameCore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            <state relative-caret-position="67">
+              <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,19 +64,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Input/InputManager.java">
+        <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Scene/Scene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3206">
-              <caret line="155" column="19" selection-start-line="155" selection-start-column="19" selection-end-line="155" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Input/GameAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3535">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="148">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,18 +102,20 @@
         <option value="$PROJECT_DIR$/src/game/gambler/core/Util/Debug.java" />
         <option value="$PROJECT_DIR$/src/game/gambler/part/Scene/TileMap.java" />
         <option value="$PROJECT_DIR$/test/ActiveRender/GameWindowTest.java" />
-        <option value="$PROJECT_DIR$/src/game/gambler/part/UI/ImageButton.java" />
         <option value="$PROJECT_DIR$/src/game/gambler/core/Window/Growing.java" />
         <option value="$PROJECT_DIR$/src/game/gambler/part/Scene/Sprite.java" />
         <option value="$PROJECT_DIR$/src/game/gambler/part/Scene/Animation.java" />
         <option value="$PROJECT_DIR$/src/game/gambler/core/Render/Animation.java" />
-        <option value="$PROJECT_DIR$/src/game/gambler/part/Scene/Scene.java" />
-        <option value="$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java" />
         <option value="$PROJECT_DIR$/src/game/gambler/core/StartGame.java" />
-        <option value="$PROJECT_DIR$/src/game/gambler/part/UI/UIManager.java" />
-        <option value="$PROJECT_DIR$/src/game/gambler/part/Scene/SceneManager.java" />
         <option value="$PROJECT_DIR$/src/game/gambler/StartGame.java" />
         <option value="$PROJECT_DIR$/src/game/gambler/core/Window/GameCore.java" />
+        <option value="$PROJECT_DIR$/src/game/gambler/part/UI/ImageButton.java" />
+        <option value="$PROJECT_DIR$/src/game/gambler/part/Scene/Scene.java" />
+        <option value="$PROJECT_DIR$/src/game/gambler/part/Message/MessageManager.java" />
+        <option value="$PROJECT_DIR$/src/game/gambler/part/UI/UIManager.java" />
+        <option value="$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java" />
+        <option value="$PROJECT_DIR$/src/game/gambler/core/GameCore.java" />
+        <option value="$PROJECT_DIR$/src/game/gambler/part/Scene/SceneManager.java" />
       </list>
     </option>
   </component>
@@ -205,8 +144,8 @@
     <option name="jreName" value="1.8" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="301" />
-    <option name="y" value="99" />
+    <option name="x" value="346" />
+    <option name="y" value="132" />
     <option name="width" value="1386" />
     <option name="height" value="788" />
   </component>
@@ -216,6 +155,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -227,7 +167,13 @@
             <path>
               <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
               <item name="Gambler" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="resource" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="resource" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
@@ -246,6 +192,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gambler" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="Render" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
@@ -261,6 +215,30 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gambler" type="462c0819:PsiDirectoryNode" />
               <item name="part" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="part" type="462c0819:PsiDirectoryNode" />
+              <item name="Message" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="part" type="462c0819:PsiDirectoryNode" />
+              <item name="Scene" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gambler" type="462c0819:PsiDirectoryNode" />
+              <item name="part" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Gambler" type="b2602c69:ProjectViewProjectNode" />
@@ -281,14 +259,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.gitignore" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586445132291" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586520559985" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -298,10 +275,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Gambler\lib" />
-      <recent name="E:\Gambler\src\game\gambler\part\Scene" />
-      <recent name="E:\Gambler\src\game\gambler\core\Util" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\IntelliJIDEA2018_v3.4-绿色版\Gambler\resource\images" />
+      <recent name="E:\Gambler\src\game\gambler\core\Window" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="game.gambler.part.Scene" />
@@ -310,8 +286,10 @@
       <recent name="game.gambler.part.UI" />
       <recent name="game.gambler.part.Input" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Gambler\src\game\gambler\core\Window" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Gambler\lib" />
+      <recent name="E:\Gambler\src\game\gambler\part\Scene" />
+      <recent name="E:\Gambler\src\game\gambler\core\Util" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -326,7 +304,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Growing">
+  <component name="RunManager" selected="Application.GameCore">
+    <configuration name="GameCore (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="game.gambler.core.Window.GameCore" />
+      <module name="Gambler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="game.gambler.core.Window.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameCore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="game.gambler.core.GameCore" />
+      <module name="Gambler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="game.gambler.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameWindowTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ActiveRender.GameWindowTest" />
       <module name="Gambler" />
@@ -368,9 +372,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GameCore" />
+        <item itemvalue="Application.GameCore (1)" />
+        <item itemvalue="Application.GameWindowTest" />
         <item itemvalue="Application.Growing" />
         <item itemvalue="Application.StartGame" />
-        <item itemvalue="Application.GameWindowTest" />
       </list>
     </recent_temporary>
   </component>
@@ -387,7 +393,9 @@
       <workItem from="1586396091831" duration="3866000" />
       <workItem from="1586403304673" duration="1428000" />
       <workItem from="1586405418228" duration="4530000" />
-      <workItem from="1586431918393" duration="7074000" />
+      <workItem from="1586431918393" duration="7825000" />
+      <workItem from="1586488171428" duration="10261000" />
+      <workItem from="1586517267352" duration="1654000" />
     </task>
     <task id="LOCAL-00001" summary="gitTest">
       <created>1586396943407</created>
@@ -438,11 +446,18 @@
       <option name="project" value="LOCAL" />
       <updated>1586437729496</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="导入基础程序">
+      <created>1586445341009</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1586445341009</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16898000" />
+    <option name="totallyTimeSpent" value="29564000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -457,27 +472,27 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.17803837" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.18123667" />
       <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.15482573" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5021097" side_tool="true" weight="0.1541555" />
-      <window_info anchor="bottom" id="Tail" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15276273" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4626219" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49932975" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32827735" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067025" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32827735" />
+      <window_info anchor="bottom" id="Tail" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -504,13 +519,6 @@
     <entry file="file://$PROJECT_DIR$/src/gitTest.java" />
     <entry file="file://$PROJECT_DIR$/src/xx.java" />
     <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Util.java" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Util/XMLBoot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -541,16 +549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/UI/ImageButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="88" column="14" lean-forward="true" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -592,52 +590,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Scene/Scene.java">
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Input/GameAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1992">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#581#827#0" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#489#490#0" expanded="true" />
-            <element signature="e#530#531#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#868#869#0" expanded="true" />
-            <element signature="e#898#899#0" expanded="true" />
-            <element signature="e#945#946#0" expanded="true" />
-            <element signature="e#983#984#0" expanded="true" />
-            <element signature="e#1024#1025#0" expanded="true" />
-            <element signature="e#1062#1063#0" expanded="true" />
-            <element signature="e#1123#1124#0" expanded="true" />
-            <element signature="e#1177#1178#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#481#482#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="245">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/Growing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1890">
+          <caret line="21" column="37" lean-forward="true" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Input/InputManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3206">
-          <caret line="155" column="19" selection-start-line="155" selection-start-column="19" selection-end-line="155" selection-end-column="19" />
+        <state relative-caret-position="1221">
+          <caret line="47" column="8" lean-forward="true" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Input/GameAction.java">
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/UI/ImageButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3535">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="2100">
+          <caret line="66" column="60" selection-start-line="66" selection-start-column="54" selection-end-line="66" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Message/MessageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/StartGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/ActiveRender/GameWindowTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -646,47 +675,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/gambler/part/UI/UIManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="376">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Message/MessageManager.java">
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Scene/Scene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Scene/SceneManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="22" column="8" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="14" />
-          <folding>
-            <element signature="e#340#341#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gambler/StartGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="980">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#610#611#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/GameWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        <state relative-caret-position="148">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -695,8 +692,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/GameCore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-106">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        <state relative-caret-position="-791">
+          <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
           <folding>
             <element signature="e#429#430#0" expanded="true" />
             <element signature="e#459#460#0" expanded="true" />
@@ -704,10 +701,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/gambler/core/Window/Growing.java">
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/core/GameCore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2937">
-          <caret line="125" column="20" lean-forward="true" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
+        <state relative-caret-position="67">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/gambler/part/Scene/SceneManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#881#1031#0" expanded="true" />
+            <element signature="e#1030#1031#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -768,6 +780,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
