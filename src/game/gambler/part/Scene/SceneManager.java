@@ -22,6 +22,10 @@ public class SceneManager {
     }
     GameWindow gameWindow;
 
+    public Scene getNow() {
+        return Now;
+    }
+
     public GameWindow getGameWindow(){
         return gameWindow;
     }

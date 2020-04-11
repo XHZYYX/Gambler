@@ -61,8 +61,9 @@ public  class GameCore {
         messageManager = MessageManager.getInstance();
         //初始化全部组件
         messageManager.init();
-        uiManager.init();
         sceneManager.init();
+        uiManager.init();
+
         //开启游戏运行
         isRunning = true;
         gameWindow.setVisible(true);

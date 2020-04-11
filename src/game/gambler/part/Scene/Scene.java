@@ -47,6 +47,7 @@ public abstract class Scene extends JPanel {
         this.spriteMap = spriteMap;
         this.tileMap = tileMap;
         this.backgroundImage = backgroundImage;
+        this.setLayout(null);
         sceneRender= new Thread(){
             @Override
             public void run() {
