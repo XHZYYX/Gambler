@@ -55,14 +55,14 @@ public  class GameCore {
         gameWindow.setForeground(Color.blue);
 
         //获取全部组件引用
-         sceneManager = SceneManager.getInstance();
-         sceneManager.setGameWindow(gameWindow);
-         uiManager = UIManager.getInstance();
-         messageManager = MessageManager.getInstance();
+        sceneManager = SceneManager.getInstance();
+        sceneManager.setGameWindow(gameWindow);
+        uiManager = UIManager.getInstance();
+        messageManager = MessageManager.getInstance();
         //初始化全部组件
-         messageManager.init();
-         uiManager.init();
-         sceneManager.init();
+        messageManager.init();
+        uiManager.init();
+        sceneManager.init();
         //开启游戏运行
         isRunning = true;
         gameWindow.setVisible(true);
@@ -85,7 +85,7 @@ public  class GameCore {
             //GameWindow 只起一个容器作用
             //可以用来切换全屏 和 窗口
             //Graphics2D g = (Graphics2D)gameWindow.getGraphics();
-        //    draw(g);
+            //draw(g);
             //g.dispose();
             gameWindow.update();
 
@@ -109,10 +109,11 @@ public  class GameCore {
 
     public static void main(String[] args) {
 
-            new GameCore().run();
+        new GameCore().run();
 //        SwingUtilities.invokeLater(new Runnable() {
 //            @Override
 //            public void run(){
+//
 //            }
 //        });
     }

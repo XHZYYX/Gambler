@@ -11,30 +11,49 @@ import java.util.Map;
 /**
  * @author fukang
  */
-public  class Scene extends JPanel {
+//
+public abstract class Scene extends JPanel {
 
-    String SceneName;
+    public String SceneName;
     //包括玩家和怪物
-    Map<String,Sprite> spriteMap;
+    public Map<String,Sprite> spriteMap;
     //tile地图
-    TileMap tileMap;
+    public TileMap tileMap;
     //背景
-    Image backgroundImage;
+    public Image backgroundImage;
 
     boolean running;
     Thread sceneRender;
     FrameRate frameRate;
-
     /*
-    * 构造函数
-    * */
+     * 构造函数
+     * */
     public Scene(){
-        super();
+        this("",null,null,null);
+    }
+    public Scene(String sceneName){
+        this(sceneName,null,null);
+    }
+    public Scene(String sceneName, Map<String, Sprite> spriteMap){
+        this(sceneName,spriteMap,null);
+    }
+    public Scene(String sceneName, Map<String, Sprite> spriteMap,TileMap tileMap){
+        this(sceneName,spriteMap,tileMap,null);
+    }
+
+    public Scene(String sceneName, Map<String, Sprite> spriteMap, TileMap tileMap, Image backgroundImage) {
+        SceneName = sceneName;
+        this.frameRate = SceneManager.getInstance().frameRate;
+        this.spriteMap = spriteMap;
+        this.tileMap = tileMap;
+        this.backgroundImage = backgroundImage;
         sceneRender= new Thread(){
             @Override
             public void run() {
                 running = true;
-                frameRate.initialize();
+                if(frameRate!=null){
+                    frameRate.initialize();
+                }
                 while (running){
                     repaint();
                 }
@@ -42,26 +61,6 @@ public  class Scene extends JPanel {
             }
         };
         sceneRender.start();
-    }
-
-    public Scene(String sceneName){
-        this.SceneName = sceneName;
-    }
-
-    public Scene(Map<String,Sprite> spriteMap,TileMap tileMap){
-        this.spriteMap = spriteMap;
-        this.tileMap = tileMap;
-    }
-
-    public Scene(Map<String,Sprite> spriteMap,Image backgroundImage){
-        this.spriteMap = spriteMap;
-        this.backgroundImage = backgroundImage;
-    }
-
-    public Scene(Map<String,Sprite> spriteMap,TileMap tileMap,Image backgroundImage){
-        this.spriteMap = spriteMap;
-        this.tileMap = tileMap;
-        this.backgroundImage = backgroundImage;
     }
 
     /*
@@ -112,7 +111,19 @@ public  class Scene extends JPanel {
     * spriteMap
     * */
     @Override
-    public  void paintComponents(Graphics g) {
-        super.paintComponents(g);
+    public void paintComponent(Graphics g) {
+        if(backgroundImage!=null){
+            g.drawImage(backgroundImage,0,0,null);
+        }
+        super.paintComponent(g);
+        if (frameRate!=null){
+            frameRate.calculate();
+            g.setColor(Color.red);
+            g.drawString(frameRate.getFrameRate(),20,20);
+        }
+
+        render((Graphics2D)g);
     }
+
+    public abstract void render(Graphics2D graphics);
 }

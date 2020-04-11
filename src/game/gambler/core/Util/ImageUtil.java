@@ -1,5 +1,6 @@
 package game.gambler.core.Util;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -12,6 +13,10 @@ public class ImageUtil {
         }return _instence;
     }
 
+
+    public Image loadImage(String path){
+        return new ImageIcon(path).getImage();
+    }
 
     public BufferedImage getCutInstance(BufferedImage image,int x, int y, int w, int h) {
         return image.getSubimage(x, y, w, h);

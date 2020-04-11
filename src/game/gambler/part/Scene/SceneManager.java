@@ -1,5 +1,6 @@
 package game.gambler.part.Scene;
 
+import game.gambler.core.Util.FrameRate;
 import game.gambler.core.Window.GameWindow;
 
 import javax.swing.*;
@@ -31,16 +32,23 @@ public class SceneManager {
     private Scene Now;
     //场景集合
     private Map<String,Scene> SceneMap = new HashMap<>();
+    FrameRate frameRate;
 
     public void init(){
-
+        frameRate = new FrameRate();
         //加载当前场景
-        Now= new Scene("scene1");
+        Now= new login();
+        //Now.setFrameRate(frameRate);
         JButton button = new JButton("qiehuan");
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                changeScene("scene2");
+              Now.setVisible(false);
+                Now.add(new JButton("打击"));
+             Now.setVisible(true);
+                Now.repaint();
+
+                //changeScene("scene2");
             }
         });
         Now.add(button);
@@ -61,12 +69,14 @@ public class SceneManager {
         //加载 nameScene
 
         //未完成
-        Scene scene = new Scene("scene2");
+        Scene scene = new login("scene2");
         scene.add(new Button("c1"));
+        //scene.setFrameRate(frameRate);
         //将旧的场景移除 并加入新的场景
         gameWindow.setVisible(false);
         gameWindow.getContentPane().remove(Now);
         saveSceneToMap(Now);
+        Now.stop();
         gameWindow.getContentPane().add(scene);
         Now = scene;
         gameWindow.setVisible(true);
