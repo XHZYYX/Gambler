@@ -58,7 +58,6 @@ public abstract class Scene extends JPanel {
                 while (running){
                     repaint();
                 }
-
             }
         };
         sceneRender.start();
@@ -127,4 +126,10 @@ public abstract class Scene extends JPanel {
     }
 
     public abstract void render(Graphics2D graphics);
+
+    public void addGUI(Component... components){
+        for (Component component:components){
+            this.add(component);
+        }
+    }
 }

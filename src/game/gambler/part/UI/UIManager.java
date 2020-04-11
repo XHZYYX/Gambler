@@ -3,6 +3,8 @@ package game.gambler.part.UI;
 
 import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
+import game.gambler.part.UI.Button.loginButton;
+import game.gambler.part.UI.Button.resgisterButton;
 
 import javax.swing.*;
 
@@ -28,18 +30,16 @@ public class UIManager {
         JTextField username = new JTextField(16);
         username.setBounds(593,490,194,26);
 
-
         JPasswordField passwd = new JPasswordField ();
         passwd.setBounds(593,535,194,26);
-
-        JButton login = new JButton("注册");
-
-        login.setBounds(485,607,130,40);
+        resgisterButton register = new resgisterButton();
+        loginButton login = new loginButton();
 
         scene.setVisible(false);
-        scene.add(login);
-        scene.add(username);
-        scene.add(passwd);
+        scene.addGUI(username,passwd,register,login);
+//        scene.add(username);
+//        scene.add(passwd);
+//        scene.add(login);
         scene.setVisible(true);
 
 
