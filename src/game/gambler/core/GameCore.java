@@ -1,6 +1,7 @@
 package game.gambler.core;
 
 import game.gambler.core.Window.GameWindow;
+import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.UIManager;
@@ -23,6 +24,8 @@ public  class GameCore {
     private SceneManager sceneManager;
     private UIManager uiManager;
     private MessageManager messageManager;
+
+    private GameLogic gameLogic;
     /**
      Signals the game loop that it's time to quit
      向游戏循环发出信号，是时候退出了
@@ -59,12 +62,14 @@ public  class GameCore {
         sceneManager.setGameWindow(gameWindow);
         uiManager = UIManager.getInstance();
         messageManager = MessageManager.getInstance();
+        gameLogic = new GameLogic();
         //初始化全部组件
         messageManager.init();
         sceneManager.init();
         uiManager.init();
-
+        //uiManager.loginUI();
         //开启游戏运行
+        messageManager.sendMessage(new Message(Message.Msgtype.graphics_msg,"打开登录页面"));
         isRunning = true;
         gameWindow.setVisible(true);
     }
@@ -79,6 +84,8 @@ public  class GameCore {
             long elapsedTime =
                     System.currentTimeMillis() - currTime;
             currTime += elapsedTime;
+
+
 
 
             //更新游戏组件
@@ -103,9 +110,15 @@ public  class GameCore {
      */
     public void update(long elapsedTime) {
         //全部组件的更新
-        sceneManager.update();
         messageManager.update();
+        sceneManager.update();
         uiManager.update();
+        gameLogic.update();
+        if ( messageManager.currentMessage!=null){
+            messageManager.currentMessage.finish();
+        }
+
+
     }
 
     public static void main(String[] args) {

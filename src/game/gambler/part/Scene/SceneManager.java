@@ -2,6 +2,8 @@ package game.gambler.part.Scene;
 
 import game.gambler.core.Util.FrameRate;
 import game.gambler.core.Window.GameWindow;
+import game.gambler.part.Message.Message;
+import game.gambler.part.Message.MessageManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,31 +43,35 @@ public class SceneManager {
     public void init(){
         frameRate = new FrameRate();
         //加载当前场景
-        Now= new login();
-        //Now.setFrameRate(frameRate);
-        JButton button = new JButton("qiehuan");
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-              Now.setVisible(false);
-                Now.add(new JButton("打击"));
-             Now.setVisible(true);
-                Now.repaint();
 
-                //changeScene("scene2");
-            }
-        });
-        Now.add(button);
-
-        gameWindow.getContentPane().add(Now);
     }
     public void update(){
-        //更新场景信息
-
-        //
+        MessageManager messageManager = MessageManager.getInstance();
+        Message message = messageManager.currentMessage;
+        if (message!=null&&message.getMsg_type().equals(Message.Msgtype.graphics_msg)){
+            switch (message.getMsg_Content()){
+                case "打开登录页面": LoginScene();break;
+                case "登录成功": loadingHome();break;
+                case "账号密码错误":break;
+            }
+        }
 
 
     }
+
+
+
+    private void loadingHome() {
+    }
+
+    private void LoginScene() {
+        Now= new login();
+        //Now.setFrameRate(frameRate);
+        gameWindow.setVisible(false);
+        gameWindow.getContentPane().add(Now);
+        gameWindow.setVisible(true);
+    }
+
     public void shutdown(){
 
     }
@@ -100,4 +106,5 @@ public class SceneManager {
     public Scene querySceneByName(String name){
         return SceneMap.get(name);
     }
+
 }

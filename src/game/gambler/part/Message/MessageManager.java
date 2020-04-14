@@ -16,7 +16,7 @@ public class MessageManager {
 
     public Message currentMessage=null;
 
-    public  void sendMessage(Message message){
+    public void sendMessage(Message message){
         MessageQueue.offer(message);
 
     }
@@ -38,6 +38,7 @@ public class MessageManager {
         if (currentMessage.isHandler ==true)
         {
             MessageQueue.poll();
+            System.out.println(currentMessage.getMsg_Content());
             currentMessage = MessageQueue.peek();
         }
     }

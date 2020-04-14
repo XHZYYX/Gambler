@@ -24,39 +24,6 @@ public class ImageButton extends JButton{
     public ImageButton(){
 
     }
-//    public ImageButton(String name,String toolTip,JFrame jFrame,int width,int height){
-//        super();
-//        String imagePath = "resource/images/menu/" + name + ".png";
-//            Cursor cursor =
-//            Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
-//        ImageIcon iconRollover = new ImageIcon(imagePath);
-//        int w = iconRollover.getIconWidth();
-//        int h = iconRollover.getIconHeight();
-//        GraphicsConfiguration graphicsConfiguration = jFrame.getGraphicsConfiguration();
-//        this.setSize(w,h);
-//        Image image = graphicsConfiguration.createCompatibleImage(w, h,
-//            Transparency.TRANSLUCENT);
-//        ImageIcon iconDefault = new ImageIcon(image);
-//            Graphics2D g = (Graphics2D)image.getGraphics();
-//        Composite alpha = AlphaComposite.getInstance(
-//            AlphaComposite.SRC_OVER, .5f);
-//
-//        g.setComposite(alpha);
-//        g.drawImage(iconRollover.getImage(), 0, 0, null);
-//        g.dispose();
-//        ImageIcon iconPressed = new ImageIcon(image);
-//
-//        //this.addActionListener(this);
-//        this.setIgnoreRepaint(true);
-//        this.setFocusable(false);
-//        this.setToolTipText(toolTip);
-//        this.setBorder(null);
-//        this.setContentAreaFilled(false);
-//        this.setCursor(cursor);
-//        this.setIcon(iconDefault);
-//        this.setRolloverIcon(iconRollover);
-//        this.setPressedIcon(iconPressed);
-//    }
 
     public ImageButton(String text,String name, String toolTip, int width, int height){
         super(text);

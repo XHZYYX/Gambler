@@ -1,14 +1,17 @@
 package game.gambler.part.Message;
 
 public class Message {
-    int msg_type;
+    public enum Msgtype{
+        logic_msg,graphics_msg;
+    }
+    Msgtype msg_type;//游戏逻辑信息 1
 
 
     String msg_Content;//消息内容
 
     boolean isHandler = false;
 
-    public Message(int msg_type, String msg_Content) {
+    public Message(Msgtype msg_type, String msg_Content) {
         this.msg_type = msg_type;
         this.msg_Content = msg_Content;
     }
@@ -16,11 +19,11 @@ public class Message {
         isHandler = true;
     }
 
-    public int getMsg_type() {
+    public Msgtype getMsg_type() {
         return msg_type;
     }
 
-    public void setMsg_type(int msg_type) {
+    public void setMsg_type(Msgtype msg_type) {
         this.msg_type = msg_type;
     }
 
