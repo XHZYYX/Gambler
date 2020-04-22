@@ -6,7 +6,7 @@ import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.Button.loginButton;
-import game.gambler.part.UI.Button.resgisterButton;
+import game.gambler.part.UI.Button.registerButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +31,10 @@ public class UIManager {
 
     public void init(){
 
+    }
+
+    public void add(String componentName,Component component){
+        this.UImap.put(componentName,component);
     }
     public void update(){
         MessageManager messageManager =MessageManager.getInstance();
@@ -63,12 +67,12 @@ public class UIManager {
         Scene scene  = SceneManager.getInstance().getNow();
         JTextField username = new JTextField(16);
         username.setBounds(593,490,194,26);
-        this.UImap.put("username",username);
+        this.UImap.put("ui-login-username-input",username);
         JPasswordField passwd = new JPasswordField ();
         passwd.setBounds(593,535,194,26);
-        resgisterButton register = new resgisterButton();
+        registerButton register = new registerButton();
         loginButton login = new loginButton();
-        this.UImap.put("passwd",passwd);
+        this.UImap.put("ui-login-password-input",passwd);
         scene.setLayout(null);
         scene.setVisible(false);
         //scene.add(SceneManager.getInstance().getNow());
@@ -85,8 +89,8 @@ public class UIManager {
 
     }
     private void registerUI() {
-        ResgisterBOX resgisterBOX = new ResgisterBOX(390,234);
-        System.out.println("resgisterBOX");
+        RegisterBOX resgisterBOX = new RegisterBOX(390,234);
+        System.out.println("registerBOX");
     }
 
     public void draw(){

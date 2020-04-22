@@ -83,17 +83,20 @@ public class ImageButton extends JButton{
 
             @Override
             public void mousePressed(MouseEvent e) {
-                super.mousePressed(e);
-                JButton temp=(JButton)e.getSource();
+                if(e.getButton()==MouseEvent.BUTTON1){
+                    JButton temp=(JButton)e.getSource();
 
-                temp.setLocation(temp.getX()+3,temp.getY()+3);
+                    temp.setLocation(temp.getX()+3,temp.getY()+3);
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 super.mouseReleased(e);
-                JButton temp=(JButton)e.getSource();
-                temp.setLocation(temp.getX()-3,temp.getY()-3);
+                if(e.getButton()==MouseEvent.BUTTON1) {
+                    JButton temp = (JButton) e.getSource();
+                    temp.setLocation(temp.getX() - 3, temp.getY() - 3);
+                }
             }
         });
     }
