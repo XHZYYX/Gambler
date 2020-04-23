@@ -22,7 +22,14 @@ public class Jdbc {
     // MySQL配置时的密码
     String password = "980609";
 
-    public Jdbc() throws ClassNotFoundException, SQLException {
+    private static Jdbc _instance;//场景中心的单例的
+    public static Jdbc getInstance() throws SQLException, ClassNotFoundException {
+        if(_instance==null)
+            _instance=new Jdbc();
+        return _instance;
+    }
+
+    private Jdbc() throws ClassNotFoundException, SQLException {
         // 加载驱动程序
         Class.forName(driver);
         // 1.getConnection()方法，连接MySQL数据库！！

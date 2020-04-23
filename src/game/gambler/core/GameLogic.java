@@ -1,10 +1,13 @@
 package game.gambler.core;
 
+import game.gambler.core.Util.Jdbc;
+import game.gambler.data.model.User;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.UIManager;
 
 import javax.swing.*;
+import java.sql.SQLException;
 
 public class GameLogic {
 
@@ -63,17 +66,28 @@ public class GameLogic {
     private void open() {
     }
 
-    private void islogin(){
+    private void islogin()  {
         //获取用户名和密码
         JTextField user =(JTextField)UIManager.getInstance().queryUIByName("ui-login-username-input");
         String username =user.getText();
         JPasswordField passwd = (JPasswordField)UIManager.getInstance().queryUIByName("ui-login-password-input");
         String password = String.valueOf(passwd.getPassword());
-        if(username.equals("fukang")&&password.equals("123456")){
-            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"登录成功"));
-        }else{
-            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"账号密码错误"));
+
+        //和数据库中的数据比对
+        try{
+            Jdbc jdbc = Jdbc.getInstance();
+            User user_ = jdbc.queryUserByName(username);
+            if(username.equals(user_.getUsername())&&password.equals(user_.getPassword())){
+                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"登录成功"));
+            }else{
+                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"账号密码错误"));
+            }
+        }catch (SQLException | ClassNotFoundException e){
+
         }
+
+
+
     }
 }
 

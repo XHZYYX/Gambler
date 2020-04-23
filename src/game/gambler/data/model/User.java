@@ -33,4 +33,24 @@ public class User {
                 ", coin=" + coin +
                 '}';
     }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getCheckpoint() {
+        return checkpoint;
+    }
+
+    public int getCoin() {
+        return coin;
+    }
 }
