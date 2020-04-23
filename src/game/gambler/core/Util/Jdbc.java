@@ -3,10 +3,14 @@ package game.gambler.core.Util;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import game.gambler.data.model.User;
+import game.gambler.part.data.model.Role;
+import game.gambler.part.data.model.User;
+import game.gambler.part.data.view.ChooseRoleView;
 
 
 public class Jdbc {
@@ -23,20 +27,25 @@ public class Jdbc {
     String password = "980609";
 
     private static Jdbc _instance;//场景中心的单例的
-    public static Jdbc getInstance() throws SQLException, ClassNotFoundException {
+    public static Jdbc getInstance() {
         if(_instance==null)
             _instance=new Jdbc();
         return _instance;
     }
 
-    private Jdbc() throws ClassNotFoundException, SQLException {
-        // 加载驱动程序
-        Class.forName(driver);
-        // 1.getConnection()方法，连接MySQL数据库！！
-        connection = (Connection) DriverManager.getConnection(url, user, password);
-        // 2.创建statement类对象，用来执行SQL语句！！
-        statement = (Statement) connection.createStatement();
-        // 要执行的SQL语句
+    private Jdbc() {
+        try{
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            connection = (Connection) DriverManager.getConnection(url, user, password);
+            // 2.创建statement类对象，用来执行SQL语句！！
+            statement = (Statement) connection.createStatement();
+            // 要执行的SQL语句
+        }catch (ClassNotFoundException| SQLException e){
+
+        }
+
     }
 
 //    public List<User> jquery(String sql) throws SQLException{
@@ -51,28 +60,75 @@ public class Jdbc {
 //        }
 //        return users;
 //    }
-    public String queryUserByid(String sql) throws SQLException {
-        ResultSet rs = statement.executeQuery(sql);
-        return sql;
-    }
+    public String queryUserByid(String sql)  {
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            return sql;
+        }catch (SQLException e){
 
-    public User queryUserByName(String name) throws SQLException {
-        String sql = "select * from User where username = '"+name+"'";
-        ResultSet rs = statement.executeQuery(sql);
-        User user=new User();
-        while (rs.next()){
-             User newuser = new User(rs.getInt("user_id"),
-                    rs.getString("username"),
-                    rs.getString("password"),
-                    rs.getInt("checkpoint"),
-                    rs.getInt("coin")
-             );
-            user = newuser;
         }
-        return user;
+        return null;
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public User queryUserByName(String name)  {
+        try{
+            String sql = "select * from User where username = '"+name+"'";
+            ResultSet rs = statement.executeQuery(sql);
+            User user=new User();
+            while (rs.next()){
+                User newuser = new User(rs.getInt("user_id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getInt("checkpoint"),
+                        rs.getInt("coin")
+                );
+                user = newuser;
+            }
+            return user;
+        }catch (SQLException e){
+
+        }
+        return null;
+    }
+    public List<Role> queryRolesByUserId(int user_id){
+        List<Role> Roles=new ArrayList<>();
+        try{
+            String sql = "select * from Role where user_id = '"+user_id+"'";
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+               Role role = new Role(rs.getInt(1),rs.getInt(2),
+                       rs.getInt(3),rs.getInt(4),
+                       rs.getInt(5),rs.getString(6),rs.getInt(7));
+                Roles.add(role);
+            }
+
+        }catch (SQLException e){
+
+        }
+        return Roles;
+    }
+
+    public ChooseRoleView queryChooseRoleViewByRoleId(int role_id ){
+        String sql = "SELECT grade.grade, career.career_name, role.role_name, role.role_id FROM role"+
+                " INNER JOIN career ON role.career_id = career.career_id"+
+                "INNER JOIN grade ON role.grade = grade.grade"+
+        "WHERE role.role_id = '"+role_id+"'";
+        ChooseRoleView crv = new ChooseRoleView();
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                 crv = new ChooseRoleView(rs.getInt(1),
+                        rs.getInt(2),rs.getString(3),
+                        rs.getString(4));
+            }
+            return crv;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
 
         System.out.println(1);
         Jdbc jdbc = new Jdbc();

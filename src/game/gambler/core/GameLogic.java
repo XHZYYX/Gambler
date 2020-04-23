@@ -1,7 +1,8 @@
 package game.gambler.core;
 
 import game.gambler.core.Util.Jdbc;
-import game.gambler.data.model.User;
+import game.gambler.part.data.DataManager;
+import game.gambler.part.data.model.User;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.UIManager;
@@ -10,6 +11,7 @@ import javax.swing.*;
 import java.sql.SQLException;
 
 public class GameLogic {
+    Jdbc jdbc=Jdbc.getInstance();
 
     public void update(){
         MessageManager messageManager = MessageManager.getInstance();
@@ -74,17 +76,15 @@ public class GameLogic {
         String password = String.valueOf(passwd.getPassword());
 
         //和数据库中的数据比对
-        try{
-            Jdbc jdbc = Jdbc.getInstance();
+
             User user_ = jdbc.queryUserByName(username);
             if(username.equals(user_.getUsername())&&password.equals(user_.getPassword())){
                 MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"登录成功"));
+                DataManager.getInstance().setUser(user_);
             }else{
                 MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"账号密码错误"));
             }
-        }catch (SQLException | ClassNotFoundException e){
 
-        }
 
 
 

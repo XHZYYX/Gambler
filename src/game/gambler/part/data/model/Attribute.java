@@ -1,4 +1,4 @@
-package game.gambler.data.model;
+package game.gambler.part.data.model;
 
 public class Attribute {
     //fk 等级

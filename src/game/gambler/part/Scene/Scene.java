@@ -48,6 +48,7 @@ public abstract class Scene extends JPanel {
         this.tileMap = tileMap;
         this.backgroundImage = backgroundImage;
         this.setLayout(null);
+
         sceneRender= new Thread(){
             @Override
             public void run() {
@@ -112,10 +113,10 @@ public abstract class Scene extends JPanel {
     * */
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         if(backgroundImage!=null){
             g.drawImage(backgroundImage,0,0,null);
         }
-        super.paintComponent(g);
         if (frameRate!=null){
             frameRate.calculate();
             g.setColor(Color.red);

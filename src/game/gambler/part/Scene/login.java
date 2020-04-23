@@ -38,7 +38,5 @@ public class login extends Scene {
 
     @Override
     public void render(Graphics2D graphics) {
-        graphics.drawImage(this.backgroundImage,0,0,null);
-        graphics.drawString(frameRate.getFrameRate(),20,20);
     }
 }

@@ -51,7 +51,8 @@ public class SceneManager {
         if (message!=null&&message.getMsg_type().equals(Message.Msgtype.graphics_msg)){
             switch (message.getMsg_Content()){
                 case "打开登录页面": LoginScene();break;
-                case "登录成功": loadingHome();break;
+                case "登录成功": loadingChooseRole();break;
+               // loadingHome()
                 case "账号密码错误":break;
             }
         }
@@ -59,9 +60,14 @@ public class SceneManager {
 
     }
 
+    private void loadingChooseRole() {
+        Scene scene = new ChooseRoleScene();
+        changeScene(scene);
+    }
 
 
     private void loadingHome() {
+
     }
 
     private void LoginScene() {
@@ -75,13 +81,7 @@ public class SceneManager {
     public void shutdown(){
 
     }
-    public void changeScene(String name){
-        //加载 nameScene
-
-        //未完成
-        Scene scene = new login("scene2");
-        scene.add(new Button("c1"));
-        //scene.setFrameRate(frameRate);
+    public void changeScene(Scene scene){
         //将旧的场景移除 并加入新的场景
         gameWindow.setVisible(false);
         gameWindow.getContentPane().remove(Now);

@@ -1,4 +1,4 @@
-package game.gambler.data.model;
+package game.gambler.part.data.model;
 
 public class Role {
     //角色id
@@ -12,14 +12,14 @@ public class Role {
     //绑定职业id
     private int career_id;
     //角色名称
-    private int role_name;
+    private String role_name;
     //当前经验值
     private int currentEmpiricalValue;
 
     public Role(){
     }
     public Role(int role_id, int grade, int user_id, int record_id,
-                int career_id, int role_name, int currentEmpiricalValue) {
+                int career_id, String role_name, int currentEmpiricalValue) {
         this.role_id = role_id;
         this.grade = grade;
         this.user_id = user_id;
@@ -69,11 +69,11 @@ public class Role {
         this.career_id = career_id;
     }
 
-    public int getRole_name() {
+    public String getRole_name() {
         return role_name;
     }
 
-    public void setRole_name(int role_name) {
+    public void setRole_name(String role_name) {
         this.role_name = role_name;
     }
 

@@ -111,9 +111,10 @@ public  class GameCore {
     public void update(long elapsedTime) {
         //全部组件的更新
         messageManager.update();
+        gameLogic.update();
         sceneManager.update();
         uiManager.update();
-        gameLogic.update();
+
         if ( messageManager.currentMessage!=null){
             messageManager.currentMessage.finish();
         }
