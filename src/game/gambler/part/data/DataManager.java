@@ -53,6 +53,22 @@ public class DataManager {
 //    }
     //用户的数据应该存在那里
     private User user;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public void LoadRole(int role_id){
+        this.role=jdbc.queryRoleByRoleId(role_id);
+        System.out.println(role.toString());
+    }
+
+
+    private Role role;
     //怪物的数据
     private Map<String, Monsters> MonstersMap;
 

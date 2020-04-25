@@ -84,4 +84,17 @@ public class Role {
     public void setCurrentEmpiricalValue(int currentEmpiricalValue) {
         this.currentEmpiricalValue = currentEmpiricalValue;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "role_id=" + role_id +
+                ", grade=" + grade +
+                ", user_id=" + user_id +
+                ", record_id=" + record_id +
+                ", career_id=" + career_id +
+                ", role_name='" + role_name + '\'' +
+                ", currentEmpiricalValue=" + currentEmpiricalValue +
+                '}';
+    }
 }
