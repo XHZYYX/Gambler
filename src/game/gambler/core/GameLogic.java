@@ -33,7 +33,7 @@ public class GameLogic {
                 //重复  则  注册失败
                 case "验证注册":checkRegister();break;
                 //
-                case "x":;break;
+                case "进入游戏":playGame();break;
                 case "3":;break;
                 case "4":;break;
                 case "5":;break;
@@ -50,6 +50,21 @@ public class GameLogic {
 
             }
         }
+    }
+
+    private void playGame() {
+        //判断存档
+        //加载人物数据
+        //DataManager中的Role 存放的是当前的角色信息
+
+
+
+        //加载主城地图
+
+        //加载人物
+
+
+
     }
 
     private void loadUserInformation() {

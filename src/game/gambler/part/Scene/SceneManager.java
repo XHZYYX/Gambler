@@ -55,6 +55,7 @@ public class SceneManager {
                 case "登录成功": loadingChooseRole();break;
                // loadingHome()
                 case "账号密码错误":break;
+                case "进入游戏":loadingHome();
             }
         }
 
@@ -68,7 +69,8 @@ public class SceneManager {
 
 
     private void loadingHome() {
-
+        Scene scene = new HomeScene();
+        changeScene(scene);
     }
 
     private void LoginScene() {

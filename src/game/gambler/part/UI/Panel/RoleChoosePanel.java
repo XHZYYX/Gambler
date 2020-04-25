@@ -46,43 +46,19 @@ public class RoleChoosePanel extends JPanel {
                     }
                     ((RoleView)e.getSource()).setBorder(new LineBorder(Color.red,1));
                     DataManager.getInstance().LoadRole(role_id);
-                    //MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.logic_msg));
                 }
             });
         }
-
-
         this.setBounds(100,100,1080,500);
         this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,2),"角色列表", TitledBorder.LEFT,TitledBorder.TOP,new Font("宋体",0,26)));
         this.setVisible(true);
 
     }
 
-    @Override
-    public void paintComponent(Graphics graphics){
-        int x=0;
-        super.paintComponent(graphics);
-        //根据获取的user信息
-//        for (RoleView roleView:RoleViews){
-//            roleView.paintComponent(graphics);
-//        }
-//        for (ChooseRoleView chooseRoleView:crvs){
-//            graphics.setColor(new Color(195,241,255));
-//            graphics.fillRect(x+56,100,200,300);
-//            graphics.setColor(Color.black);
-//            //graphics.drawImage();
-//            graphics.setFont(new Font("宋体",1,15));
-//            graphics.drawString(chooseRoleView.getCareer_name(),x+100,130);
-//            graphics.drawString(chooseRoleView.getRole_name(),x+140,350);
-//            graphics.drawString("lv."+chooseRoleView.getGrade(),x+200,130);
-//            x=x+256;
-//        }
-//        graphics.setColor(Color.red);
-//        graphics.fillRect(0,0,100,100);
-        //graphics.drawImage(new ImageIcon("resource/images/icon.jpg").getImage(),100,100,null);
-      //  Graphics2D graphics2D = (Graphics2D)graphics;
-
-    }
+//    @Override
+//    public void paintComponent(Graphics graphics){
+//        super.paintComponent(graphics);
+//    }
 
 
 }
