@@ -33,13 +33,15 @@ public class MessageManager {
 
 
     public void update(){
-        if (MessageQueue.size()==0) return;
-        currentMessage = MessageQueue.peek();
-        if (currentMessage.isHandler ==true)
-        {
-            MessageQueue.poll();
-            System.out.println(currentMessage.getMsg_Content());
+
             currentMessage = MessageQueue.peek();
-        }
+            if (currentMessage!=null&&currentMessage.isHandler ==true)
+            {
+                MessageQueue.poll();
+                System.out.println(currentMessage.getMsg_Content());
+                currentMessage = MessageQueue.peek();
+            }
+
+
     }
 }

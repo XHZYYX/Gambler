@@ -7,7 +7,10 @@ import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.Button.loginButton;
+import game.gambler.part.UI.Button.newRoleButotn;
+import game.gambler.part.UI.Button.playButton;
 import game.gambler.part.UI.Button.registerButton;
+import game.gambler.part.UI.Panel.RoleChoosePanel;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Role;
 import game.gambler.part.data.model.User;
@@ -48,7 +51,8 @@ public class UIManager {
     public void update(){
         MessageManager messageManager =MessageManager.getInstance();
         Message message = messageManager.currentMessage;
-        if (message!=null&&message.getMsg_type().equals(Message.Msgtype.graphics_msg)){
+        if (message!=null&&(message.getMsg_type().equals(Message.Msgtype.graphics_msg)
+                ||message.getMsg_type().equals(Message.Msgtype.all_msg))){
             switch (message.getMsg_Content()){
                 case "打开登录页面":loginUI();break;
                 case "打开注册框":registerUI();break;
@@ -62,33 +66,14 @@ public class UIManager {
     }
 
     private void chooseRole() {
-        //加载当前用户下的全部角色信息 。这个信息存在哪
-        //当前用户的信息在哪里存着
-        User user = DataManager.getInstance().getUser();
-        //通过user 查询改user下的全部role
-        List<Role> Roles= jdbc.queryRolesByUserId(user.getUser_id());
-        //根据角色信息加载页面
-        /*
-        * 需要的内容如下
-        * 角色 id
-        * 角色 名称
-        * 角色 等级
-        * 角色 职业
-        * */
-        List<ChooseRoleView> crvs = new ArrayList<>();
-        for (Role role:Roles){
-            crvs.add(jdbc.queryChooseRoleViewByRoleId(role.getRole_id()));
-        }
-        System.out.println("角色个数"+Roles.size());
+
         //根据获取的信息组织页面
-        JLabel RoleList = new JLabel("角色列表");
-        RoleList.setFont(new Font("Dialog",1,35));
-        RoleList.setBounds(100,50,200,35);
+        ImageButton newRole = new newRoleButotn();
+        ImageButton play = new playButton();
 
 
 
-
-        show(RoleList);
+        show(newRole,new RoleChoosePanel(),play);
 
 
 

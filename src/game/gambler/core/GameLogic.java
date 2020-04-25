@@ -2,13 +2,18 @@ package game.gambler.core;
 
 import game.gambler.core.Util.Jdbc;
 import game.gambler.part.data.DataManager;
+import game.gambler.part.data.model.Role;
 import game.gambler.part.data.model.User;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.UIManager;
+import game.gambler.part.data.view.ChooseRoleView;
 
 import javax.swing.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class GameLogic {
     Jdbc jdbc=Jdbc.getInstance();
@@ -16,10 +21,12 @@ public class GameLogic {
     public void update(){
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
-        if (message!=null&&message.getMsg_type().equals(Message.Msgtype.logic_msg)){
+        if (message!=null&&(message.getMsg_type().equals(Message.Msgtype.logic_msg)
+                ||message.getMsg_type().equals(Message.Msgtype.all_msg))){
             switch (message.getMsg_Content()){
 
                 case "验证登录":islogin();break;
+                case "登录成功":loadUserInformation();break;
                 case "打开菜单":open();break;
                 //获取注册表单中的内容并判断时候重复
                 //不重复 则 注册成功
@@ -43,10 +50,33 @@ public class GameLogic {
 
             }
         }
+    }
+
+    private void loadUserInformation() {
+        //加载当前用户下的全部角色信息 。这个信息存在哪
+        //当前用户的信息在哪里存着
+        User user = DataManager.getInstance().getUser();
+        //通过user 查询改user下的全部role
+        List<Role> Roles= jdbc.queryRolesByUserId(user.getUser_id());
+        //根据角色信息加载页面
+        /*
+         * 需要的内容如下
+         * 角色 id
+         * 角色 名称
+         * 角色 等级
+         * 角色 职业
+         * */
+        List<ChooseRoleView> crvs = new ArrayList<>();
+        for (Role role:Roles){
+            crvs.add(jdbc.queryChooseRoleViewByRoleId(role.getRole_id()));
+        }
+        //加载图片数据
 
 
 
-
+        System.out.println(crvs.size());
+        DataManager.getInstance().setRoleList(crvs);
+        //System.out.println("角色个数"+Roles.size());
     }
 
     private void checkRegister() {
@@ -79,7 +109,7 @@ public class GameLogic {
 
             User user_ = jdbc.queryUserByName(username);
             if(username.equals(user_.getUsername())&&password.equals(user_.getPassword())){
-                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"登录成功"));
+                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"登录成功"));
                 DataManager.getInstance().setUser(user_);
             }else{
                 MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"账号密码错误"));

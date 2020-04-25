@@ -109,17 +109,28 @@ public class Jdbc {
     }
 
     public ChooseRoleView queryChooseRoleViewByRoleId(int role_id ){
-        String sql = "SELECT grade.grade, career.career_name, role.role_name, role.role_id FROM role"+
-                " INNER JOIN career ON role.career_id = career.career_id"+
-                "INNER JOIN grade ON role.grade = grade.grade"+
-        "WHERE role.role_id = '"+role_id+"'";
+        String sql = "SELECT " +
+                "Role.role_id," +
+                "Role.role_name," +
+                "Career.career_name," +
+                "Grade.grade\n" +
+                "FROM " +
+                "Role " +
+                "INNER JOIN Grade ON Role.grade = Grade.grade " +
+                "INNER JOIN Career ON Role.career_id = Career.career_id " +
+                "WHERE " +
+                "Role.role_id = "+role_id;
+//        String sql = "SELECT Grade.grade, Career.career_name, Role.role_name, Role.role_id FROM Role"+
+//                " INNER JOIN Career ON Role.career_id = Career.career_id"+
+//                "INNER JOIN Grade ON Role.grade = Grade.grade"+
+//        "WHERE Role.role_id = "+role_id;
         ChooseRoleView crv = new ChooseRoleView();
         try{
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
                  crv = new ChooseRoleView(rs.getInt(1),
-                        rs.getInt(2),rs.getString(3),
-                        rs.getString(4));
+                        rs.getInt(4),rs.getString(3),
+                        rs.getString(2));
             }
             return crv;
         }catch (SQLException e) {

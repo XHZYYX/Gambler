@@ -15,9 +15,10 @@ public class ChooseRoleScene extends Scene{
      *SpriteMap:null
      * */
 
+
+
     public ChooseRoleScene(){
         this("ChooseRoleScene",null,null,new ImageIcon("resource/images/scene/chooseRole.png").getImage());
-        //this.backgroundImage = new ImageIcon("resource/images/scene/login.jpg").getImage();
     }
     public ChooseRoleScene(String sceneName) {
         super(sceneName);

@@ -5,6 +5,7 @@ import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.UIManager;
+import game.gambler.part.data.DataManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -84,17 +85,8 @@ public  class GameCore {
             long elapsedTime =
                     System.currentTimeMillis() - currTime;
             currTime += elapsedTime;
-
-
-
-
             //更新游戏组件
             update(elapsedTime);
-            //GameWindow 只起一个容器作用
-            //可以用来切换全屏 和 窗口
-            //Graphics2D g = (Graphics2D)gameWindow.getGraphics();
-            //draw(g);
-            //g.dispose();
             gameWindow.update();
 
             // take a nap

@@ -48,7 +48,8 @@ public class SceneManager {
     public void update(){
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
-        if (message!=null&&message.getMsg_type().equals(Message.Msgtype.graphics_msg)){
+        if (message!=null&&(message.getMsg_type().equals(Message.Msgtype.graphics_msg)
+                ||message.getMsg_type().equals(Message.Msgtype.all_msg))){
             switch (message.getMsg_Content()){
                 case "打开登录页面": LoginScene();break;
                 case "登录成功": loadingChooseRole();break;
@@ -81,6 +82,11 @@ public class SceneManager {
     public void shutdown(){
 
     }
+
+
+
+
+
     public void changeScene(Scene scene){
         //将旧的场景移除 并加入新的场景
         gameWindow.setVisible(false);
@@ -92,10 +98,20 @@ public class SceneManager {
         gameWindow.setVisible(true);
     }
 
+
+
+
+
     public void draw(){
         //绘制当前场景
         //因为场景是主动绘制 所以不用管
     }
+
+
+
+
+
+
 
     public void saveSceneToMap(Scene scene){
         if(!SceneMap.containsKey(scene.getName())){
