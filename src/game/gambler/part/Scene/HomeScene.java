@@ -1,8 +1,16 @@
 package game.gambler.part.Scene;
 
+import game.gambler.core.Render.Animation;
+import game.gambler.core.Render.Sprite;
 import game.gambler.core.Render.TileMap;
+import game.gambler.part.data.DataManager;
+import game.gambler.part.data.view.ChooseRoleView;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 
 public class HomeScene extends Scene{
 
@@ -10,11 +18,66 @@ public class HomeScene extends Scene{
         TileMap tileMap = new TileMap("resource/map/map.tmx");
         tileMap.loadTileMap();
         this.tileMap = tileMap;
+
+
+        //根据Role_id 获取 对应的职业，
+        String carrer_name;
+        int roleid=DataManager.getInstance().getRole().getRole_id();
+        for (ChooseRoleView c :DataManager.getInstance().getRoleList()) {
+            if(roleid == c.getRole_id()){
+                carrer_name = c.getCareer_name();
+                break;
+            }
+        }
+        Animation playerAnimation = new Animation();
+
+        playerAnimation.addFrame(new ImageIcon("resource/images/1.png").getImage(),150);
+        playerAnimation.addFrame(new ImageIcon("resource/images/2.png").getImage(),150);
+        playerAnimation.addFrame(new ImageIcon("resource/images/3.png").getImage(),150);
+        playerAnimation.addFrame(new ImageIcon("resource/images/4.png").getImage(),150);
+        playerAnimation.addFrame(new ImageIcon("resource/images/5.png").getImage(),150);
+        //playerAnimation.addFrame(new ImageIcon("resource/images/6.png").getImage(),150);
+
+        Sprite player = new Sprite(playerAnimation);
+        player.setX(100);
+        player.setY(200);
+        //加载Sprite
+        this.spriteMap.put("player",player);
+
+        SceneManager.getInstance().getGameWindow().addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_UP){
+                    player.setVelocityY(-1);
+                }
+                if(e.getKeyCode() == KeyEvent.VK_DOWN){
+                    player.setVelocityY(1);
+                }
+                if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                    player.setVelocityX(-1);
+                }
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+                    player.setVelocityX(1);
+                }
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                player.setVelocityX(0);
+                player.setVelocityY(0);
+            }
+        });
+
     }
 
     @Override
     public void render(Graphics2D graphics) {
         tileMap.draw(graphics);
+        for (Sprite sprite:spriteMap.values()){
+            graphics.drawImage(sprite.getImage(),(int)sprite.getX(),(int)sprite.getY(),null);
+        }
     }
 
 

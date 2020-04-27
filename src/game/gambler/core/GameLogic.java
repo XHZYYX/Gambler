@@ -18,7 +18,7 @@ import java.util.List;
 public class GameLogic {
     Jdbc jdbc=Jdbc.getInstance();
 
-    public void update(){
+    public void update(long elapsedTime){
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
         if (message!=null&&(message.getMsg_type().equals(Message.Msgtype.logic_msg)

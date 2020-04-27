@@ -32,7 +32,7 @@ public class MessageManager {
     }
 
 
-    public void update(){
+    public void update(long elapsedTime){
 
             currentMessage = MessageQueue.peek();
             if (currentMessage!=null&&currentMessage.isHandler ==true)

@@ -1,5 +1,6 @@
 package game.gambler.part.data;
 
+import game.gambler.core.Render.Sprite;
 import game.gambler.core.Util.Jdbc;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
@@ -70,6 +71,17 @@ public class DataManager {
 
     private Role role;
     //怪物的数据
+
+    public Sprite getPlayerSprite() {
+        return playerSprite;
+    }
+
+    public void setPlayerSprite(Sprite playerSprite) {
+        this.playerSprite = playerSprite;
+    }
+
+    private Sprite playerSprite;
+
     private Map<String, Monsters> MonstersMap;
 
     private Map<String, Buff>BuffMap;

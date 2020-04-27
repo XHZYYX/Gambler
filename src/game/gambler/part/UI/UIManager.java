@@ -48,7 +48,7 @@ public class UIManager {
     public void add(String componentName,Component component){
         this.UImap.put(componentName,component);
     }
-    public void update(){
+    public void update(long elapsedTime){
         MessageManager messageManager =MessageManager.getInstance();
         Message message = messageManager.currentMessage;
         if (message!=null&&(message.getMsg_type().equals(Message.Msgtype.graphics_msg)
@@ -61,8 +61,6 @@ public class UIManager {
                 case "账号密码错误":reLogin();break;
             }
         }
-
-
     }
 
     private void chooseRole() {
@@ -71,15 +69,7 @@ public class UIManager {
         ImageButton newRole = new newRoleButotn();
         ImageButton play = new playButton();
 
-
-
         show(newRole,new RoleChoosePanel(),play);
-
-
-
-
-
-
 
 
     }

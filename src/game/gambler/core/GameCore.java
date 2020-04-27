@@ -90,10 +90,10 @@ public  class GameCore {
             gameWindow.update();
 
             // take a nap
-            try {
-                Thread.sleep(20);
-            }
-            catch (InterruptedException ex) { }
+//            try {
+//                Thread.sleep(20);
+//            }
+//            catch (InterruptedException ex) { }
         }
     }
     /**
@@ -102,10 +102,10 @@ public  class GameCore {
      */
     public void update(long elapsedTime) {
         //全部组件的更新
-        messageManager.update();
-        gameLogic.update();
-        sceneManager.update();
-        uiManager.update();
+        messageManager.update(elapsedTime);
+        gameLogic.update(elapsedTime);
+        sceneManager.update(elapsedTime);
+        uiManager.update(elapsedTime);
 
         if ( messageManager.currentMessage!=null){
             messageManager.currentMessage.finish();

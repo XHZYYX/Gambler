@@ -5,10 +5,10 @@ import java.awt.*;
 public class Sprite {
 
     protected Animation anim;
-    // position (pixels)
+    // position (pixels)位置
     private float x;
     private float y;
-    // velocity (pixels per millisecond)
+    // velocity (pixels per millisecond)速度
     private float dx;
     private float dy;
 

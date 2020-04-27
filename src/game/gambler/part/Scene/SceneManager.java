@@ -45,7 +45,11 @@ public class SceneManager {
         //加载当前场景
 
     }
-    public void update(){
+    public void update(long elapsedTime){
+        if (Now!=null)Now.update(elapsedTime);
+
+
+
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
         if (message!=null&&(message.getMsg_type().equals(Message.Msgtype.graphics_msg)

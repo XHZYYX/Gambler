@@ -6,6 +6,7 @@ import game.gambler.core.Util.FrameRate;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -44,7 +45,7 @@ public abstract class Scene extends JPanel {
     public Scene(String sceneName, Map<String, Sprite> spriteMap, TileMap tileMap, Image backgroundImage) {
         SceneName = sceneName;
         this.frameRate = SceneManager.getInstance().frameRate;
-        this.spriteMap = spriteMap;
+        this.spriteMap = new HashMap<>();
         this.tileMap = tileMap;
         this.backgroundImage = backgroundImage;
         this.setLayout(null);
@@ -97,8 +98,10 @@ public abstract class Scene extends JPanel {
 
     }
 
-    public void update(){
-
+    public void update(long elapsedTime){
+        for (Sprite sprite:spriteMap.values()){
+            sprite.update(elapsedTime);
+        }
     }
 
     public void stop(){
@@ -117,13 +120,12 @@ public abstract class Scene extends JPanel {
         if(backgroundImage!=null){
             g.drawImage(backgroundImage,0,0,null);
         }
+        render((Graphics2D)g);
         if (frameRate!=null){
             frameRate.calculate();
             g.setColor(Color.red);
             g.drawString(frameRate.getFrameRate(),20,20);
         }
-
-        render((Graphics2D)g);
     }
 
     public abstract void render(Graphics2D graphics);
