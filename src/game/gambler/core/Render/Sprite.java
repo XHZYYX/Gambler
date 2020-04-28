@@ -1,5 +1,7 @@
 package game.gambler.core.Render;
 
+import game.gambler.part.Scene.SceneManager;
+
 import java.awt.*;
 
 public class Sprite {
@@ -24,8 +26,10 @@ public class Sprite {
         on the velocity.
     */
     public void update(long elapsedTime) {
-        x += dx * elapsedTime;
-        y += dy * elapsedTime;
+        if(SceneManager.getInstance().getNow().getTileMap().CollisionDetetction((int)(x+20+dx * elapsedTime),(int)(y+20+dy * elapsedTime),1)) {
+            x += dx * elapsedTime;
+            y += dy * elapsedTime;
+        }
         anim.update(elapsedTime);
     }
 

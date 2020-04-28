@@ -3,6 +3,7 @@ package game.gambler.part.Scene;
 import game.gambler.core.Render.Animation;
 import game.gambler.core.Render.Sprite;
 import game.gambler.core.Render.TileMap;
+import game.gambler.part.Scene.Sprite.Player;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.view.ChooseRoleView;
 
@@ -10,6 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class HomeScene extends Scene{
@@ -29,18 +32,38 @@ public class HomeScene extends Scene{
                 break;
             }
         }
-        Animation playerAnimation = new Animation();
 
-        playerAnimation.addFrame(new ImageIcon("resource/images/1.png").getImage(),150);
-        playerAnimation.addFrame(new ImageIcon("resource/images/2.png").getImage(),150);
-        playerAnimation.addFrame(new ImageIcon("resource/images/3.png").getImage(),150);
-        playerAnimation.addFrame(new ImageIcon("resource/images/4.png").getImage(),150);
-        playerAnimation.addFrame(new ImageIcon("resource/images/5.png").getImage(),150);
+        Animation left = new Animation();
+        for (int i  =1;i<4;i++){
+            left.addFrame(new ImageIcon("resource/images/sprite/法师/left"+i+".png").getImage(),250);
+        }
+        Animation up = new Animation();
+        for (int i  =1;i<4;i++){
+            up.addFrame(new ImageIcon("resource/images/sprite/法师/up"+i+".png").getImage(),250);
+        }
+        Animation right = new Animation();
+        for (int i  =1;i<4;i++){
+            right.addFrame(new ImageIcon("resource/images/sprite/法师/right"+i+".png").getImage(),250);
+        }
+        Animation down = new Animation();
+        for (int i  =1;i<4;i++){
+            down.addFrame(new ImageIcon("resource/images/sprite/法师/down"+i+".png").getImage(),250);
+        }
+
+
+//        Animation playerAnimation = new Animation();
+
+//        playerAnimation.addFrame(new ImageIcon("resource/images/1.png").getImage(),150);
+//        playerAnimation.addFrame(new ImageIcon("resource/images/2.png").getImage(),150);
+//        playerAnimation.addFrame(new ImageIcon("resource/images/3.png").getImage(),150);
+//        playerAnimation.addFrame(new ImageIcon("resource/images/4.png").getImage(),150);
+//        playerAnimation.addFrame(new ImageIcon("resource/images/5.png").getImage(),150);
         //playerAnimation.addFrame(new ImageIcon("resource/images/6.png").getImage(),150);
 
-        Sprite player = new Sprite(playerAnimation);
+        //Sprite player = new Sprite(playerAnimation);
+        Player player = new Player(left,right,up,down,down,down);
         player.setX(100);
-        player.setY(200);
+        player.setY(257);
         //加载Sprite
         this.spriteMap.put("player",player);
 
@@ -49,18 +72,17 @@ public class HomeScene extends Scene{
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_UP){
-                    player.setVelocityY(-1);
+                    player.setVelocityY(Float.parseFloat("-0.2"));
                 }
                 if(e.getKeyCode() == KeyEvent.VK_DOWN){
-                    player.setVelocityY(1);
+                    player.setVelocityY(Float.parseFloat("0.2"));
                 }
-                if (e.getKeyCode() == KeyEvent.VK_LEFT){
-                    player.setVelocityX(-1);
+                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+                    player.setVelocityX(Float.parseFloat("-0.2"));
                 }
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT){
-                    player.setVelocityX(1);
+                    player.setVelocityX(Float.parseFloat("0.2"));
                 }
-
             }
 
             @Override
@@ -70,15 +92,18 @@ public class HomeScene extends Scene{
             }
         });
 
+
+
+
     }
 
     @Override
     public void render(Graphics2D graphics) {
         tileMap.draw(graphics);
         for (Sprite sprite:spriteMap.values()){
+           // System.out.println(sprite.getImage());
             graphics.drawImage(sprite.getImage(),(int)sprite.getX(),(int)sprite.getY(),null);
         }
     }
-
 
 }

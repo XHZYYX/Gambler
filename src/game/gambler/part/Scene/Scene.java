@@ -3,6 +3,7 @@ package game.gambler.part.Scene;
 import game.gambler.core.Render.Sprite;
 import game.gambler.core.Render.TileMap;
 import game.gambler.core.Util.FrameRate;
+import game.gambler.part.Scene.Sprite.Creature;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public abstract class Scene extends JPanel {
 
     public String SceneName;
     //包括玩家和怪物
-    public Map<String,Sprite> spriteMap;
+    public Map<String,Creature> spriteMap;
     //tile地图
     public TileMap tileMap;
     //背景
@@ -69,11 +70,11 @@ public abstract class Scene extends JPanel {
     * get and set 函数
     *
     * */
-    public Map<String, Sprite> getSpriteMap() {
+    public Map<String, Creature> getSpriteMap() {
         return spriteMap;
     }
 
-    public void setSpriteMap(Map<String, Sprite> spriteMap) {
+    public void setSpriteMap(Map<String, Creature> spriteMap) {
         this.spriteMap = spriteMap;
     }
 
@@ -99,7 +100,7 @@ public abstract class Scene extends JPanel {
     }
 
     public void update(long elapsedTime){
-        for (Sprite sprite:spriteMap.values()){
+        for (Creature sprite:spriteMap.values()){
             sprite.update(elapsedTime);
         }
     }
@@ -126,6 +127,7 @@ public abstract class Scene extends JPanel {
             g.setColor(Color.red);
             g.drawString(frameRate.getFrameRate(),20,20);
         }
+
     }
 
     public abstract void render(Graphics2D graphics);

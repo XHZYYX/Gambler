@@ -25,6 +25,18 @@ public class TileMap {
     int tilewidth,tileheight;//地图块的宽高
     int width,height;//整个地图宽高块数
 
+
+    public boolean CollisionDetetction(int x,int y,int direction){
+        TileSet tileSet = tileSets.get(tileSets.size()-1);
+        TileLayer tileLayer = tileLayers.get(tileLayers.size()-1);
+        //x,y所处的这个块是否是 可以待的地方
+        if (tileLayer.getTile()[y/tileSet.getTileheight()][x/tileSet.getTilewidth()]!=0){
+           // System.out.println(x/tileSet.getTilewidth()+"  "+y/tileSet.getTileheight());
+            return true;
+        }
+        return false;
+    }
+
     //存放对应gid 的图片
     List<Image> TileImage = new ArrayList<>();
 

@@ -2,6 +2,7 @@ package game.gambler.part.Scene.Sprite;
 
 import game.gambler.core.Render.Animation;
 import game.gambler.core.Render.Sprite;
+import game.gambler.part.Scene.SceneManager;
 
 import java.lang.reflect.Constructor;
 
@@ -131,8 +132,8 @@ public abstract class Creature extends Sprite {//生物
 
 
     /**
-        Called before update() if the creature collided with a
-        tile horizontally.
+        Called before update() if the creature collided with a tile horizontally.
+        如果生物与瓷砖水平碰撞，则在update（）之前调用。
     */
     public void collideHorizontal() {
         setVelocityX(-getVelocityX());
@@ -140,8 +141,8 @@ public abstract class Creature extends Sprite {//生物
 
 
     /**
-        Called before update() if the creature collided with a
-        tile vertically.
+        Called before update() if the creature collided with a tile vertically.
+        如果生物与瓷砖垂直碰撞，则在update（）之前调用。
     */
     public void collideVertical() {
         setVelocityY(0);
@@ -160,6 +161,23 @@ public abstract class Creature extends Sprite {//生物
         else if (getVelocityX() > 0) {
             newAnim = right;
         }
+        else if (getVelocityY() < 0) {
+            newAnim = up;
+        }
+        else if (getVelocityY() > 0) {
+            newAnim = down;
+        }
+        if (anim != newAnim) {
+            anim = newAnim;
+            anim.start();
+            System.out.println(SceneManager.getInstance().getNow().SceneName);
+        }
+        else {
+            //update the Animation
+                super.update(elapsedTime);
+        }
+
+
         if (state == STATE_DYING && newAnim == left) {
             newAnim = deadLeft;
         }
@@ -167,14 +185,7 @@ public abstract class Creature extends Sprite {//生物
             newAnim = deadRight;
         }
 
-        // update the Animation
-        if (anim != newAnim) {
-            anim = newAnim;
-            anim.start();
-        }
-        else {
-            anim.update(elapsedTime);
-        }
+
 
         // update to "dead" state
         stateTime += elapsedTime;

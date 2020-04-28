@@ -6,6 +6,7 @@ import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
+import game.gambler.part.Scene.Sprite.Creature;
 import game.gambler.part.UI.Button.loginButton;
 import game.gambler.part.UI.Button.newRoleButotn;
 import game.gambler.part.UI.Button.playButton;
@@ -18,6 +19,8 @@ import game.gambler.part.data.view.ChooseRoleView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +60,7 @@ public class UIManager {
                 case "打开登录页面":loginUI();break;
                 case "打开注册框":registerUI();break;
                 case "登录成功": chooseRole();break;
-                case "进入主城": HomeUI();break;
+                case "进入游戏": HomeUI();break;
                 case "账号密码错误":reLogin();break;
             }
         }
@@ -82,7 +85,6 @@ public class UIManager {
     }
 
     private void HomeUI() {
-
 
 
     }
