@@ -7,12 +7,12 @@ import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.Scene.Sprite.Creature;
-import game.gambler.part.UI.Button.loginButton;
-import game.gambler.part.UI.Button.newRoleButotn;
-import game.gambler.part.UI.Button.playButton;
-import game.gambler.part.UI.Button.registerButton;
+import game.gambler.part.UI.Button.*;
+import game.gambler.part.UI.Panel.MeanBar;
 import game.gambler.part.UI.Panel.RoleChoosePanel;
+import game.gambler.part.UI.Panel.StatusBarPanel;
 import game.gambler.part.data.DataManager;
+import game.gambler.part.data.model.Attribute;
 import game.gambler.part.data.model.Role;
 import game.gambler.part.data.model.User;
 import game.gambler.part.data.view.ChooseRoleView;
@@ -62,8 +62,19 @@ public class UIManager {
                 case "登录成功": chooseRole();break;
                 case "进入游戏": HomeUI();break;
                 case "账号密码错误":reLogin();break;
+                case "打开属性面板": attributeBoxUI();break;
+                case "test":test();break;
             }
         }
+    }
+
+    private void attributeBoxUI() {
+        showPropertyBox();
+        //PropertyBoxUI();
+    }
+
+    private void test() {
+
     }
 
     private void chooseRole() {
@@ -85,13 +96,17 @@ public class UIManager {
     }
 
     private void HomeUI() {
-
-
+        //左上角的属性框
+        StatusBarPanel statusBarPanel = new StatusBarPanel(new Role());
+        //左下角的菜单栏  背包 //属性 //装备
+        MeanBar meanBar = new MeanBar(1000,680,300,70);
+        meanBar.add(new inventoryButton());
+        meanBar.add(new attitudeButton());
+        show(statusBarPanel,meanBar);
     }
 
     private void loginUI(){
         //账号密码输入框
-
         JTextField username = new JTextField(16);
         username.setBounds(593,490,194,26);
         this.UImap.put("ui-login-username-input",username);
@@ -122,7 +137,7 @@ public class UIManager {
     }
 
     public void showPropertyBox(){
-        new PropertyBox(20,20);
+        new PropertyBox(440,234);
         System.out.println("CCC");
     }
 

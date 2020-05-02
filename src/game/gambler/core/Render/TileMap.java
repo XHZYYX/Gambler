@@ -102,12 +102,12 @@ public class TileMap {
             TileSet tileSet = tileSets.get(i);
 
             Image image = tileSet.image;
-
+//16
             int cutx = image.getWidth(null)/tileSet.tilewidth;
             int cuty = image.getHeight(null)/tileSet.tileheight;
-
-            for(int j=0;j<cutx;j++){
-                for(int h =0;h<cuty;h++){
+//12
+            for(int j=0;j<cuty;j++){//12次
+                for(int h =0;h<cutx;h++){//16次
                     TileImage.add(count,getImageUtil().getCutInstance(image,
                             h*tileSet.tilewidth,j*tileSet.tileheight,
                             tileSet.tilewidth,tileSet.tileheight));

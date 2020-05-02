@@ -59,11 +59,22 @@ public class SceneManager {
                 case "登录成功": loadingChooseRole();break;
                // loadingHome()
                 case "账号密码错误":break;
-                case "进入游戏":loadingHome();
+                case "进入游戏":loadingHome();break;
+
+
+                case "test":test();break;
             }
         }
 
 
+    }
+
+    private void test() {
+        Now= new FirstChapterScene();
+        //Now.setFrameRate(frameRate);
+        gameWindow.setVisible(false);
+        gameWindow.getContentPane().add(Now);
+        gameWindow.setVisible(true);
     }
 
     private void loadingChooseRole() {

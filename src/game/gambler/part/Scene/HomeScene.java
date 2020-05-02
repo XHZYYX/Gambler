@@ -11,15 +11,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 
 public class HomeScene extends Scene{
 
     public HomeScene(){
         TileMap tileMap = new TileMap("resource/map/map.tmx");
-        tileMap.loadTileMap();
         this.tileMap = tileMap;
 
 
@@ -50,17 +46,6 @@ public class HomeScene extends Scene{
             down.addFrame(new ImageIcon("resource/images/sprite/法师/down"+i+".png").getImage(),250);
         }
 
-
-//        Animation playerAnimation = new Animation();
-
-//        playerAnimation.addFrame(new ImageIcon("resource/images/1.png").getImage(),150);
-//        playerAnimation.addFrame(new ImageIcon("resource/images/2.png").getImage(),150);
-//        playerAnimation.addFrame(new ImageIcon("resource/images/3.png").getImage(),150);
-//        playerAnimation.addFrame(new ImageIcon("resource/images/4.png").getImage(),150);
-//        playerAnimation.addFrame(new ImageIcon("resource/images/5.png").getImage(),150);
-        //playerAnimation.addFrame(new ImageIcon("resource/images/6.png").getImage(),150);
-
-        //Sprite player = new Sprite(playerAnimation);
         Player player = new Player(left,right,up,down,down,down);
         player.setX(100);
         player.setY(257);
@@ -91,10 +76,6 @@ public class HomeScene extends Scene{
                 player.setVelocityY(0);
             }
         });
-
-
-
-
     }
 
     @Override

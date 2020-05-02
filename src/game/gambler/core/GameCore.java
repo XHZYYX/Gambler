@@ -71,6 +71,8 @@ public  class GameCore {
         //uiManager.loginUI();
         //开启游戏运行
         messageManager.sendMessage(new Message(Message.Msgtype.graphics_msg,"打开登录页面"));
+        //messageManager.sendMessage(new Message(Message.Msgtype.graphics_msg,"test"));
+
         isRunning = true;
         gameWindow.setVisible(true);
     }

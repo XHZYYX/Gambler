@@ -25,8 +25,6 @@ public class MessageManager {
 
     }
 
-
-
     public void init(){
 
     }
