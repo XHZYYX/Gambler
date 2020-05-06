@@ -46,7 +46,7 @@ public class PropertyBox extends JDialog {
         private int grade = 30;
 
         public attribute(){
-            this.setBounds(30,30,100,100);
+            this.setBounds(30,30,400,0);
             this.setBorder(new LineBorder(Color.red,1,true));
             this.setVisible(true);
         }
@@ -65,11 +65,14 @@ public class PropertyBox extends JDialog {
 
     }
 
+    Image img=new ImageIcon("resource/map/A2.png").getImage();
+
     @Override
     public void paint(Graphics graphics){
         super.paint(graphics);
+        graphics=(Graphics2D)graphics;
         System.out.println("1");
-        graphics.drawImage(new ImageIcon("resource/map/A2.png").getImage(),30,40,null);
+        graphics.drawImage(img,30,40,null);
         graphics.drawString("当前人物等级：30",30,40);
         draw(graphics);
     }
@@ -77,8 +80,30 @@ public class PropertyBox extends JDialog {
     public void draw(Graphics graphics){
         graphics.fillRect(x,y,200,300);
         graphics.setColor(Color.red);
-        graphics.setFont(new Font("Dialog",1,20));
-        graphics.drawString("当前人物等级：30",30,40);
-    }
+        graphics.setFont(new Font("Dialog",Font.PLAIN,15));
 
+        //draw name
+        graphics.drawString("LV.19"+"当前人物名称",10,50);
+
+        //draw wires
+
+        //draw img
+
+        //draw text weapon
+
+        //draw text weather
+
+        //draw text sheild
+
+        //draw seperator
+
+        //draw text strength
+
+        //draw text mana
+
+        //draw seperator
+
+        //draw text ...
+
+    }
 }
