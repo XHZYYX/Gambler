@@ -90,7 +90,8 @@ public class SceneManager {
     private void diceOver() {
         if("移动".equals(MessageManager.getInstance().getTopMessageStack().getMsg_Content())){
             int dice = DataManager.getInstance().getDice();
-            DataManager.getInstance().getPlayerSprite().setY(100*dice);
+
+            DataManager.getInstance().move();
         }
     }
 

@@ -1,5 +1,6 @@
 package game.gambler.part.data;
 
+import game.gambler.core.Render.Road;
 import game.gambler.core.Render.Sprite;
 import game.gambler.core.Util.Jdbc;
 import game.gambler.part.Message.Message;
@@ -35,6 +36,26 @@ public class DataManager {
     //当前的位置 以及动画的切换
     private Sprite playerSprite;
 
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    int index = 0;
+
+    public List<Road> getRoadList() {
+        return roadList;
+    }
+
+    public void setRoadList(List<Road> roadList) {
+        this.roadList = roadList;
+    }
+
+    private List<Road>  roadList;
+
     private int dice;
 
     public int getDice() {
@@ -44,6 +65,20 @@ public class DataManager {
     public void setDice(int dice) {
         this.dice = dice;
     }
+
+    public Road move(){
+        index+=1;
+        Road road= roadList.get(index);
+        if(road.getType()==1)
+        {
+            playerSprite.setY(road.getY()*32);
+            playerSprite.setX(road.getX()*32);
+        }
+
+         return null;
+    }
+
+
 
     private Map<String, Monsters> MonstersMap;
 
