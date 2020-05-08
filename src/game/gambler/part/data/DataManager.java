@@ -7,19 +7,51 @@ import game.gambler.part.Message.MessageManager;
 import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/*
+*
+* */
 public class DataManager {
     Jdbc jdbc=Jdbc.getInstance();
+
     private static DataManager _instance;
+
     public static DataManager getInstance(){
         if(_instance==null){
             _instance = new DataManager();
         }
         return  _instance;
     }
+
+    //保存当前登录的用户数据
+    private User user;
+
+    //保存当前选择的角色信息
+    private Role role;
+
+    //由当前角色生成的  精灵的 信息
+    //当前的位置 以及动画的切换
+    private Sprite playerSprite;
+
+    private Map<String, Monsters> MonstersMap;
+
+    private Map<String, Buff>BuffMap;
+
+    private Map<String, Grade> GradeMap;
+
+    //记录关卡
+    private int checkPoint;
+
+    public int getCheckPoint() {
+        return checkPoint;
+    }
+
+    public void setCheckPoint(int checkPoint) {
+        this.checkPoint = checkPoint;
+    }
+
     public void update(){
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
@@ -28,8 +60,6 @@ public class DataManager {
 
             }
         }
-
-
     }
 
 //    private void loadUserInformation() {
@@ -52,8 +82,6 @@ public class DataManager {
 //        }
 //        System.out.println("角色个数"+Roles.size());
 //    }
-    //用户的数据应该存在那里
-    private User user;
 
     public Role getRole() {
         return role;
@@ -69,7 +97,7 @@ public class DataManager {
     }
 
 
-    private Role role;
+
     //怪物的数据
 
     public Sprite getPlayerSprite() {
@@ -80,13 +108,7 @@ public class DataManager {
         this.playerSprite = playerSprite;
     }
 
-    private Sprite playerSprite;
 
-    private Map<String, Monsters> MonstersMap;
-
-    private Map<String, Buff>BuffMap;
-
-    private Map<String, Grade> GradeMap;
 
     private List<ChooseRoleView> RoleList;
     public List<ChooseRoleView> getRoleList() {

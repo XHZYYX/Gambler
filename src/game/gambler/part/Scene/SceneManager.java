@@ -1,20 +1,21 @@
 package game.gambler.part.Scene;
 
+import game.gambler.core.Render.Sprite;
 import game.gambler.core.Util.FrameRate;
 import game.gambler.core.Window.GameWindow;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
+import game.gambler.part.Scene.Sprite.Creature;
+import game.gambler.part.data.DataManager;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SceneManager {
 
-
+    private DataManager dataManager= DataManager.getInstance();
     private static SceneManager _instance;
     public static SceneManager getInstance(){
         if(_instance==null){
@@ -23,6 +24,9 @@ public class SceneManager {
         return  _instance;
     }
     GameWindow gameWindow;
+    Map<String,Sprite> SpriteList = new HashMap<>();
+    Boolean CollisionDetetctionFlag = false;
+
 
     public Scene getNow() {
         return Now;
@@ -43,12 +47,21 @@ public class SceneManager {
     public void init(){
         frameRate = new FrameRate();
         //加载当前场景
-
     }
     public void update(long elapsedTime){
-        if (Now!=null)Now.update(elapsedTime);
+        if (Now!=null){
+            Now.update(elapsedTime);
+        }
 
+        if(SpriteList.isEmpty()){
+            CollisionDetetctionFlag= false;
+        }else {
+            CollisionDetetctionFlag= true;
+        }
 
+       // if(!CollisionDetetctionFlag){
+
+       // }
 
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
@@ -60,12 +73,30 @@ public class SceneManager {
                // loadingHome()
                 case "账号密码错误":break;
                 case "进入游戏":loadingHome();break;
-
-
+                case "打开购买物品的页面":shopping();break;
+                case "进入关卡":loadingCheackPoint();break;
                 case "test":test();break;
             }
         }
 
+
+    }
+
+    private void loadingCheackPoint() {
+        int check = dataManager.getCheckPoint();
+        switch (check){
+            case 1:changeScene(new FirstChapterScene());break;
+            case 2:changeScene(new FirstChapterScene());break;
+            case 3:changeScene(new FirstChapterScene());break;
+            case 4:changeScene(new FirstChapterScene());break;
+            case 5:changeScene(new FirstChapterScene());break;
+            case 6:changeScene(new FirstChapterScene());break;
+        }
+
+
+    }
+
+    private void shopping() {
 
     }
 

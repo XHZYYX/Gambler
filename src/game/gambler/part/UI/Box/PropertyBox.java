@@ -1,4 +1,4 @@
-package game.gambler.part.UI;
+package game.gambler.part.UI.Box;
 
 import game.gambler.core.Window.GameWindow;
 import game.gambler.part.Message.Message;
@@ -52,16 +52,12 @@ public class PropertyBox extends JDialog {
         }
         @Override
         public void paint(Graphics graphics){
-
 //            graphics.drawString("111",1,1);
             graphics.drawString("当前人物等级：30",30,40);
 //            System.out.println("123");
         }
-
-
     }
     public void update(){
-
 
     }
 

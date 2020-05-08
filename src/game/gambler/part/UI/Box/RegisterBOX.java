@@ -1,8 +1,10 @@
-package game.gambler.part.UI;
+package game.gambler.part.UI.Box;
 
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.SceneManager;
+import game.gambler.part.UI.ToolTip;
+import game.gambler.part.UI.UIManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +29,7 @@ public class RegisterBOX extends JDialog {
                     SceneManager.getInstance().getGameWindow().getY()+y);
             super.setSize(500,300);
             this.setLayout(null);
-            UIManager uiManager = UIManager.getInstance();
+            game.gambler.part.UI.UIManager uiManager = UIManager.getInstance();
             JLabel user = new JLabel("用户名");
             JLabel passwd = new JLabel("密码");
             JLabel repasswd = new JLabel("确认密码");

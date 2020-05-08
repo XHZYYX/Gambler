@@ -6,24 +6,20 @@ import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
-import game.gambler.part.Scene.Sprite.Creature;
+import game.gambler.part.UI.Box.CheckPointChooseBox;
+import game.gambler.part.UI.Box.PropertyBox;
+import game.gambler.part.UI.Box.RegisterBOX;
+import game.gambler.part.UI.Box.ShopBox;
 import game.gambler.part.UI.Button.*;
+import game.gambler.part.UI.Panel.CheckPointChoosePanel;
 import game.gambler.part.UI.Panel.MeanBar;
 import game.gambler.part.UI.Panel.RoleChoosePanel;
 import game.gambler.part.UI.Panel.StatusBarPanel;
-import game.gambler.part.data.DataManager;
-import game.gambler.part.data.model.Attribute;
 import game.gambler.part.data.model.Role;
-import game.gambler.part.data.model.User;
-import game.gambler.part.data.view.ChooseRoleView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -63,9 +59,20 @@ public class UIManager {
                 case "进入游戏": HomeUI();break;
                 case "账号密码错误":reLogin();break;
                 case "打开属性面板": attributeBoxUI();break;
+                case "打开购买商品页面":ShopUI();break;
+                case "关卡选择": CheckPointChooseUI();break;
                 case "test":test();break;
             }
         }
+    }
+
+    private void CheckPointChooseUI() {
+        new CheckPointChooseBox(256,128,6);
+    }
+
+    private void ShopUI() {
+        new ShopBox(256,128);
+        System.out.println("CCC");
     }
 
     private void attributeBoxUI() {

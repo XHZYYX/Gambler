@@ -170,7 +170,7 @@ public abstract class Creature extends Sprite {//生物
         if (anim != newAnim) {
             anim = newAnim;
             anim.start();
-            System.out.println(SceneManager.getInstance().getNow().SceneName);
+            //System.out.println(SceneManager.getInstance().getNow().SceneName);
         }
         else {
             //update the Animation

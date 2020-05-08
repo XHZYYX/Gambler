@@ -1,6 +1,8 @@
 package game.gambler.core;
 
 import game.gambler.core.Util.Jdbc;
+import game.gambler.part.Scene.Scene;
+import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Role;
 import game.gambler.part.data.model.User;
@@ -17,8 +19,12 @@ import java.util.List;
 
 public class GameLogic {
     Jdbc jdbc=Jdbc.getInstance();
-
+    DataManager dataManager = DataManager.getInstance();
+    //除了处理消息 还要检测玩家的碰撞
+    SceneManager sceneManager = SceneManager.getInstance();
     public void update(long elapsedTime){
+
+
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
         if (message!=null&&(message.getMsg_type().equals(Message.Msgtype.logic_msg)
@@ -111,6 +117,7 @@ public class GameLogic {
     }
 
     private void open() {
+
     }
 
     private void islogin()  {

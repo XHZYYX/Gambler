@@ -2,10 +2,7 @@ package game.gambler.part.UI.Button;
 
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
-import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.ImageButton;
-import game.gambler.part.UI.PropertyBox;
-import game.gambler.part.UI.UIManager;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

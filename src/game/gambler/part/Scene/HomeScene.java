@@ -3,6 +3,10 @@ package game.gambler.part.Scene;
 import game.gambler.core.Render.Animation;
 import game.gambler.core.Render.Sprite;
 import game.gambler.core.Render.TileMap;
+import game.gambler.part.Message.Message;
+import game.gambler.part.Message.MessageManager;
+import game.gambler.part.Scene.Sprite.Creature;
+import game.gambler.part.Scene.Sprite.NPC;
 import game.gambler.part.Scene.Sprite.Player;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.view.ChooseRoleView;
@@ -33,6 +37,7 @@ public class HomeScene extends Scene{
         for (int i  =1;i<4;i++){
             left.addFrame(new ImageIcon("resource/images/sprite/法师/left"+i+".png").getImage(),250);
         }
+
         Animation up = new Animation();
         for (int i  =1;i<4;i++){
             up.addFrame(new ImageIcon("resource/images/sprite/法师/up"+i+".png").getImage(),250);
@@ -52,6 +57,12 @@ public class HomeScene extends Scene{
         //加载Sprite
         this.spriteMap.put("player",player);
 
+        NPC npc1=new NPC(down);
+        npc1.setX(180);
+        npc1.setY(220);
+        this.npcMap.put("npc1",npc1);
+
+
         SceneManager.getInstance().getGameWindow().addKeyListener(new KeyAdapter() {
 
             @Override
@@ -68,6 +79,27 @@ public class HomeScene extends Scene{
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT){
                     player.setVelocityX(Float.parseFloat("0.2"));
                 }
+                if(e.getKeyCode() == KeyEvent.VK_I){
+                    if(SceneManager.getInstance().CollisionDetetctionFlag){
+                        if(SceneManager.getInstance().SpriteList.get("npc1")!=null){
+                            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"打开购买商品页面"));
+                        }
+                    }
+                }
+
+
+                if(e.getKeyCode() == KeyEvent.VK_C){
+                    if(SceneManager.getInstance().CollisionDetetctionFlag){
+                        if(SceneManager.getInstance().SpriteList.get("npc1")!=null){
+                            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"关卡选择"));
+                        }
+                    }
+                }
+
+
+
+
+
             }
 
             @Override
@@ -79,10 +111,32 @@ public class HomeScene extends Scene{
     }
 
     @Override
+    public void update(long elapsedTime){
+        if(null!=this.getNpcMap()){
+            for(String creatureName:this.getNpcMap().keySet()){
+                Creature creature = this.getNpcMap().get(creatureName);
+                if(this.CollisionDetetction(this.getPlayer(),creature)){
+                    if (!SceneManager.getInstance().SpriteList.containsValue(creature))
+                        SceneManager.getInstance().SpriteList.put(creatureName,this.getNpcMap().get(creatureName));
+                }else{
+                    if (SceneManager.getInstance().SpriteList.containsValue(creature))
+                        SceneManager.getInstance().SpriteList.remove(creatureName);
+                }
+            }
+        }
+        for (Creature sprite:spriteMap.values()){
+            sprite.update(elapsedTime);
+        }
+    }
+
+
+    @Override
     public void render(Graphics2D graphics) {
         tileMap.draw(graphics);
+        for (Sprite sprite:npcMap.values()){
+            graphics.drawImage(sprite.getImage(),(int)sprite.getX(),(int)sprite.getY(),null);
+        }
         for (Sprite sprite:spriteMap.values()){
-           // System.out.println(sprite.getImage());
             graphics.drawImage(sprite.getImage(),(int)sprite.getX(),(int)sprite.getY(),null);
         }
     }

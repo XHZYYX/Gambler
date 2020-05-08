@@ -19,6 +19,9 @@ public abstract class Scene extends JPanel {
     public String SceneName;
     //包括玩家和怪物
     public Map<String,Creature> spriteMap;
+
+    //NPC
+    public Map<String,Creature> npcMap=new HashMap<>();;
     //tile地图
     public TileMap tileMap;
     //背景
@@ -47,6 +50,7 @@ public abstract class Scene extends JPanel {
         SceneName = sceneName;
         this.frameRate = SceneManager.getInstance().frameRate;
         this.spriteMap = new HashMap<>();
+       // this.npcMap = new HashMap<>();
         this.tileMap = tileMap;
         this.backgroundImage = backgroundImage;
         this.setLayout(null);
@@ -64,6 +68,17 @@ public abstract class Scene extends JPanel {
             }
         };
         sceneRender.start();
+    }
+
+    //碰撞检测
+    public boolean CollisionDetetction(Sprite s1,Sprite s2){
+        if(s1.getX()<s2.getX()
+                && (s1.getX()+s1.getWidth()>s2.getX())
+                && (s1.getY()-s1.getHeight()<s2.getY()
+                &&s1.getY()>s2.getY())){
+            return true;
+        }
+        return false;
     }
 
     /*
@@ -93,6 +108,16 @@ public abstract class Scene extends JPanel {
     public void setbackgroundImage(Image backgroundImage) {
         this.backgroundImage = backgroundImage;
     }
+
+    public Map<String, Creature> getNpcMap() {
+        return npcMap;
+    }
+
+    public void setNpcMap(Map<String, Creature> npcMap) {
+        this.npcMap = npcMap;
+    }
+
+
 
 
     public void init(){
@@ -130,6 +155,8 @@ public abstract class Scene extends JPanel {
 
     }
 
+
+
     public abstract void render(Graphics2D graphics);
 
     public void addGUI(Component... components){
@@ -137,4 +164,8 @@ public abstract class Scene extends JPanel {
             this.add(component);
         }
     }
+    public Sprite getPlayer(){
+        return spriteMap.get("player");
+    }
+
 }
