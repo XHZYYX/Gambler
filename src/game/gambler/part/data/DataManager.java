@@ -35,6 +35,16 @@ public class DataManager {
     //当前的位置 以及动画的切换
     private Sprite playerSprite;
 
+    private int dice;
+
+    public int getDice() {
+        return dice;
+    }
+
+    public void setDice(int dice) {
+        this.dice = dice;
+    }
+
     private Map<String, Monsters> MonstersMap;
 
     private Map<String, Buff>BuffMap;

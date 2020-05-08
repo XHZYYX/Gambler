@@ -18,7 +18,7 @@ public abstract class Scene extends JPanel {
 
     public String SceneName;
     //包括玩家和怪物
-    public Map<String,Creature> spriteMap;
+    public Map<String,Sprite> spriteMap;
 
     //NPC
     public Map<String,Creature> npcMap=new HashMap<>();;
@@ -85,11 +85,11 @@ public abstract class Scene extends JPanel {
     * get and set 函数
     *
     * */
-    public Map<String, Creature> getSpriteMap() {
+    public Map<String, Sprite> getSpriteMap() {
         return spriteMap;
     }
 
-    public void setSpriteMap(Map<String, Creature> spriteMap) {
+    public void setSpriteMap(Map<String, Sprite> spriteMap) {
         this.spriteMap = spriteMap;
     }
 
@@ -125,13 +125,14 @@ public abstract class Scene extends JPanel {
     }
 
     public void update(long elapsedTime){
-        for (Creature sprite:spriteMap.values()){
+        for (Sprite sprite:spriteMap.values()){
             sprite.update(elapsedTime);
         }
     }
 
     public void stop(){
         this.running = false;
+
        // sceneRender.stop();
     }
     /*

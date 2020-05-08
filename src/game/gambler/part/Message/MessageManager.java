@@ -1,6 +1,7 @@
 package game.gambler.part.Message;
 
 import java.util.Queue;
+import java.util.Stack;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class MessageManager {
@@ -12,6 +13,9 @@ public class MessageManager {
         return _instance;
     }
 
+    private Stack<Message> MessageStack = new Stack<>();
+
+
     private  Queue<Message> MessageQueue = new LinkedBlockingQueue<>();
 
     public Message currentMessage=null;
@@ -19,6 +23,14 @@ public class MessageManager {
     public void sendMessage(Message message){
         MessageQueue.offer(message);
 
+    }
+
+    public void pushMessageStack(Message message){
+        MessageStack.push(message);
+    }
+
+    public Message getTopMessageStack() {
+        return MessageStack.pop();
     }
 
     public void handle(){
@@ -31,7 +43,6 @@ public class MessageManager {
 
 
     public void update(long elapsedTime){
-
             currentMessage = MessageQueue.peek();
             if (currentMessage!=null&&currentMessage.isHandler ==true)
             {

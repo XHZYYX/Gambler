@@ -11,10 +11,7 @@ import game.gambler.part.UI.Box.PropertyBox;
 import game.gambler.part.UI.Box.RegisterBOX;
 import game.gambler.part.UI.Box.ShopBox;
 import game.gambler.part.UI.Button.*;
-import game.gambler.part.UI.Panel.CheckPointChoosePanel;
-import game.gambler.part.UI.Panel.MeanBar;
-import game.gambler.part.UI.Panel.RoleChoosePanel;
-import game.gambler.part.UI.Panel.StatusBarPanel;
+import game.gambler.part.UI.Panel.*;
 import game.gambler.part.data.model.Role;
 
 import javax.swing.*;
@@ -61,9 +58,14 @@ public class UIManager {
                 case "打开属性面板": attributeBoxUI();break;
                 case "打开购买商品页面":ShopUI();break;
                 case "关卡选择": CheckPointChooseUI();break;
+                case "进入关卡": ChapterControllerUI();break;
                 case "test":test();break;
             }
         }
+    }
+
+    private void ChapterControllerUI() {
+        show(new ChapterControllerBar());
     }
 
     private void CheckPointChooseUI() {

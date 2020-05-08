@@ -14,6 +14,8 @@ public class Sprite {
     private float dx;
     private float dy;
 
+    public Sprite(){}
+
     /**
         Creates a new Sprite object with the specified Animation.
     */

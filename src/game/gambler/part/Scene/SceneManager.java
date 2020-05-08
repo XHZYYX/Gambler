@@ -6,6 +6,7 @@ import game.gambler.core.Window.GameWindow;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Sprite.Creature;
+import game.gambler.part.Scene.Sprite.Dice;
 import game.gambler.part.data.DataManager;
 
 import java.util.ArrayList;
@@ -75,10 +76,27 @@ public class SceneManager {
                 case "进入游戏":loadingHome();break;
                 case "打开购买物品的页面":shopping();break;
                 case "进入关卡":loadingCheackPoint();break;
+                case "移动":dice();break;
+                case "掷骰子完成":diceOver();break;
                 case "test":test();break;
+
+
+
+
             }
         }
+    }
 
+    private void diceOver() {
+        if("移动".equals(MessageManager.getInstance().getTopMessageStack().getMsg_Content())){
+            int dice = DataManager.getInstance().getDice();
+            DataManager.getInstance().getPlayerSprite().setY(100*dice);
+        }
+    }
+
+    private void dice() {
+        Dice dice = (Dice) Now.getSpriteMap().get("dice");
+        dice.start();
 
     }
 

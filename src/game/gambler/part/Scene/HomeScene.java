@@ -15,9 +15,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class HomeScene extends Scene{
-
+    KeyAdapter move;
     public HomeScene(){
         TileMap tileMap = new TileMap("resource/map/map.tmx");
         this.tileMap = tileMap;
@@ -57,14 +58,12 @@ public class HomeScene extends Scene{
         //加载Sprite
         this.spriteMap.put("player",player);
 
+        DataManager.getInstance().setPlayerSprite(player );
         NPC npc1=new NPC(down);
         npc1.setX(180);
         npc1.setY(220);
         this.npcMap.put("npc1",npc1);
-
-
-        SceneManager.getInstance().getGameWindow().addKeyListener(new KeyAdapter() {
-
+        move =new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_UP){
@@ -86,8 +85,6 @@ public class HomeScene extends Scene{
                         }
                     }
                 }
-
-
                 if(e.getKeyCode() == KeyEvent.VK_C){
                     if(SceneManager.getInstance().CollisionDetetctionFlag){
                         if(SceneManager.getInstance().SpriteList.get("npc1")!=null){
@@ -95,11 +92,6 @@ public class HomeScene extends Scene{
                         }
                     }
                 }
-
-
-
-
-
             }
 
             @Override
@@ -107,8 +99,17 @@ public class HomeScene extends Scene{
                 player.setVelocityX(0);
                 player.setVelocityY(0);
             }
-        });
+        };
+
+        SceneManager.getInstance().getGameWindow().addKeyListener(move);
     }
+
+    public void stop(){
+        this.running = false;
+        SceneManager.getInstance().getGameWindow().removeKeyListener(move);
+        // sceneRender.stop();
+    }
+
 
     @Override
     public void update(long elapsedTime){
@@ -124,7 +125,7 @@ public class HomeScene extends Scene{
                 }
             }
         }
-        for (Creature sprite:spriteMap.values()){
+        for (Sprite sprite:spriteMap.values()){
             sprite.update(elapsedTime);
         }
     }
