@@ -15,7 +15,9 @@ public class Dice extends Sprite {
     DataManager dataManager=DataManager.getInstance();
     Animation animation =new Animation();
     List<Animation> dice = new ArrayList<>();
+    int max;
     public Dice(){
+        dice.add(new Animation());
         for(int i=1;i<10;i++){
             Animation temp = new Animation();
             temp.addFrame(new ImageIcon("resource/images/dice/dice_"+i+".png").getImage(),100);
@@ -44,16 +46,20 @@ public class Dice extends Sprite {
         super(anim);
     }
     public void setAnim(int i){
-        super.anim = dice.get(i-1);
+        super.anim = dice.get(i);
     }
-    public void start(){
+    public void start(int max){
         super.anim = animation;
+        this.max = max;
     }
+
     public void update(long elapsedTime) {
+
         if(anim.equals(animation))
             time += elapsedTime;
+
         if(time >= 1000){
-            int dice =(int)(1+Math.random()*10);
+            int dice =(int)(1+Math.random()*max);
             dataManager.setDice(dice);
             setAnim(dice);
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"掷骰子完成"));

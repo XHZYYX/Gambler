@@ -25,7 +25,7 @@ public class PropertyBox extends JDialog {
 
 
 
-
+    Image img;
     public PropertyBox(){
         //JDialog(Frame owner,String title,boolean modal);
         //JDialog(Frame owner,String title,boolean modal,GraphicsConfiguration gc);
@@ -33,13 +33,20 @@ public class PropertyBox extends JDialog {
     public PropertyBox(int x,int y){
 
         super(SceneManager.getInstance().getGameWindow(),"角色属性",true);
+        img =new ImageIcon("resource/images/sprite2.jpg").getImage().getScaledInstance(100,100,1);
         this.setLocation(SceneManager.getInstance().getGameWindow().getX()+x,
                 SceneManager.getInstance().getGameWindow().getY()+y);
         this.setSize(400,300);
+//        JLabel jLabel = new JLabel(new ImageIcon("resource/images/sprite/sprite2.jpg"));
+//        jLabel.setBounds(60,60,100,100);
+//        jLabel.setBorder(new LineBorder(Color.red,2));
+       // this.add(jLabel);
+
+
         //this.add(new attribute());
         this.setLayout(null);
         this.setResizable(false);
-        this.setUndecorated(true);
+        //this.setUndecorated(true);
         this.setVisible(true);
     }
 
@@ -62,8 +69,7 @@ public class PropertyBox extends JDialog {
 
     }
 
-    Image img=new ImageIcon("resource/map/A2.png").getImage().
-            getScaledInstance(100,100,Image.SCALE_SMOOTH);
+
 
     @Override
     public void paint(Graphics graphics){
@@ -71,9 +77,9 @@ public class PropertyBox extends JDialog {
         Color oldc=graphics.getColor();
         graphics.setColor(Color.PINK);
         graphics.fillRect(0,0,super.getWidth(),super.getHeight());
-        graphics.drawImage(img,30,40,null);
+        //graphics.drawImage(img,30,40,null);
         graphics.setColor(Color.WHITE);
-//        graphics.drawString("当前人物等级：30",30,40);
+        //graphics.drawString("当前人物等级：30",30,40);
         draw(graphics);
         graphics.setColor(oldc);
     }
@@ -129,5 +135,6 @@ public class PropertyBox extends JDialog {
         graphics.drawString("攻击力          20",220,220);
         //draw bouyoku
         graphics.drawString("防御力          20",220,240);
+
     }
 }

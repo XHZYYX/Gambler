@@ -2,6 +2,7 @@ package game.gambler.part.UI.Box;
 
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
+import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.ToolTip;
 import game.gambler.part.UI.UIManager;
@@ -17,30 +18,33 @@ public class RegisterBOX extends JDialog {
         int X_max,Y_max;
         int x,y;
         int width,height;
+        JLabel userLabel = new JLabel("用户名");
+        JLabel passwdLabel = new JLabel("密码");
+        JLabel repasswdLabel = new JLabel("确认密码");
+        JTextField username = new JTextField(10);
+        JPasswordField password = new JPasswordField();
+        JPasswordField repassword = new JPasswordField();
         public RegisterBOX(){
             //JDialog(Frame owner,String title,boolean modal);
             //JDialog(Frame owner,String title,boolean modal,GraphicsConfiguration gc);
         }
-        public RegisterBOX(int x, int y){
+        RegisterBOX registerBOX;
+
+    public RegisterBOX(int x, int y){
 
             //390,234
             super(SceneManager.getInstance().getGameWindow(),"注册",true);
+        registerBOX = this;
             super.setLocation(SceneManager.getInstance().getGameWindow().getX()+x,
                     SceneManager.getInstance().getGameWindow().getY()+y);
             super.setSize(500,300);
             this.setLayout(null);
             game.gambler.part.UI.UIManager uiManager = UIManager.getInstance();
-            JLabel user = new JLabel("用户名");
-            JLabel passwd = new JLabel("密码");
-            JLabel repasswd = new JLabel("确认密码");
 
+            userLabel.setBounds(40,40,80,20);
+            passwdLabel.setBounds(40,80,80,20);
+            repasswdLabel.setBounds(40,120,80,20);
 
-            user.setBounds(40,40,80,20);
-            passwd.setBounds(40,80,80,20);
-            repasswd.setBounds(40,120,80,20);
-            JTextField username = new JTextField(10);
-            JPasswordField password = new JPasswordField();
-            JPasswordField repassword = new JPasswordField();
             username.setBounds(120,40,200,20);
             password.setBounds(120,80,200,20);
             repassword.setBounds(120,120,200,20);
@@ -52,6 +56,7 @@ public class RegisterBOX extends JDialog {
             register.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    registerBOX.dispose();
                     MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.logic_msg,"验证注册"));
                 }
             });
@@ -62,12 +67,10 @@ public class RegisterBOX extends JDialog {
 
             this.add(user_error);
             this.add(repasswd_error);
-            user_error.setText("密码错误");
             this.add(register);
-
-            this.add(repasswd);
-            this.add(user);
-            this.add(passwd);
+            this.add(repasswdLabel);
+            this.add(userLabel);
+            this.add(passwdLabel);
             this.add(username);
             this.add(password);
             this.add(repassword);
@@ -81,13 +84,6 @@ public class RegisterBOX extends JDialog {
 //                }
 //            });
         }
-
-
-        public void update(){
-
-
-        }
-
         @Override
         public void paint(Graphics graphics){
             super.paint(graphics);
@@ -95,10 +91,15 @@ public class RegisterBOX extends JDialog {
         }
 
         public void draw(Graphics2D graphics2D){
-            //graphics2D.fillRect(x,y,200,300);
-            //graphics2D.drawString("当前人物等级：30",x+40,y+40);
         }
 
+        public void dis(){
+            UIManager.getInstance().remove("ui-register-username-input");
+            UIManager.getInstance().remove("ui-register-password-input");
+            UIManager.getInstance().remove("ui-register-repassword-input");
+            UIManager.getInstance().remove("ui-register-user_error-tooltip");
+            UIManager.getInstance().remove("ui-register-repasswd_error-tooltip");
+        }
 
 
 }

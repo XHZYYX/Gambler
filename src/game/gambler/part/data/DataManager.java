@@ -44,7 +44,7 @@ public class DataManager {
         this.index = index;
     }
 
-    int index = 0;
+    int index = 0;//标明用户在关卡中的步数
 
     public List<Road> getRoadList() {
         return roadList;
@@ -66,16 +66,29 @@ public class DataManager {
         this.dice = dice;
     }
 
-    public Road move(){
-        index+=1;
-        Road road= roadList.get(index);
-        if(road.getType()==1)
-        {
+    public Road move()  {
+        while(dice>0){
+            System.out.println("dice"+dice);
+            index++;
+            System.out.println(index);
+            dice--;
+            Road road= roadList.get(index);
             playerSprite.setY(road.getY()*32);
             playerSprite.setX(road.getX()*32);
-        }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if(road.getType()==2){
+                dice = 0;
+                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"遇到城堡了"));
+                break;
+            }else if(road.getType()==3){
 
-         return null;
+            }
+        }
+        return null;
     }
 
 
@@ -172,4 +185,11 @@ public class DataManager {
     public void setUser(User user) {
         this.user = user;
     }
+
+
+    public void newUser(String username,String password){
+        jdbc.newUser(username,password);
+    }
+
+
 }

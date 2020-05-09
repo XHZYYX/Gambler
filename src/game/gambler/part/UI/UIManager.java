@@ -6,10 +6,7 @@ import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
-import game.gambler.part.UI.Box.CheckPointChooseBox;
-import game.gambler.part.UI.Box.PropertyBox;
-import game.gambler.part.UI.Box.RegisterBOX;
-import game.gambler.part.UI.Box.ShopBox;
+import game.gambler.part.UI.Box.*;
 import game.gambler.part.UI.Button.*;
 import game.gambler.part.UI.Panel.*;
 import game.gambler.part.data.model.Role;
@@ -53,15 +50,39 @@ public class UIManager {
                 case "打开登录页面":loginUI();break;
                 case "打开注册框":registerUI();break;
                 case "登录成功": chooseRole();break;
+                case "注册成功": loginUI();break;
                 case "进入游戏": HomeUI();break;
                 case "账号密码错误":reLogin();break;
                 case "打开属性面板": attributeBoxUI();break;
                 case "打开购买商品页面":ShopUI();break;
                 case "关卡选择": CheckPointChooseUI();break;
                 case "进入关卡": ChapterControllerUI();break;
+                case "遇到城堡了": chengbao();break;
+                case "用户名重复": registerUserError();break;
+                case "两次密码不一致": registerPassWDError();break;
                 case "test":test();break;
             }
         }
+    }
+
+    private void registerPassWDError() {
+        JLabel label = (JLabel)UIManager.getInstance().queryUIByName("ui-register-repasswd_error-tooltip");
+        label.setText("两次密码不一致");
+        RegisterBOX OldregisterBOX=(RegisterBOX)this.UImap.get("ui-register-registerBox");
+        OldregisterBOX.setVisible(true);
+    }
+
+    private void registerUserError() {
+        JLabel label = (JLabel)UIManager.getInstance().queryUIByName("ui-register-user_error-tooltip");
+        System.out.println(label.getX());
+        label.setText("用户名重复");
+        RegisterBOX OldregisterBOX=(RegisterBOX)this.UImap.get("ui-register-registerBox");
+        OldregisterBOX.setVisible(true);
+    }
+
+    private void chengbao() {
+        new TalkBox("这是我的对话啊");
+        System.out.println("cccc");
     }
 
     private void ChapterControllerUI() {
@@ -85,7 +106,9 @@ public class UIManager {
     private void test() {
 
     }
-
+    public void remove(String name){
+        this.UImap.remove(name);
+    }
     private void chooseRole() {
 
         //根据获取的信息组织页面
@@ -137,8 +160,8 @@ public class UIManager {
 
     }
     private void registerUI() {
-        RegisterBOX resgisterBOX = new RegisterBOX(390,234);
-        System.out.println("registerBOX");
+        RegisterBOX registerBOX = new RegisterBOX(390,234);
+        this.UImap.put("ui-register-registerBox",registerBOX);
     }
 
     public void draw(){

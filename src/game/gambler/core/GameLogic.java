@@ -32,6 +32,7 @@ public class GameLogic {
             switch (message.getMsg_Content()){
 
                 case "验证登录":islogin();break;
+                //case "用户注册":isRegister();break;
                 case "登录成功":loadUserInformation();break;
                 case "打开菜单":open();break;
                 //获取注册表单中的内容并判断时候重复
@@ -56,6 +57,16 @@ public class GameLogic {
 
             }
         }
+    }
+
+    private void isRegister() {
+        //判断用户名是否重复
+
+
+
+        //判断两次密码是否一致
+
+
     }
 
     private void playGame() {
@@ -107,12 +118,19 @@ public class GameLogic {
         String repassword = String.valueOf(((JPasswordField)UIManager.getInstance().queryUIByName("ui-register-repassword-input")).getPassword());
 
         //判断注册用户是否成功的逻辑
+        User user_ = jdbc.queryUserByName(username);
+        System.out.println(user_.toString());
+        //System.out.println(user_.getUser_id());
+        if(user_.getUser_id() !=0){
 
-        if(!username.equals("fukang")&&password.equals(repassword)){
-            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"注册成功"));
-        }else {
+            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"用户名重复"));
+        }else if (!password.equals(repassword)){
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"两次密码不一致"));
-
+        }else{
+            DataManager.getInstance().newUser(username,password);
+            JDialog box=(JDialog)UIManager.getInstance().queryUIByName("ui-register-registerBox");
+            box.dispose();
+            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"注册成功"));
         }
     }
 
@@ -129,17 +147,13 @@ public class GameLogic {
 
         //和数据库中的数据比对
 
-            User user_ = jdbc.queryUserByName(username);
-            if(username.equals(user_.getUsername())&&password.equals(user_.getPassword())){
-                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"登录成功"));
-                DataManager.getInstance().setUser(user_);
-            }else{
-                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"账号密码错误"));
-            }
-
-
-
-
+        User user_ = jdbc.queryUserByName(username);
+        if(username.equals(user_.getUsername())&&password.equals(user_.getPassword())){
+            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"登录成功"));
+            DataManager.getInstance().setUser(user_);
+        }else{
+            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"账号密码错误"));
+        }
     }
 }
 

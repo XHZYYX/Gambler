@@ -71,37 +71,37 @@ public class SceneManager {
             switch (message.getMsg_Content()){
                 case "打开登录页面": LoginScene();break;
                 case "登录成功": loadingChooseRole();break;
-               // loadingHome()
                 case "账号密码错误":break;
                 case "进入游戏":loadingHome();break;
                 case "打开购买物品的页面":shopping();break;
-                case "进入关卡":loadingCheackPoint();break;
+                case "进入关卡":loadingCheckPoint();break;
                 case "移动":dice();break;
                 case "掷骰子完成":diceOver();break;
+
+
+
+
                 case "test":test();break;
-
-
-
 
             }
         }
     }
 
     private void diceOver() {
-        if("移动".equals(MessageManager.getInstance().getTopMessageStack().getMsg_Content())){
-            int dice = DataManager.getInstance().getDice();
-
-            DataManager.getInstance().move();
+        String messageContent= MessageManager.getInstance().getTopMessageStack().getMsg_Content();
+        switch (messageContent){
+            case "移动": DataManager.getInstance().move();break;
+            case "魔法":  break;
         }
     }
 
     private void dice() {
         Dice dice = (Dice) Now.getSpriteMap().get("dice");
-        dice.start();
+        dice.start(6);
 
     }
 
-    private void loadingCheackPoint() {
+    private void loadingCheckPoint() {
         int check = dataManager.getCheckPoint();
         switch (check){
             case 1:changeScene(new FirstChapterScene());break;

@@ -45,14 +45,6 @@ public class ChapterControllerBar extends JPanel {
 
 
 
-
-
-
-
-
-
-
-
         this.setBounds(195,600,890,125);
         this.setLayout(null);
         this.setBorder(new LineBorder(Color.red,2,true));

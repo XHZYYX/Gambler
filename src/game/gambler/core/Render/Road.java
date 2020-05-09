@@ -5,6 +5,13 @@ public class Road {
         // road 1
         // 城堡 2
         int x;
+        int y;
+
+    public Road(int type,int x,int y){
+        this.type = type;
+        this.x = x;
+        this.y = y;
+    }
 
     public int getType() {
         return type;
@@ -30,10 +37,6 @@ public class Road {
         this.y = y;
     }
 
-    int y;
-        public Road(int type,int x,int y){
-            this.type = type;
-            this.x = x;
-            this.y = y;
-        }
+
+
 }

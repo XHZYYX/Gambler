@@ -164,4 +164,17 @@ public class Jdbc {
         System.out.println(user.toString());
     }
 
+    public void newUser(String username,String password){
+        String sql = "INSERT INTO `User` (`username`, `password`, `checkpoint`, `coin`)" +
+                " VALUES ('"+username+"', '"+password+"', '1', '100')";
+        try{
+            statement.execute(sql);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }

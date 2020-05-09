@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class newRoleButotn  extends ImageButton {
     public newRoleButotn(){
-        super("创建角色","newRoleButton","点击登录",150,50);
+        super("创建角色","newRoleButton","点击创建角色",150,50);
         this.setLocation(850,600);
         this.addMouseListener(new MouseAdapter() {
             @Override
