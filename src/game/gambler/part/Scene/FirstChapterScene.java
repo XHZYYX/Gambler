@@ -64,7 +64,40 @@ public class FirstChapterScene extends Scene{
         RoadList.add(new Road(1,31,9));
         RoadList.add(new Road(1,30,9));
         RoadList.add(new Road(1,29,9));
-        RoadList.add(new Road(1,29,9));
+        RoadList.add(new Road(1,28,9));
+        RoadList.add(new Road(1,27,9));
+        RoadList.add(new Road(1,26,9));
+        RoadList.add(new Road(1,25,9));
+        RoadList.add(new Road(1,24,9));
+        RoadList.add(new Road(1,23,9));
+        RoadList.add(new Road(1,22,9));
+        RoadList.add(new Road(1,21,9));
+        RoadList.add(new Road(1,21,10));
+        RoadList.add(new Road(1,21,11));
+        RoadList.add(new Road(1,22,11));
+        RoadList.add(new Road(1,23,11));
+        RoadList.add(new Road(1,24,11));
+        RoadList.add(new Road(1,25,11));
+        RoadList.add(new Road(1,26,11));
+        RoadList.add(new Road(1,27,11));
+        RoadList.add(new Road(1,28,11));
+        RoadList.add(new Road(1,29,11));
+        RoadList.add(new Road(1,29,12));
+        RoadList.add(new Road(1,29,13));
+        RoadList.add(new Road(1,30,13));
+        RoadList.add(new Road(1,31,13));
+        RoadList.add(new Road(1,31,14));
+        RoadList.add(new Road(1,31,15));
+        RoadList.add(new Road(1,30,15));
+        RoadList.add(new Road(1,29,15));
+        RoadList.add(new Road(1,29,16));
+        RoadList.add(new Road(1,28,16));
+        RoadList.add(new Road(1,27,16));
+        RoadList.add(new Road(1,26,16));
+
+
+
+       // RoadList.add(new Road(1,22,));
         //RoadList.add(new Road(1,29,7));
         //RoadList.add(new Road(1,29,7));
 
