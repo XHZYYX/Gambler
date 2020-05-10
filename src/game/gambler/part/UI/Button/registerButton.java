@@ -12,15 +12,12 @@ import java.awt.event.MouseEvent;
 public class registerButton extends ImageButton {
     public registerButton(){
         super("注册","button","点击注册",150,50);
-        this.setLocation(481,600);
+        this.setLocation(0,110);
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"打开注册框"));
-
-
-
             }
         });
     }

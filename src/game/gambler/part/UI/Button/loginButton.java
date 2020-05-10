@@ -16,7 +16,7 @@ public class loginButton extends ImageButton {
                 new ImageIcon("resource/images/gui/button.png"),
                 new ImageIcon("resource/images/gui/loginButton.png"));
         //super("登录","loginbutton","点击登录",150,50);
-        this.setLocation(670,600);
+        this.setLocation(190,110);
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

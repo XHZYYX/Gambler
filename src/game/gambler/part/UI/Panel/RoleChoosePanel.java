@@ -2,6 +2,7 @@ package game.gambler.part.UI.Panel;
 
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
+import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Role;
 import game.gambler.part.data.view.ChooseRoleView;
@@ -26,11 +27,26 @@ public class RoleChoosePanel extends JPanel {
 
     public RoleChoosePanel(){
         super();
-        int x=0,y=300;
-        this.crvs =  DataManager.getInstance().getRoleList();
+        init();
+        UIManager.getInstance().add("RoleChoosePanel",this);
         this.setLayout(null);
         this.setBackground(null);
         this.setOpaque(false);
+        this.setBounds(100,100,1080,500);
+        this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,2),"角色列表", TitledBorder.LEFT,TitledBorder.TOP,new Font("宋体",0,26)));
+        this.setVisible(true);
+    }
+    public void update(){
+        this.setVisible(false);
+        DataManager.getInstance().loadUserInformation();
+        init();
+        setVisible(true);
+    }
+    public void init(){
+        int x=0,y=300;
+        this.removeAll();
+
+        this.crvs =  DataManager.getInstance().getRoleList();
         for (ChooseRoleView chooseRoleView :crvs){
             RoleView roleView = new RoleView(chooseRoleView,x,y);
             this.add(roleView);
@@ -49,12 +65,7 @@ public class RoleChoosePanel extends JPanel {
                 }
             });
         }
-        this.setBounds(100,100,1080,500);
-        this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,2),"角色列表", TitledBorder.LEFT,TitledBorder.TOP,new Font("宋体",0,26)));
-        this.setVisible(true);
-
     }
-
 //    @Override
 //    public void paintComponent(Graphics graphics){
 //        super.paintComponent(graphics);

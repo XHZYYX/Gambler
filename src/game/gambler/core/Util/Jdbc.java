@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import game.gambler.part.data.DataManager;
+import game.gambler.part.data.model.Career;
 import game.gambler.part.data.model.Role;
 import game.gambler.part.data.model.User;
 import game.gambler.part.data.view.ChooseRoleView;
@@ -18,7 +20,7 @@ public class Jdbc {
     private Connection connection;
     String driver = "com.mysql.jdbc.Driver";
     // URL指向要访问的数据库名testdb
-    String url = "jdbc:mysql://39.96.24.156:3306/grmbler?autoReconnect=true&amp;failOverReadOnly=false";
+    String url = "jdbc:mysql://39.96.24.156:3306/gambler?autoReconnect=true&amp;failOverReadOnly=false";
 
     private Statement statement;
     // MySQL配置时的用户名
@@ -173,8 +175,39 @@ public class Jdbc {
             e.printStackTrace();
         }
     }
+    public List<Career> queryAllCareer(){
+        String sql = "SELECT * " +
+                "FROM Career";
+
+        List<Career> Career=new ArrayList<>();
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                Career career= new Career(rs.getInt(1),rs.getString(2),
+                        rs.getString(3),rs.getInt(4),
+                        rs.getInt(5),rs.getInt(6),rs.getInt(7),rs.getInt(8));
+                Career.add(career);
+            }
+
+        }catch (SQLException e){
+
+        }
 
 
+        return Career;
+    }
 
 
+    public void newRole(Career career,String role) {
+
+        int user_id=DataManager.getInstance().getUser().getUser_id();
+        String sql = "INSERT INTO `Role` (`grade`, `user_id`, `career_id`, `role_name`, `currentEmpiricalValue`) " +
+                "VALUES ('1', '"+user_id+"', '"+career.getCareer_id()+"','"+role+"', '0')";
+        try{
+            statement.execute(sql);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

@@ -93,13 +93,13 @@ public class RegisterBOX extends JDialog {
         public void draw(Graphics2D graphics2D){
         }
 
-        public void dis(){
-            UIManager.getInstance().remove("ui-register-username-input");
-            UIManager.getInstance().remove("ui-register-password-input");
-            UIManager.getInstance().remove("ui-register-repassword-input");
-            UIManager.getInstance().remove("ui-register-user_error-tooltip");
-            UIManager.getInstance().remove("ui-register-repasswd_error-tooltip");
-        }
+//        public void dis(){
+//            UIManager.getInstance().remove("ui-register-username-input");
+//            UIManager.getInstance().remove("ui-register-password-input");
+//            UIManager.getInstance().remove("ui-register-repassword-input");
+//            UIManager.getInstance().remove("ui-register-user_error-tooltip");
+//            UIManager.getInstance().remove("ui-register-repasswd_error-tooltip");
+//        }
 
 
 }

@@ -8,6 +8,7 @@ import game.gambler.part.Message.MessageManager;
 import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -120,26 +121,27 @@ public class DataManager {
         }
     }
 
-//    private void loadUserInformation() {
-//        //加载当前用户下的全部角色信息 。这个信息存在哪
-//        //当前用户的信息在哪里存着
-//        User user = DataManager.getInstance().getUser();
-//        //通过user 查询改user下的全部role
-//        List<Role> Roles= jdbc.queryRolesByUserId(user.getUser_id());
-//        //根据角色信息加载页面
-//        /*
-//         * 需要的内容如下
-//         * 角色 id
-//         * 角色 名称
-//         * 角色 等级
-//         * 角色 职业
-//         * */
-//        List<ChooseRoleView> crvs = new ArrayList<>();
-//        for (Role role:Roles){
-//            crvs.add(jdbc.queryChooseRoleViewByRoleId(role.getRole_id()));
-//        }
-//        System.out.println("角色个数"+Roles.size());
-//    }
+    public void loadUserInformation() {
+        //加载当前用户下的全部角色信息 。这个信息存在哪
+        //当前用户的信息在哪里存着
+        User user = DataManager.getInstance().getUser();
+        //通过user 查询改user下的全部role
+        List<Role> Roles= jdbc.queryRolesByUserId(user.getUser_id());
+        //根据角色信息加载页面
+        /*
+         * 需要的内容如下
+         * 角色 id
+         * 角色 名称
+         * 角色 等级
+         * 角色 职业
+         * */
+        List<ChooseRoleView> crvs = new ArrayList<>();
+        for (Role role:Roles){
+            crvs.add(jdbc.queryChooseRoleViewByRoleId(role.getRole_id()));
+        }
+        System.out.println("角色个数"+Roles.size());
+        this.setRoleList(crvs);
+    }
 
     public Role getRole() {
         return role;

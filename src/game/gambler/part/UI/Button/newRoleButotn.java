@@ -15,7 +15,7 @@ public class newRoleButotn  extends ImageButton {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.logic_msg,"打开创建角色"));
+                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"打开创建角色"));
             }
         });
     }

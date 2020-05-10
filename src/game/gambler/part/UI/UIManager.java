@@ -20,6 +20,15 @@ import java.util.Map;
 //提供UI控制的方法 而不是处理游戏逻辑
 public class UIManager {
 
+
+    //
+    JTextField username;
+
+
+
+
+
+
     private static UIManager _instance;
     private Jdbc jdbc;
     public static UIManager getInstance(){
@@ -50,7 +59,7 @@ public class UIManager {
                 case "打开登录页面":loginUI();break;
                 case "打开注册框":registerUI();break;
                 case "登录成功": chooseRole();break;
-                case "注册成功": loginUI();break;
+                //case "注册成功": loginUI();break;
                 case "进入游戏": HomeUI();break;
                 case "账号密码错误":reLogin();break;
                 case "打开属性面板": attributeBoxUI();break;
@@ -60,9 +69,14 @@ public class UIManager {
                 case "遇到城堡了": chengbao();break;
                 case "用户名重复": registerUserError();break;
                 case "两次密码不一致": registerPassWDError();break;
+                case "打开创建角色":newRoleUI();break;
                 case "test":test();break;
             }
         }
+    }
+
+    private void newRoleUI() {
+        new CareerChooseBox();
     }
 
     private void registerPassWDError() {
@@ -106,9 +120,9 @@ public class UIManager {
     private void test() {
 
     }
-    public void remove(String name){
-        this.UImap.remove(name);
-    }
+//    public void remove(String name){
+//        this.UImap.remove(name);
+//    }
     private void chooseRole() {
 
         //根据获取的信息组织页面
@@ -122,8 +136,8 @@ public class UIManager {
 
     private void reLogin() {
 
-        JPasswordField jPasswordField = (JPasswordField)queryUIByName("ui-login-password-input");
-        JTextField username = (JTextField)queryUIByName("ui_login_username_input");
+        JPasswordField jPasswordField = (JPasswordField)queryUIByName("UI-login-password-input");
+        JTextField username = (JTextField)queryUIByName("UI_login_username_input");
         jPasswordField.setText("");
     }
 
@@ -138,17 +152,19 @@ public class UIManager {
     }
 
     private void loginUI(){
-        //账号密码输入框
-        JTextField username = new JTextField(16);
-        username.setBounds(593,490,194,26);
-        this.UImap.put("ui-login-username-input",username);
-        JPasswordField passwd = new JPasswordField ();
-        passwd.setBounds(593,535,194,26);
-        registerButton register = new registerButton();
-        loginButton login = new loginButton();
-        this.UImap.put("ui-login-password-input",passwd);
-
-        show(username,passwd,register,login);
+        LoginPanel loginPanel = new LoginPanel();
+        this.add("ui_login_panel",loginPanel);
+//        //账号密码输入框
+//        JTextField username = new JTextField(16);
+//        username.setBounds(593,490,194,26);
+//        this.UImap.put("UI-login-username-input",username);
+//        JPasswordField passwd = new JPasswordField ();
+//        passwd.setBounds(593,535,194,26);
+//        registerButton register = new registerButton();
+//        loginButton login = new loginButton();
+//        this.UImap.put("UI-login-password-input",passwd);
+        show(loginPanel);
+        //show(username,passwd,register,login);
         //登录 注册按钮
     }
 
