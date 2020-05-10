@@ -13,7 +13,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class RoleChoosePanel extends JPanel {
         init();
         setVisible(true);
     }
-    public void init(){
+    private void init(){
         int x=0,y=300;
         this.removeAll();
 
