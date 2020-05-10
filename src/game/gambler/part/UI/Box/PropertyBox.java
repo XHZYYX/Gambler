@@ -4,6 +4,9 @@ import game.gambler.core.Window.GameWindow;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.SceneManager;
+import game.gambler.part.data.DataManager;
+import game.gambler.part.data.model.Attribute;
+import game.gambler.part.data.model.Role;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -15,17 +18,28 @@ public class PropertyBox extends JDialog {
     int x,y;
     int width,height;
 
+    DataManager dataManager =DataManager.getInstance();
+    Role role = dataManager.getRole();
+    Attribute attribute = dataManager.getRoleAttribute().getAttribute();
     //等级  金币
-    //
+    int grade = role.getGrade();
+    int coin = dataManager.getUser().getCoin();
     //攻击力 防御力
+    int attack = attribute.getBase_attack();
+    int defense = attribute.getBase_defense();
+    int HP = attribute.getBase_HP();
+    int MP = attribute.getBase_MP();
 
+    int intelligence = attribute.getBase_Intellogence();
+    int strength = attribute.getBase_strength();
+    int physical = attribute.getBase_physical();
     //武器 防具 盾牌
 
     //力量骰  魔法骰
 
 
 
-    Image img;
+    Image  img =new ImageIcon("resource/images/sprite2.jpg").getImage().getScaledInstance(100,100,1);
     public PropertyBox(){
         //JDialog(Frame owner,String title,boolean modal);
         //JDialog(Frame owner,String title,boolean modal,GraphicsConfiguration gc);
@@ -33,7 +47,7 @@ public class PropertyBox extends JDialog {
     public PropertyBox(int x,int y){
 
         super(SceneManager.getInstance().getGameWindow(),"角色属性",true);
-        img =new ImageIcon("resource/images/sprite2.jpg").getImage().getScaledInstance(100,100,1);
+
         this.setLocation(SceneManager.getInstance().getGameWindow().getX()+x,
                 SceneManager.getInstance().getGameWindow().getY()+y);
         this.setSize(400,300);
@@ -88,7 +102,9 @@ public class PropertyBox extends JDialog {
 
         //draw name
         graphics.setFont(new Font("Dialog",Font.PLAIN,15));
-        graphics.drawString("LV.19"+"当前人物名称",40,50);
+        graphics.drawString("LV."+ grade +
+                role.getRole_name(),40,50);
+
 
         //draw wires
         graphics.setColor(Color.black);
@@ -114,7 +130,7 @@ public class PropertyBox extends JDialog {
         graphics.drawLine(200,20,200,280);
 
         //draw text strength
-        graphics.drawString("力量           20",220,50);
+        graphics.drawString("力量           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_strength(),220,50);
 
 
         //draw text mana
@@ -125,16 +141,16 @@ public class PropertyBox extends JDialog {
         graphics.drawLine(220,200,380,200);
 
         //draw te strength
-        graphics.drawString("手力           20",220,120);
+        graphics.drawString("手力           "+strength,220,120);
         //draw brain strengeth
-        graphics.drawString("知力           20",220,140);
+        graphics.drawString("知力           "+intelligence,220,140);
         //draw phyics strengeth
-        graphics.drawString("体力           20",220,160);
+        graphics.drawString("体力           "+physical,220,160);
 
         //draw attack
-        graphics.drawString("攻击力          20",220,220);
+        graphics.drawString("攻击力          "+attack,220,220);
         //draw bouyoku
-        graphics.drawString("防御力          20",220,240);
+        graphics.drawString("防御力          "+defense,220,240);
 
     }
 }

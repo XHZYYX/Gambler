@@ -1,5 +1,6 @@
 package game.gambler.part.UI.Panel;
 
+import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Role;
 
 import javax.swing.*;
@@ -14,11 +15,11 @@ public class StatusBarPanel extends JPanel {
     public StatusBarPanel(Role role){
         this(0,0,400,120);
         this.role = role;
-        hp = new ProgressBar(100,40,250,25,100);
+        hp = new ProgressBar(100,40,250,25, DataManager.getInstance().getRoleAttribute().getAttribute().getBase_HP());
         hp.setBarColor(Color.green);
         hp.setBorderColor(Color.white);
         hp.setTitle("HP");
-        mp = new ProgressBar(100,65,200,15,100);
+        mp = new ProgressBar(100,65,200,15,DataManager.getInstance().getRoleAttribute().getAttribute().getBase_MP());
         mp.setBarColor(Color.CYAN);
         mp.setBorderColor(Color.white);
         mp.setTitle("MP");

@@ -21,7 +21,7 @@ public class ProgressBar {
         this.h =h;
         this.max_Value = max_Value;
         this.min_Value = 0;
-        this.currentValue =50;
+        this.currentValue =max_Value;
     }
 
 
@@ -29,7 +29,7 @@ public class ProgressBar {
         graphics.setColor(borderColor);
         graphics.drawRect(x,y,w,h);
         graphics.setColor(barColor);
-        if (currentValue>max_Value){
+        if (currentValue>=max_Value){
             graphics.fillRect(x+1,y+1,w-1,h-2);
         }else{
             graphics.fillRect(x+1,y+1,(currentValue*w/max_Value)-1,h-1);
