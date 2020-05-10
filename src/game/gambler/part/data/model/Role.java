@@ -18,6 +18,20 @@ public class Role {
 
     public Role(){
     }
+
+
+    public Role(Role role){
+        this.role_id = role.role_id;
+        this.grade = role.grade;
+        this.user_id = role.user_id;
+        this.record_id = role.record_id;
+        this.career_id = role.career_id;
+        this.role_name = role.role_name;
+        this.currentEmpiricalValue = role.currentEmpiricalValue;
+
+
+
+    }
     public Role(int role_id, int grade, int user_id, int record_id,
                 int career_id, String role_name, int currentEmpiricalValue) {
         this.role_id = role_id;

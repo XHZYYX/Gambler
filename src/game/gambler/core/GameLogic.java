@@ -5,12 +5,14 @@ import game.gambler.part.Scene.Scene;
 import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.Panel.LoginPanel;
 import game.gambler.part.data.DataManager;
+import game.gambler.part.data.model.Attribute;
+import game.gambler.part.data.model.Equipment;
 import game.gambler.part.data.model.Role;
 import game.gambler.part.data.model.User;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.UIManager;
-import game.gambler.part.data.view.ChooseRoleView;
+import game.gambler.part.data.view.RoleAttributeView;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -42,7 +44,7 @@ public class GameLogic {
                 //
                 case "进入游戏":playGame();break;
                 case "打开创建角色":;break;
-                case "4":;break;
+                case "遇到怪物了":loadingMonsterInformation();break;
                 case "5":;break;
                 case "6":;break;
                 case "7":;break;
@@ -59,6 +61,11 @@ public class GameLogic {
         }
     }
 
+    private void loadingMonsterInformation() {
+        //根据DataManager中的Monster加载 怪物技能等。。
+
+    }
+
     private void isRegister() {
         //判断用户名是否重复
 
@@ -72,7 +79,12 @@ public class GameLogic {
     private void playGame() {
         //判断存档
         //加载人物数据
+        Role role =dataManager.getRole();
+        Attribute attribute= jdbc.queryAttribute(role);
+        List<Equipment> equipment=jdbc.queryTrueEquipment(role);
+        RoleAttributeView battleAttributeView = new RoleAttributeView(attribute,equipment,null);
 
+        dataManager.setRoleAttribute(battleAttributeView);
         //DataManager中的Role 存放的是当前的角色信息
 
         //加载主城地图

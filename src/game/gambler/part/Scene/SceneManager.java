@@ -8,6 +8,7 @@ import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Sprite.Creature;
 import game.gambler.part.Scene.Sprite.Dice;
 import game.gambler.part.data.DataManager;
+import game.gambler.part.data.model.Monsters;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,6 +78,7 @@ public class SceneManager {
                 case "进入关卡":loadingCheckPoint();break;
                 case "移动":dice();break;
                 case "掷骰子完成":diceOver();break;
+                case "遇到怪物了":BattleScene();break;
 
 
 
@@ -85,6 +87,12 @@ public class SceneManager {
 
             }
         }
+    }
+
+    private void BattleScene() {
+        Monsters monsters =dataManager.getMonsters();
+        changeScene(new BattleScene());
+
     }
 
     private void diceOver() {

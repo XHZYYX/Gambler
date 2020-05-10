@@ -7,6 +7,7 @@ import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
+import game.gambler.part.data.view.RoleAttributeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class DataManager {
     Jdbc jdbc=Jdbc.getInstance();
 
     private static DataManager _instance;
-
+    private MessageManager messageManager =MessageManager.getInstance();
     public static DataManager getInstance(){
         if(_instance==null){
             _instance = new DataManager();
@@ -30,9 +31,29 @@ public class DataManager {
     //保存当前登录的用户数据
     private User user;
 
+    public Monsters getMonsters() {
+        return monsters;
+    }
+
+    public void setMonsters(Monsters monsters) {
+        this.monsters = monsters;
+    }
+
+    private Monsters monsters;
+
     //保存当前选择的角色信息
     private Role role;
 
+    public RoleAttributeView getRoleAttribute() {
+        return roleAttribute;
+    }
+
+    public void setRoleAttribute(RoleAttributeView roleAttribute) {
+        this.roleAttribute = roleAttribute;
+    }
+
+    //角色信息
+    RoleAttributeView roleAttribute;
     //由当前角色生成的  精灵的 信息
     //当前的位置 以及动画的切换
     private Sprite playerSprite;
@@ -68,12 +89,12 @@ public class DataManager {
     }
 
     public Road move()  {
+        Road road;
         while(dice>0){
             System.out.println("dice"+dice);
             index++;
-            System.out.println(index);
             dice--;
-            Road road= roadList.get(index);
+            road = roadList.get(index);
             playerSprite.setY(road.getY()*32);
             playerSprite.setX(road.getX()*32);
             try {
@@ -81,15 +102,41 @@ public class DataManager {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if(road.getType()==2){
+            if(road.getType()==100){
                 dice = 0;
-                MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"遇到城堡了"));
+                messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到城堡了"));
                 break;
-            }else if(road.getType()==3){
-
+            }else if(road.getType()==101){
+                dice = 0;
+                messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到xxx了"));
+            }else if(road.getType()==102){
+                dice = 0;
+                messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"102剧情"));
+            }else if(road.getType()==10){
+                dice = 0;
+                messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"第一关boss"));
             }
         }
+        road = roadList.get(index);
+        switch(road.getType()){
+            //蚂蚁
+            case 1:Battle(1);break;
+            case 2:Battle(2);break;
+            case 3:Battle(3);break;
+            case 4:Battle(4);break;
+            case 5:Battle(5);break;
+            case 10:Battle(6);break;
+        }
         return null;
+    }
+
+    private void Battle(int Monsters_id) {
+        DataManager.getInstance().setMonster(Monsters_id);
+        messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到怪物了"));
+    }
+
+    private void setMonster(int Monsters_id) {
+        setMonsters(jdbc.queryMonsterById(Monsters_id));
     }
 
 

@@ -9,9 +9,7 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import game.gambler.part.data.DataManager;
-import game.gambler.part.data.model.Career;
-import game.gambler.part.data.model.Role;
-import game.gambler.part.data.model.User;
+import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
 
 
@@ -208,6 +206,82 @@ public class Jdbc {
         }catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public Monsters queryMonsterById(int monsters_id) {
+        String sql ="SELECT * FROM 'Monsters'" +
+                "WHERE monsters_id = '"+ monsters_id+"' ";
+        Monsters monsters = new Monsters();
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                monsters = new Monsters(rs.getInt(1),rs.getString(2),
+                        rs.getInt(3),rs.getInt(4),
+                        rs.getInt(5),rs.getInt(6),
+                        rs.getInt(7),rs.getInt(8),
+                        rs.getInt(9),rs.getInt(10));
+            }
+            return monsters;
+        }catch (SQLException e){
+
+        }
+        return monsters;
+    }
+
+
+
+
+
+
+
+    public List<Equipment> queryTrueEquipment(Role role){
+        String sql = "SELECT * FROM Equipment " +
+                " WHERE role_id ='"+role.getRole_id()+"'" +
+                " And equipment_boolean = true";
+        List<Equipment> Equipments=new ArrayList<>();
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                Equipment equipment= new Equipment(rs.getInt(1),rs.getString(2),
+                        rs.getBoolean(3),rs.getInt(4),
+                        rs.getInt(5),rs.getInt(6),rs.getInt(7));
+                Equipments.add(equipment);
+            }
+
+        }catch (SQLException e){
+
+        }
+        return Equipments;
+
+    }
+
+
+    public Attribute queryAttribute(Role role){
+        String sql = "SELECT * FROM Attribute " +
+                " WHERE career_id ='"+role.getCareer_id()+"'" +
+                " And grade = '"+role.getGrade()+"'";
+
+        Attribute attribute = new Attribute();
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                attribute = new Attribute(rs.getInt(1),rs.getInt(2),
+                        rs.getInt(3),rs.getInt(4),
+                        rs.getInt(5),rs.getInt(6),
+                        rs.getInt(7),rs.getInt(8),
+                        rs.getInt(9),rs.getInt(10),
+                        rs.getInt(11),rs.getInt(12),
+                        rs.getInt(13),rs.getInt(14),
+                        rs.getInt(15)
+
+                );
+            }
+            return attribute;
+        }catch (SQLException e){
+
+        }
+        return attribute;
 
     }
 }

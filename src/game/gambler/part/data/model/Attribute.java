@@ -32,6 +32,29 @@ public class Attribute {
     //体力成长
     private int growth_physical;
 
+    public Attribute() {
+    }
+
+    public void setBase_physical(int base_physical) {
+        this.base_physical = base_physical;
+    }
+
+    public void setBase_defense(int base_defense) {
+        this.base_defense = base_defense;
+    }
+
+    public void setBase_attack(int base_attack) {
+        this.base_attack = base_attack;
+    }
+
+    public void setBase_HP(int base_HP) {
+        this.base_HP = base_HP;
+    }
+
+    public void setBase_MP(int base_MP) {
+        this.base_MP = base_MP;
+    }
+
     public Attribute(int grade, int carrer_id, int base_Intellogence,
                      int base_strength, int base_physical,
                      int base_defense, int base_attack,
@@ -53,6 +76,24 @@ public class Attribute {
         this.base_MP = base_MP;
         this.growth_strength = growth_strength;
         this.growth_physical = growth_physical;
+    }
+
+    public Attribute(Attribute attribute) {
+        this.grade = attribute.grade;
+        this.carrer_id = attribute.carrer_id;
+        this.base_Intellogence = attribute.base_Intellogence;
+        this.base_strength = attribute.base_strength;
+        this.base_physical = attribute.base_physical;
+        this.base_defense = attribute.base_defense;
+        this.base_attack = attribute.base_attack;
+        this.base_max_Strength = attribute.base_max_Strength;
+        this.base_min_Strength = attribute.base_min_Strength;
+        this.base_min_Magic = attribute.base_min_Magic;
+        this.base_max_Magic = attribute.base_max_Magic;
+        this.base_HP = attribute.base_HP;
+        this.base_MP = attribute.base_MP;
+        this.growth_strength = attribute.growth_strength;
+        this.growth_physical = attribute.growth_physical;
     }
 
     public int getGrade() {
