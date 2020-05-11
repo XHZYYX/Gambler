@@ -5,6 +5,7 @@ import game.gambler.core.Render.Sprite;
 import game.gambler.part.Scene.SceneManager;
 
 import java.lang.reflect.Constructor;
+import java.util.List;
 
 /**
     A Creature is a Sprite that is affected by gravity and can
@@ -28,9 +29,10 @@ public abstract class Creature extends Sprite {//生物
     private Animation down;
     private Animation deadLeft;
     private Animation deadRight;
+
+    private List<Animation> animationExpand;
     private int state;//当前状态
     private long stateTime;//状态时间
-
 
 
     /**

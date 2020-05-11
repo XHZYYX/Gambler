@@ -1,5 +1,6 @@
 package game.gambler.part.data;
 
+import game.gambler.core.Render.Animation;
 import game.gambler.core.Render.Road;
 import game.gambler.core.Render.Sprite;
 import game.gambler.core.Util.Jdbc;
@@ -9,7 +10,10 @@ import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
 import game.gambler.part.data.view.RoleAttributeView;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +30,24 @@ public class DataManager {
             _instance = new DataManager();
         }
         return  _instance;
+    }
+
+    Map<String,Animation> playerMagicAnimation;
+
+    public DataManager(){
+        //初始话时加载数据：
+        //技能动画
+        playerMagicAnimation = new HashMap<>();
+        String rootpath = "resource/images/magic/";
+        Animation animation= new Animation();
+        animation.addFrame(new ImageIcon(rootpath+"1/magic_1").getImage(),100);
+        animation.addFrame(new ImageIcon(rootpath+"1/magic_2").getImage(),100);
+        animation.addFrame(new ImageIcon(rootpath+"1/magic_3").getImage(),100);
+        animation.addFrame(new ImageIcon(rootpath+"1/magic_4").getImage(),100);
+        animation.addFrame(new ImageIcon(rootpath+"1/magic_5").getImage(),100);
+        animation.addFrame(new ImageIcon(rootpath+"1/magic_6").getImage(),100);
+        animation.addFrame(new ImageIcon(rootpath+"1/magic_7").getImage(),100);
+        playerMagicAnimation.put("火球术",animation);
     }
 
     //保存当前登录的用户数据

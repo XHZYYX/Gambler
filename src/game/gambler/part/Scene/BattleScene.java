@@ -1,6 +1,5 @@
 package game.gambler.part.Scene;
 
-import game.gambler.core.Util.Jdbc;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Monsters;
 import game.gambler.part.data.model.Role;
@@ -25,6 +24,17 @@ public class BattleScene extends Scene{
     public void render(Graphics2D graphics) {
         graphics.setColor(Color.cyan);
         graphics.fillRect(240,500,860,200);
+        graphics.drawImage(new ImageIcon("resource/images/monster/monster_"+tempMonster.getMonster_id()+".png").getImage(),500,300,null);
+
+
         //graphics.drawString("HP"+ tempRole.);
     }
+
+
+
+
+
+
+
+
 }
