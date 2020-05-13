@@ -70,6 +70,7 @@ public class UIManager {
                 case "用户名重复": registerUserError();break;
                 case "两次密码不一致": registerPassWDError();break;
                 case "打开创建角色":newRoleUI();break;
+                case "购买物品":test();break;
                 case "test":test();break;
             }
         }
@@ -118,7 +119,7 @@ public class UIManager {
     }
 
     private void test() {
-
+        showPropertyBox();
     }
 //    public void remove(String name){
 //        this.UImap.remove(name);

@@ -2,6 +2,7 @@ package game.gambler.part.Scene.Sprite;
 
 import game.gambler.core.Render.Animation;
 import game.gambler.core.Render.Sprite;
+import game.gambler.core.Util.Random;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.data.DataManager;
@@ -54,12 +55,10 @@ public class Dice extends Sprite {
     }
 
     public void update(long elapsedTime) {
-
         if(anim.equals(animation))
             time += elapsedTime;
-
         if(time >= 1000){
-            int dice =(int)(1+Math.random()*max);
+            int dice =Random.getInstance().getRandom(max);
             dataManager.setDice(dice);
             setAnim(dice);
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"掷骰子完成"));

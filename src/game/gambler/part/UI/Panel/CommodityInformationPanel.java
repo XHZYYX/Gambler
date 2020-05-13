@@ -1,5 +1,6 @@
 package game.gambler.part.UI.Panel;
 
+import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.model.GoodBase;
 
 import javax.swing.*;
@@ -20,6 +21,7 @@ public class CommodityInformationPanel extends JPanel {
         this.setBackground(null);
         this.setOpaque(false);
         this.setVisible(true);
+        UIManager.getInstance().add("shop_good_information",this);
     }
 
 
@@ -29,5 +31,11 @@ public class CommodityInformationPanel extends JPanel {
         System.out.println("1");
         graphics.drawString(good.getGood_description(),50,50);
         graphics.drawImage(new ImageIcon(good.getGood_imagePath()).getImage(),50,100,null);
+    }
+
+    public void changCommodity(GoodBase goodBase){
+        this.setVisible(false);
+        this.good = goodBase;
+        this.setVisible(true);
     }
 }

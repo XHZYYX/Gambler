@@ -43,7 +43,7 @@ public class StatusBarPanel extends JPanel {
         graphics.fillRect(this.getX(),this.getY(),this.getWidth(),this.getHeight());
         graphics.drawImage(new ImageIcon("resource/images/renwu.png").getImage(),-20,0,null);
         graphics.setColor(Color.white);
-        graphics.drawString("lv.1,像孩子一样笑啊",100,30);
+        graphics.drawString("lv."+DataManager.getInstance().getRole().getGrade()+DataManager.getInstance().getRole().getRole_name(),100,30);
         mp.render(graphics);
         hp.render(graphics);
     }

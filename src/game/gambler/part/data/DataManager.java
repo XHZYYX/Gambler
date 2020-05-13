@@ -6,6 +6,7 @@ import game.gambler.core.Render.Sprite;
 import game.gambler.core.Util.Jdbc;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
+import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
 import game.gambler.part.data.view.RoleAttributeView;
@@ -23,6 +24,7 @@ import java.util.Map;
 public class DataManager {
     Jdbc jdbc=Jdbc.getInstance();
 
+
     private static DataManager _instance;
     private MessageManager messageManager =MessageManager.getInstance();
     public static DataManager getInstance(){
@@ -37,6 +39,8 @@ public class DataManager {
     public DataManager(){
         //初始话时加载数据：
         //技能动画
+        goodBaseList = jdbc.queryAllGoodBase();
+
         playerMagicAnimation = new HashMap<>();
         String rootpath = "resource/images/magic/";
         Animation animation= new Animation();
@@ -50,7 +54,36 @@ public class DataManager {
         playerMagicAnimation.put("火球术",animation);
     }
 
+    public GoodBase getWantToBuy() {
+        return wantToBuy;
+    }
+
+    public void setWantToBuy(GoodBase wantToBuy) {
+        this.wantToBuy = wantToBuy;
+    }
+
+    GoodBase wantToBuy;
+
+    public List<GoodBase> getGoodBaseList() {
+        return goodBaseList;
+    }
+
+    public void setGoodBaseList(List<GoodBase> goodBaseList) {
+        this.goodBaseList = goodBaseList;
+    }
+
+    List<GoodBase> goodBaseList = new ArrayList<>();
+
+    public List<Good> getGoodList() {
+        return goodList;
+    }
+
+    public void setGoodList(List<Good> goodList) {
+        this.goodList = goodList;
+    }
+
     //保存当前登录的用户数据
+    private List<Good> goodList;
     private User user;
 
     public Monsters getMonsters() {
@@ -158,7 +191,9 @@ public class DataManager {
     }
 
     private void setMonster(int Monsters_id) {
-        setMonsters(jdbc.queryMonsterById(Monsters_id));
+        Monsters m =jdbc.queryMonsterById(Monsters_id);
+        setMonsters(m);
+        System.out.println(m.getMonster_id());
     }
 
 
@@ -196,6 +231,7 @@ public class DataManager {
         User user = DataManager.getInstance().getUser();
         //通过user 查询改user下的全部role
         List<Role> Roles= jdbc.queryRolesByUserId(user.getUser_id());
+
         //根据角色信息加载页面
         /*
          * 需要的内容如下
@@ -257,10 +293,41 @@ public class DataManager {
         this.user = user;
     }
 
-
+    //注册用户
     public void newUser(String username,String password){
         jdbc.newUser(username,password);
     }
+
+
+    public boolean buyGoodBase(){
+        int sellPrice = this.wantToBuy.getGood_SellingPrice();
+        int coin = user.getCoin();
+        if(coin>=sellPrice){
+            //购买
+            Good flag=new Good(-1,"",-1,-1,-1,-1);
+            for (Good good:goodList){
+                if (good.getGood_name().equals(wantToBuy.getGood_name())){
+                    flag = good;
+                }
+            }
+            if (flag.getGood_id()!=-1){//角色背包中有该物品
+                jdbc.addgood(flag);
+            }else{
+                jdbc.newgood(wantToBuy);
+            }
+            this.goodList = jdbc.queryAllGood(role);
+            jdbc.updataCoin(coin-sellPrice);
+            this.user = jdbc.queryUserByName(user.getUsername());
+            JLabel jLabel=(JLabel) UIManager.getInstance().queryUIByName("coin");
+            jLabel.setVisible(false);
+            jLabel.setText("金币："+user.getCoin());
+            jLabel.setVisible(true);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
 }

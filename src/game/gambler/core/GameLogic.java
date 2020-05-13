@@ -83,7 +83,7 @@ public class GameLogic {
         Attribute attribute= jdbc.queryAttribute(role);
         List<Equipment> equipment=jdbc.queryTrueEquipment(role);
         RoleAttributeView battleAttributeView = new RoleAttributeView(attribute,equipment,null);
-
+        dataManager.setGoodList(jdbc.queryAllGood(role));
         dataManager.setRoleAttribute(battleAttributeView);
         //DataManager中的Role 存放的是当前的角色信息
 
@@ -93,6 +93,7 @@ public class GameLogic {
 
     private void loadUserInformation() {
         dataManager.loadUserInformation();
+
     }
 
     private void checkRegister() {

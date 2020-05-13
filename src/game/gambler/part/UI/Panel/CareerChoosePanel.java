@@ -1,5 +1,6 @@
 package game.gambler.part.UI.Panel;
 
+import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.model.Career;
 
 import javax.swing.*;
@@ -22,7 +23,7 @@ public class CareerChoosePanel extends JPanel {
         this.setBackground(Color.cyan);
         this.setBounds(x,y,120,240);
         this.setVisible(true);
-
+        //UIManager.getInstance().add("CareerChoosePanel",this);
     }
 
     @Override

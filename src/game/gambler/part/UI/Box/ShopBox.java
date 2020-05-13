@@ -3,12 +3,14 @@ package game.gambler.part.UI.Box;
 import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.Panel.CommodityInformationPanel;
 import game.gambler.part.UI.Panel.CommodityListPanel;
+import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ShopBox extends JDialog {
+
 
     public ShopBox(){
 
@@ -30,6 +32,15 @@ public class ShopBox extends JDialog {
           //this.setLayout(new FlowLayout());
           CommodityInformationPanel c = new CommodityInformationPanel(null);
           this.add(c);
+            CommodityListPanel clp=new CommodityListPanel();
+            this.add(clp);
+
+            int coin = dataManager.getUser().getCoin();
+            JLabel coinLabel = new JLabel("金币"+coin);
+            coinLabel.setBounds(100,400,100,30);
+            UIManager.getInstance().add("coin",coinLabel);
+            coinLabel.setFont(new Font("Dilog",1,10));
+            this.add(coinLabel);
 //        constraints.fill=GridBagConstraints.BOTH;    //组件填充显示区域
 //        constraints.weightx=1;    //恢复默认值
 //        constraints.gridwidth = GridBagConstraints.REMAINDER;    //结束行
@@ -38,8 +49,7 @@ public class ShopBox extends JDialog {
 //        this.add(c);
 
 
-        CommodityListPanel clp=new CommodityListPanel();
-        this.add(clp);
+
 
         // setUndecorated(true);
         this.setVisible(true);
@@ -51,13 +61,5 @@ public class ShopBox extends JDialog {
         super.paintComponents(graphics);
 
 
-
-
-
-
-    }
-
-    public void draw(Graphics graphics){
-    }
-
+}
 }
