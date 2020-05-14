@@ -1,5 +1,6 @@
 package game.gambler.part.data.view;
 
+import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.*;
 
 import java.util.List;
@@ -24,12 +25,15 @@ public class RoleAttributeView {
     private Attribute attribute;
     private List<Magic> magicList;
 
+    public RoleAttributeView(){}
+
     public RoleAttributeView(Attribute attribute, List<Equipment> equipments, List<Buff> buffs){
 
         int attack=0;
         int defense=0;
         int health = 0;
-        this.attribute = new Attribute(attribute);
+        this.attribute = attribute;
+        System.out.println(attribute.toString());
         for (Equipment equipment:equipments){
             int enhancement=equipment.getEquipment_enhancement();
             attack+=equipment.getEquipment_attack()+enhancement;

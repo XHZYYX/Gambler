@@ -4,6 +4,7 @@ import game.gambler.core.Render.Animation;
 import game.gambler.core.Render.Road;
 import game.gambler.core.Render.Sprite;
 import game.gambler.core.Util.Jdbc;
+import game.gambler.core.Util.Random;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.UIManager;
@@ -53,6 +54,18 @@ public class DataManager {
         animation.addFrame(new ImageIcon(rootpath+"1/magic_7").getImage(),100);
         playerMagicAnimation.put("火球术",animation);
     }
+
+
+    public RoleAttributeView getTemp() {
+        return temp;
+    }
+
+    public void setTemp(RoleAttributeView temp) {
+        this.temp = temp;
+    }
+
+    public RoleAttributeView temp = new RoleAttributeView();
+
 
     public GoodBase getWantToBuy() {
         return wantToBuy;
@@ -133,22 +146,32 @@ public class DataManager {
 
     private List<Road>  roadList;
 
-    private int dice;
+    private int playerdice;
 
-    public int getDice() {
-        return dice;
+    public int getMonsterdice() {
+        return monsterdice;
     }
 
-    public void setDice(int dice) {
-        this.dice = dice;
+    public void setMonsterdice(int monsterdice) {
+        this.monsterdice = monsterdice;
+    }
+
+    private int monsterdice;
+
+    public int getPlayerdice() {
+        return playerdice;
+    }
+
+    public void setPlayerdice(int playerdice) {
+        this.playerdice = playerdice;
     }
 
     public Road move()  {
         Road road;
-        while(dice>0){
-            System.out.println("dice"+dice);
+        while(playerdice>0){
+            System.out.println("playerdice"+playerdice);
             index++;
-            dice--;
+            playerdice--;
             road = roadList.get(index);
             playerSprite.setY(road.getY()*32);
             playerSprite.setX(road.getX()*32);
@@ -158,17 +181,17 @@ public class DataManager {
                 e.printStackTrace();
             }
             if(road.getType()==100){
-                dice = 0;
+                playerdice = 0;
                 messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到城堡了"));
                 break;
             }else if(road.getType()==101){
-                dice = 0;
+                playerdice = 0;
                 messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到xxx了"));
             }else if(road.getType()==102){
-                dice = 0;
+                playerdice = 0;
                 messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"102剧情"));
             }else if(road.getType()==10){
-                dice = 0;
+                playerdice = 0;
                 messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"第一关boss"));
             }
         }
@@ -327,7 +350,38 @@ public class DataManager {
             return false;
         }
     }
+    public void loadGoods(){
+        setGoodList(jdbc.queryAllGood(role));
+    }
 
+    public void sellGood(Good good) {
+        jdbc.reducegood(good);
+        int temp=0;
+        for (GoodBase goodBase:goodBaseList){
+            if (good.getGood_name().equals(goodBase.getGood_name())){
+                temp=goodBase.getGood_RecoveryPrice();
+                break;
+            }
+        }
+        jdbc.updataCoin(user.getCoin()+temp);
+        this.user = jdbc.queryUserByName(user.getUsername());
+    }
 
+    public void cloneRoleAttribute() {
+        temp = roleAttribute;
+    }
 
+    public void battle() {
+        monsterdice = Random.getInstance().getRandom(monsters.getMonster_max_Strength());
+        if (playerdice>monsterdice){
+            monsters.setMonster_HP(monsters.getMonster_HP()-temp.getAttribute().getBase_attack());
+        }else{
+            temp.getAttribute().setBase_HP(temp.getAttribute().getBase_HP()-monsters.getMonster_attack());
+        }
+        if (monsters.getMonster_HP()<=0)
+            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"玩家胜利"));
+        else if (temp.getAttribute().getBase_HP()<=0){
+            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"玩家失败"));
+        }
+    }
 }

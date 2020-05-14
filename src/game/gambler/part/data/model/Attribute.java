@@ -1,6 +1,27 @@
 package game.gambler.part.data.model;
 
 public class Attribute {
+    @Override
+    public String toString() {
+        return "Attribute{" +
+                "grade=" + grade +
+                ", carrer_id=" + carrer_id +
+                ", base_Intellogence=" + base_Intellogence +
+                ", base_strength=" + base_strength +
+                ", base_physical=" + base_physical +
+                ", base_defense=" + base_defense +
+                ", base_attack=" + base_attack +
+                ", base_max_Strength=" + base_max_Strength +
+                ", base_min_Strength=" + base_min_Strength +
+                ", base_min_Magic=" + base_min_Magic +
+                ", base_max_Magic=" + base_max_Magic +
+                ", base_HP=" + base_HP +
+                ", base_MP=" + base_MP +
+                ", growth_strength=" + growth_strength +
+                ", growth_physical=" + growth_physical +
+                '}';
+    }
+
     //fk 等级
     private int grade;
     //fk 职业

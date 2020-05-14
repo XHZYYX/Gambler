@@ -3,6 +3,14 @@ package game.gambler.part.data.model;
 public class Monsters {
     private int monster_id;
 
+    public void setMonster_HP(int monster_HP) {
+        this.monster_HP = monster_HP;
+    }
+
+    public void setMonster_MP(int monster_MP) {
+        this.monster_MP = monster_MP;
+    }
+
     public Monsters() {
     }
 

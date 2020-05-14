@@ -328,6 +328,7 @@ public class Jdbc {
                         rs.getInt(15)
                 );
             }
+            System.out.println(attribute.toString());
             return attribute;
         }catch (SQLException e){
 
@@ -362,8 +363,8 @@ public class Jdbc {
     }
     public void newgood(GoodBase wantToBuy) {
         int role_id=DataManager.getInstance().getRole().getRole_id();
-        String sql = "INSERT INTO `good` (`good_name`, `role_id`,`good_num`) " +
-                "VALUES ("+wantToBuy.getGood_name()+", "+role_id+", '1')";
+        String sql = "INSERT INTO `Good` (`good_name`, `role_id`,`good_num`) " +
+                "VALUES ('"+wantToBuy.getGood_name()+"', '"+role_id+"', '1')";
         try{
             statement.execute(sql);
         }catch (SQLException e) {
@@ -379,4 +380,6 @@ public class Jdbc {
             e.printStackTrace();
         }
     }
+
+
 }

@@ -27,7 +27,7 @@ public class CommodityPanel extends JPanel {
         this.good = goodBase;
         JButton buy = new JButton("购买");
         buy.setBounds(150,80,70,30);
-        JLabel Image = new JLabel(new ImageIcon(good.getGood_imagePath()));
+        JLabel Image = new JLabel(new ImageIcon("resource/images/good/"+good.getGood_imagePath()));
         Image.setBounds(10,10,100,100);
         JLabel CommodityName = new JLabel(good.getGood_name());
         CommodityName.setBounds(150,20,70,50);

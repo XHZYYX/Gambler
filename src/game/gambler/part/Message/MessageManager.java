@@ -13,6 +13,8 @@ public class MessageManager {
         return _instance;
     }
 
+    private Message message;
+
     private Stack<Message> MessageStack = new Stack<>();
 
 
@@ -26,11 +28,13 @@ public class MessageManager {
     }
 
     public void pushMessageStack(Message message){
-        MessageStack.push(message);
+        //MessageStack.push(message);
+        this.message= message;
     }
 
     public Message getTopMessageStack() {
-        return MessageStack.pop();
+        return message;
+        //return MessageStack.pop();
     }
 
     public void handle(){

@@ -16,6 +16,14 @@ import java.util.Map;
 //
 public abstract class Scene extends JPanel {
 
+    public String getSceneName() {
+        return SceneName;
+    }
+
+    public void setSceneName(String sceneName) {
+        SceneName = sceneName;
+    }
+
     public String SceneName;
     //包括玩家和怪物
     public Map<String,Sprite> spriteMap;

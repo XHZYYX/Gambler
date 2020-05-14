@@ -59,7 +59,7 @@ public class Dice extends Sprite {
             time += elapsedTime;
         if(time >= 1000){
             int dice =Random.getInstance().getRandom(max);
-            dataManager.setDice(dice);
+            dataManager.setPlayerdice(dice);
             setAnim(dice);
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"掷骰子完成"));
             time = 0;

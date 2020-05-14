@@ -44,6 +44,7 @@ public class GameLogic {
                 //
                 case "进入游戏":playGame();break;
                 case "打开创建角色":;break;
+                case "进入关卡":cloneRoleAttribute();break;
                 case "遇到怪物了":loadingMonsterInformation();break;
                 case "5":;break;
                 case "6":;break;
@@ -59,6 +60,10 @@ public class GameLogic {
 
             }
         }
+    }
+
+    private void cloneRoleAttribute() {
+        dataManager.cloneRoleAttribute();
     }
 
     private void loadingMonsterInformation() {
@@ -83,7 +88,7 @@ public class GameLogic {
         Attribute attribute= jdbc.queryAttribute(role);
         List<Equipment> equipment=jdbc.queryTrueEquipment(role);
         RoleAttributeView battleAttributeView = new RoleAttributeView(attribute,equipment,null);
-        dataManager.setGoodList(jdbc.queryAllGood(role));
+        dataManager.loadGoods();
         dataManager.setRoleAttribute(battleAttributeView);
         //DataManager中的Role 存放的是当前的角色信息
 

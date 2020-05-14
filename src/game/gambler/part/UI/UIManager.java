@@ -71,9 +71,27 @@ public class UIManager {
                 case "两次密码不一致": registerPassWDError();break;
                 case "打开创建角色":newRoleUI();break;
                 case "购买物品":test();break;
+                case "打开背包":openBackPackBox();break;
+                case "遇到怪物了":BattleController();break;
+                case "玩家胜利":Victory();break;
+                case "玩家失败":Defeat();break;
                 case "test":test();break;
             }
         }
+    }
+    private  void Defeat(){
+        show(queryUIByName("ChapterControllerBar"));
+    }
+    private void Victory() {
+        show(queryUIByName("ChapterControllerBar"));
+    }
+
+    private void BattleController() {
+        show(new BattleControllerBar());
+    }
+
+    private void openBackPackBox() {
+        new BackpackBox();
     }
 
     private void newRoleUI() {
@@ -139,7 +157,7 @@ public class UIManager {
 
         JPasswordField jPasswordField = (JPasswordField)queryUIByName("UI-login-password-input");
         JTextField username = (JTextField)queryUIByName("UI_login_username_input");
-        jPasswordField.setText("");
+        //jPasswordField.setText("");
     }
 
     private void HomeUI() {
@@ -203,4 +221,11 @@ public class UIManager {
         scene.addGUI(components);
         scene.setVisible(true);
     }
+
+    public void updataBackpackBox(){
+        BackpackBox backpackBox=(BackpackBox)queryUIByName("BackpackBox");
+        backpackBox.dispose();
+        UImap.remove(backpackBox);
+    }
+
 }

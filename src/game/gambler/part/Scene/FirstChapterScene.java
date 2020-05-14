@@ -46,13 +46,8 @@ public class FirstChapterScene extends Scene{
 //            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0}
 //};
 
-
-
-
-
-
     public FirstChapterScene(){
-
+        super("FirstChapter");
         DataManager.getInstance().setRoadList(RoadList);
 
         RoadList.add(new Road(0,27,7));

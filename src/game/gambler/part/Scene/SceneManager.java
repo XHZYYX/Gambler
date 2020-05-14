@@ -9,11 +9,9 @@ import game.gambler.part.Scene.Sprite.Creature;
 import game.gambler.part.Scene.Sprite.Dice;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Monsters;
+import game.gambler.part.data.view.RoleAttributeView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SceneManager {
 
@@ -43,7 +41,7 @@ public class SceneManager {
     //当前场景
     private Scene Now;
     //场景集合
-    private Map<String,Scene> SceneMap = new HashMap<>();
+    private Stack<Scene> SceneMap = new Stack<>();
     FrameRate frameRate;
 
     public void init(){
@@ -76,9 +74,12 @@ public class SceneManager {
                 case "进入游戏":loadingHome();break;
                 case "打开购买物品的页面":shopping();break;
                 case "进入关卡":loadingCheckPoint();break;
-                case "移动":dice();break;
+                case "移动":dice6();break;
+                case "战斗":battle();break;
                 case "掷骰子完成":diceOver();break;
                 case "遇到怪物了":BattleScene();break;
+                case "玩家胜利":Victory();
+                case "玩家失败":Defeat();
 
 
 
@@ -87,6 +88,51 @@ public class SceneManager {
 
             }
         }
+    }
+
+    private void Defeat() {
+        String sceneName="";
+        switch (dataManager.getCheckPoint()){
+            case 1:sceneName = "FirstChapter";
+            case 2:sceneName = "SecondChapter";
+            case 3:sceneName = "ThirdChapter";
+        }
+        loadingCheckPoint();
+//        MessageManager.getInstance().pushMessageStack(new Message(Message.Msgtype.all_msg,""));
+//        changeScene(new FirstChapterScene());
+//        SceneMap.pop();
+//        Now.stop();
+//
+//        Now=SceneMap.peek();
+//        for (String s:SceneMap.keySet()){
+//            if (s.equals(sceneName)){
+//                changeScene(SceneMap.get(s));break;
+//            }
+//        }
+    }
+
+    private void Victory() {
+        String sceneName="";
+        switch (dataManager.getCheckPoint()){
+            case 1:sceneName = "FirstChapter";
+            case 2:sceneName = "SecondChapter";
+            case 3:sceneName = "ThirdChapter";
+        }
+        loadingCheckPoint();
+//        SceneMap.pop();
+//        Now.stop();
+//        Now=SceneMap.peek();
+//        for (String s:SceneMap.keySet()){
+//            if (s.equals(sceneName)){
+//                changeScene(SceneMap.get(s));break;
+//            }
+//        }
+    }
+
+    private void battle() {
+        Dice dice = (Dice) Now.getSpriteMap().get("dice");
+        int max = DataManager.getInstance().getRoleAttribute().getAttribute().getBase_max_Strength();
+        dice.start(max);
     }
 
     private void BattleScene() {
@@ -99,14 +145,14 @@ public class SceneManager {
         String messageContent= MessageManager.getInstance().getTopMessageStack().getMsg_Content();
         switch (messageContent){
             case "移动": DataManager.getInstance().move();break;
+            case "战斗": DataManager.getInstance().battle();break;
             case "魔法":  break;
         }
     }
 
-    private void dice() {
+    private void dice6() {
         Dice dice = (Dice) Now.getSpriteMap().get("dice");
         dice.start(6);
-
     }
 
     private void loadingCheckPoint() {
@@ -166,7 +212,8 @@ public class SceneManager {
         //将旧的场景移除 并加入新的场景
         gameWindow.setVisible(false);
         gameWindow.getContentPane().remove(Now);
-        saveSceneToMap(Now);
+        //saveSceneToMap(Now);
+        SceneMap.push(Now);
         Now.stop();
         gameWindow.getContentPane().add(scene);
         Now = scene;
@@ -188,14 +235,14 @@ public class SceneManager {
 
 
 
-    public void saveSceneToMap(Scene scene){
-        if(!SceneMap.containsKey(scene.getName())){
-            SceneMap.put(scene.getName(),scene);
-        }
-    }
+//    public void saveSceneToMap(Scene scene){
+//        if(!SceneMap.containsKey(scene.getName())){
+//            SceneMap.put(scene.getSceneName(),scene);
+//        }
+//    }
 
-    public Scene querySceneByName(String name){
-        return SceneMap.get(name);
-    }
+//    public Scene querySceneByName(String name){
+//        return SceneMap.get(name);
+//    }
 
 }
