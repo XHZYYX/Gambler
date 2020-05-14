@@ -280,7 +280,8 @@ public class Jdbc {
     }
 
     //查询当前角色已经穿戴的装备
-    public List<Equipment> queryTrueEquipment(Role role){
+    public List<Equipment> queryTrueEquipment(){
+        Role role = DataManager.getInstance().getRole();
         String sql = "SELECT * FROM Equipment " +
                 " WHERE role_id ='"+role.getRole_id()+"'" +
                 " And equipment_boolean = true";
@@ -288,9 +289,9 @@ public class Jdbc {
         try{
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
-                Equipment equipment= new Equipment(rs.getInt(1),rs.getString(2),
-                        rs.getBoolean(3),rs.getInt(4),
-                        rs.getInt(5),rs.getInt(6),rs.getInt(7));
+                Equipment equipment= new Equipment(rs.getInt(1),rs.getInt(2),rs.getString(2),
+                        rs.getBoolean(4),rs.getInt(5),
+                        rs.getInt(6),rs.getInt(7),rs.getInt(8));
                 Equipments.add(equipment);
             }
 
@@ -301,7 +302,8 @@ public class Jdbc {
 
     }
     //查询当前角色没有穿戴的装备
-    public List<Equipment> queryFalseEquipment(Role role){
+    public List<Equipment> queryFalseEquipment(){
+        Role role = DataManager.getInstance().getRole();
         String sql = "SELECT * FROM Equipment " +
                 " WHERE role_id ='"+role.getRole_id()+"'" +
                 " And equipment_boolean = false ";
@@ -309,7 +311,7 @@ public class Jdbc {
         try{
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
-                Equipment equipment= new Equipment(rs.getInt(1),rs.getString(2),
+                Equipment equipment= new Equipment(rs.getInt(1),rs.getInt(2),rs.getString(3),
                         rs.getBoolean(3),rs.getInt(4),
                         rs.getInt(5),rs.getInt(6),rs.getInt(7));
                 Equipments.add(equipment);
@@ -462,5 +464,44 @@ public class Jdbc {
         return magics;
     }
 
+    public void addEquipment(Equipment equipment) {
+        int role_id=DataManager.getInstance().getRole().getRole_id();
+        String sql = "INSERT INTO `Equipment` (`role_id`, `equipment_name`," +
+                "`equipment_boolean`,`equipment_enhancement`,`equipment_defence`,`equipment_attack`," +
+                "`equipment_health`) " +
+                "VALUES ('"+role_id+"', '"+equipment.getEquipment_name()+"','0','"+equipment.getEquipment_enhancement()+"','"
+                +equipment.getEquipment_defence()+"', '"
+                +equipment.getEquipment_attack()+"', '"+equipment.getEquipment_health()+"')";
+        try{
+            statement.execute(sql);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<EquipmentBase> queryEquipmentBase() {
+        String sql="SELECT * FROM EquipmentBase ";
+        List<EquipmentBase> equipmentBaseList = new ArrayList<>();
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                EquipmentBase equipmentBase= new EquipmentBase(rs.getString(1),rs.getString(2),
+                        rs.getString(3),rs.getInt(4),
+                        rs.getInt(5));
+                equipmentBaseList.add(equipmentBase);
+            }
+        }catch (SQLException e){
+        }
+        return equipmentBaseList;
+    }
+
+    public void reduceEquipment(Equipment equipment) {
+        String sql = "DELETE FROM Equipment where equipment_id ="+equipment.getEquipment_id();
+        try{
+            statement.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

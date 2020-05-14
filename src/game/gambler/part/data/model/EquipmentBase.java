@@ -11,18 +11,17 @@ public class EquipmentBase {
     private int equipment_RecoveryPrice;
     //出售价格
     private int equipment_SellingPrice;
-    //等级限制
-    private int grade;
+
 
     public EquipmentBase(String equipment_name, String equipment_position,
                          String equipment_imagePath, int equipment_RecoveryPrice,
-                         int equipment_SellingPrice, int grade) {
+                         int equipment_SellingPrice) {
         this.equipment_name = equipment_name;
         this.equipment_position = equipment_position;
         this.equipment_imagePath = equipment_imagePath;
         this.equipment_RecoveryPrice = equipment_RecoveryPrice;
         this.equipment_SellingPrice = equipment_SellingPrice;
-        this.grade = grade;
+
     }
 
     public String getEquipment_name() {
@@ -45,7 +44,4 @@ public class EquipmentBase {
         return equipment_SellingPrice;
     }
 
-    public int getGrade() {
-        return grade;
-    }
 }

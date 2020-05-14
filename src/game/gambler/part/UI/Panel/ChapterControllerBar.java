@@ -3,6 +3,7 @@ package game.gambler.part.UI.Panel;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.UIManager;
+import game.gambler.part.data.DataManager;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -11,13 +12,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ChapterControllerBar extends JPanel {
-
+    JLabel HP = new JLabel("HP:"+ DataManager.getInstance().getTemp().getAttribute().getBase_HP());
+    JLabel MP = new JLabel("MP:"+ DataManager.getInstance().getTemp().getAttribute().getBase_MP());
     public ChapterControllerBar(){
-
         MessageManager messageManager = MessageManager.getInstance();
-        JLabel HP = new JLabel("HP:");
-        JLabel MP = new JLabel("MP:");
-
+        HP.setBounds(150,20,200,30);
+        MP.setBounds(150,70,200,30);
+        this.add(HP);
+        this.add(MP);
         JButton move = new JButton("移动");
         JButton magic = new JButton("魔法");
         JButton paoperty = new JButton("状况");
@@ -59,8 +61,11 @@ public class ChapterControllerBar extends JPanel {
         //super.paintComponent(graphics);
         graphics.setColor(new Color(100,100,100));
         graphics.fillRect(0,0,890,125);
-
     }
 
 
+    public void reset() {
+        HP.setText("HP:"+ DataManager.getInstance().getTemp().getAttribute().getBase_HP());
+        MP.setText("MP:"+ DataManager.getInstance().getTemp().getAttribute().getBase_MP());
+    }
 }

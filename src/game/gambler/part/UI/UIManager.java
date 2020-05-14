@@ -9,6 +9,7 @@ import game.gambler.part.Scene.SceneManager;
 import game.gambler.part.UI.Box.*;
 import game.gambler.part.UI.Button.*;
 import game.gambler.part.UI.Panel.*;
+import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Role;
 
 import javax.swing.*;
@@ -77,9 +78,19 @@ public class UIManager {
                 case "玩家失败":Defeat();break;
                 case "返回主城":HomeUI();break;
                 case "打开魔法":PlayerMagicUI();break;
+                case "打开装备面板":openEquipmentBox();break;
+                case "打开购买装备页面":openEquipmentShopBox();break;
                 case "test":test();break;
             }
         }
+    }
+
+    private void openEquipmentShopBox() {
+        new EquipmentShopBox(256,128);
+    }
+
+    private void openEquipmentBox() {
+        new EquipmentBox();
     }
 
     private void PlayerMagicUI() {
@@ -88,10 +99,12 @@ public class UIManager {
 
     private  void Defeat(){
         show(queryUIByName("ChapterControllerBar"));
+        updataChpaterControllerBar();
         new ResuscitateTalkBox("你死了,是否使用救命草");
     }
     private void Victory() {
        show(queryUIByName("ChapterControllerBar"));
+        updataChpaterControllerBar();
         new TalkBox("恭喜你打败了怪兽");
     }
 
@@ -173,12 +186,14 @@ public class UIManager {
     }
 
     private void HomeUI() {
+        DataManager.getInstance().cloneRoleAttribute();
         //左上角的属性框
         StatusBarPanel statusBarPanel = new StatusBarPanel(new Role());
         //左下角的菜单栏  背包 //属性 //装备
         MeanBar meanBar = new MeanBar(1000,680,300,70);
         meanBar.add(new inventoryButton());
         meanBar.add(new attitudeButton());
+        meanBar.add(new equipmentButton());
         show(statusBarPanel,meanBar);
     }
 
@@ -238,6 +253,18 @@ public class UIManager {
         BackpackBox backpackBox=(BackpackBox)queryUIByName("BackpackBox");
         backpackBox.dispose();
         UImap.remove(backpackBox);
+    }
+    public void updataEquipmentBox(){
+        EquipmentBox equipmentBox=(EquipmentBox)queryUIByName("EquipmentBox");
+        equipmentBox.dispose();
+        UImap.remove(equipmentBox);
+    }
+    public void updataChpaterControllerBar(){
+        ChapterControllerBar chapterControllerBar=(ChapterControllerBar)queryUIByName("ChapterControllerBar");
+        chapterControllerBar.setVisible(false);
+        chapterControllerBar.reset();
+        chapterControllerBar.setVisible(true);
+
     }
 
 }

@@ -15,10 +15,8 @@ import game.gambler.part.data.view.RoleAttributeView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /*
 *
@@ -55,11 +53,25 @@ public class DataManager {
     public RoleAttributeView temp = new RoleAttributeView();
     //角色想要购买的商品
     GoodBase wantToBuy;
+
+    EquipmentBase wantToBuyE;
     //全部的基础商品集合
     List<GoodBase> goodBaseList;
     //角色的物品集合
     private List<Good> goodList;
     //保存当前登录的用户数据
+
+
+
+    private List<EquipmentBase> equipmentBaseList;
+
+    private List<Equipment> equipmentTrue;
+
+    private List<Equipment> equipmentFalse;
+
+
+
+
     private User user;
     //人物的技能集合 魔法ID
     private List<Magic_Career_Grade> mcgList;
@@ -258,10 +270,52 @@ public class DataManager {
             return false;
         }
     }
+
+    public boolean buyEquipmentBase() {
+        int sellPrice = this.wantToBuyE.getEquipment_SellingPrice();
+        int coin = user.getCoin();
+        if(coin>=sellPrice){
+            //购买
+            switch (wantToBuyE.getEquipment_name()){
+                case "王大锤":jdbc.addEquipment(
+                        new Equipment(0,role.getRole_id(),"王大锤",false,0,0,10,0));
+
+            }
+
+
+
+            jdbc.updataCoin(coin-sellPrice);
+            this.user = jdbc.queryUserByName(user.getUsername());
+            JLabel jLabel=(JLabel) UIManager.getInstance().queryUIByName("coin");
+            jLabel.setVisible(false);
+            jLabel.setText("金币："+user.getCoin());
+            jLabel.setVisible(true);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     public void loadGoods(){
         setGoodList(jdbc.queryAllGood(role));
     }
-
+    public void loadEquipment() {
+        setEquipmentFalse(jdbc.queryFalseEquipment());
+        setEquipmentTrue(jdbc.queryTrueEquipment());
+    }
+    public void sellEquipment(Equipment equipment) {
+        jdbc.reduceEquipment(equipment);
+        int temp=0;
+        for (EquipmentBase equipmentBase:equipmentBaseList){
+            if (equipment.getEquipment_name().equals(equipmentBase.getEquipment_name())){
+                temp=equipmentBase.getEquipment_RecoveryPrice();
+                break;
+            }
+        }
+        jdbc.updataCoin(user.getCoin()+temp);
+        this.user = jdbc.queryUserByName(user.getUsername());
+    }
     public void sellGood(Good good) {
         jdbc.reducegood(good);
         int temp=0;
@@ -276,7 +330,8 @@ public class DataManager {
     }
 
     public void cloneRoleAttribute() {
-        temp = roleAttribute;
+        temp=roleAttribute.clone(roleAttribute);
+
     }
 
     public void battle() {
@@ -454,5 +509,39 @@ public class DataManager {
     public void setMonsterMagic(Magic monsterMagic) {
         this.monsterMagic = monsterMagic;
     }
+
+    public void setWantToBuyE(EquipmentBase equipment) {
+        this.wantToBuyE = equipment;
+    }
+    public EquipmentBase getWantToBuyE(){
+        return  wantToBuyE;
+    }
+
+
+    public List<EquipmentBase> getEquipmentBaseList() {
+        return equipmentBaseList;
+    }
+
+    public void setEquipmentBaseList(List<EquipmentBase> equipmentBaseList) {
+        this.equipmentBaseList = equipmentBaseList;
+    }
+
+    public List<Equipment> getEquipmentTrue() {
+        return equipmentTrue;
+    }
+
+    public void setEquipmentTrue(List<Equipment> equipmentTrue) {
+        this.equipmentTrue = equipmentTrue;
+    }
+
+    public List<Equipment> getEquipmentFalse() {
+        return equipmentFalse;
+    }
+
+    public void setEquipmentFalse(List<Equipment> equipmentFalse) {
+        this.equipmentFalse = equipmentFalse;
+    }
+
+
 
 }

@@ -60,9 +60,18 @@ public class HomeScene extends Scene{
 
         DataManager.getInstance().setPlayerSprite(player );
         NPC npc1=new NPC(down);
-        npc1.setX(180);
+        npc1.setX(160);
         npc1.setY(220);
         this.npcMap.put("npc1",npc1);
+        NPC npc2=new NPC(down);
+        npc2.setX(160);
+        npc2.setY(450);
+        this.npcMap.put("npc2",npc2);
+        NPC npc3=new NPC(down);
+        npc3.setX(450);
+        npc3.setY(680);
+        this.npcMap.put("npc3",npc3);
+
         move =new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -78,16 +87,13 @@ public class HomeScene extends Scene{
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT){
                     player.setVelocityX(Float.parseFloat("0.2"));
                 }
-                if(e.getKeyCode() == KeyEvent.VK_I){
+                if(e.getKeyCode() == KeyEvent.VK_E){
                     if(SceneManager.getInstance().CollisionDetetctionFlag){
                         if(SceneManager.getInstance().SpriteList.get("npc1")!=null){
+                            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"打开购买装备页面"));
+                        }else if(SceneManager.getInstance().SpriteList.get("npc2")!=null){
                             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"打开购买商品页面"));
-                        }
-                    }
-                }
-                if(e.getKeyCode() == KeyEvent.VK_C){
-                    if(SceneManager.getInstance().CollisionDetetctionFlag){
-                        if(SceneManager.getInstance().SpriteList.get("npc1")!=null){
+                        }else if(SceneManager.getInstance().SpriteList.get("npc3")!=null){
                             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"关卡选择"));
                         }
                     }

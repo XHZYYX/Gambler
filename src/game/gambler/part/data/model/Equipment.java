@@ -4,6 +4,7 @@ public class Equipment {
     //装备唯一id
     private int equipment_id;
 
+    private int role_id;
     private String equipment_name;
     //装备是否装备
     private boolean equipment_boolean;
@@ -18,10 +19,11 @@ public class Equipment {
     //装备增加血量
     private int equipment_health;
 
-    public Equipment(int equipment_id, String equipment_name,
+    public Equipment(int equipment_id,int role_id, String equipment_name,
                      boolean equipment_boolean, int equipment_enhancement,
                      int equipment_defence, int equipment_attack, int equipment_health) {
         this.equipment_id = equipment_id;
+        this.role_id = role_id;
         this.equipment_name = equipment_name;
         this.equipment_boolean = equipment_boolean;
         this.equipment_enhancement = equipment_enhancement;
