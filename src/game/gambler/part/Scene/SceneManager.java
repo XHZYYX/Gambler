@@ -5,11 +5,10 @@ import game.gambler.core.Util.FrameRate;
 import game.gambler.core.Window.GameWindow;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
-import game.gambler.part.Scene.Sprite.Creature;
 import game.gambler.part.Scene.Sprite.Dice;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Monsters;
-import game.gambler.part.data.view.RoleAttributeView;
+
 
 import java.util.*;
 
@@ -78,11 +77,9 @@ public class SceneManager {
                 case "战斗":battle();break;
                 case "掷骰子完成":diceOver();break;
                 case "遇到怪物了":BattleScene();break;
-                case "玩家胜利":Victory();
-                case "玩家失败":Defeat();
-
-
-
+                case "玩家胜利":Victory();break;
+                case "玩家失败":Defeat();break;
+                case "返回主城":backHome();break;
 
                 case "test":test();break;
 
@@ -90,6 +87,12 @@ public class SceneManager {
         }
     }
 
+    private void backHome() {
+        Scene scene = new HomeScene();
+        changeScene(scene);
+    }
+
+    //失败后返回关卡页面
     private void Defeat() {
         String sceneName="";
         switch (dataManager.getCheckPoint()){
@@ -98,19 +101,8 @@ public class SceneManager {
             case 3:sceneName = "ThirdChapter";
         }
         loadingCheckPoint();
-//        MessageManager.getInstance().pushMessageStack(new Message(Message.Msgtype.all_msg,""));
-//        changeScene(new FirstChapterScene());
-//        SceneMap.pop();
-//        Now.stop();
-//
-//        Now=SceneMap.peek();
-//        for (String s:SceneMap.keySet()){
-//            if (s.equals(sceneName)){
-//                changeScene(SceneMap.get(s));break;
-//            }
-//        }
     }
-
+    //胜利后返回关卡页面
     private void Victory() {
         String sceneName="";
         switch (dataManager.getCheckPoint()){
@@ -119,26 +111,18 @@ public class SceneManager {
             case 3:sceneName = "ThirdChapter";
         }
         loadingCheckPoint();
-//        SceneMap.pop();
-//        Now.stop();
-//        Now=SceneMap.peek();
-//        for (String s:SceneMap.keySet()){
-//            if (s.equals(sceneName)){
-//                changeScene(SceneMap.get(s));break;
-//            }
-//        }
     }
-
+    //点击战斗后 触发掷骰子的动画
     private void battle() {
         Dice dice = (Dice) Now.getSpriteMap().get("dice");
         int max = DataManager.getInstance().getRoleAttribute().getAttribute().getBase_max_Strength();
         dice.start(max);
     }
 
+    //打开战斗场景
     private void BattleScene() {
         Monsters monsters =dataManager.getMonsters();
         changeScene(new BattleScene());
-
     }
 
     private void diceOver() {

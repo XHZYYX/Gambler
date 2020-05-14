@@ -68,17 +68,14 @@ public class GameLogic {
 
     private void loadingMonsterInformation() {
         //根据DataManager中的Monster加载 怪物技能等。。
-
+        dataManager.setMmlist(jdbc.queryMMListById());
+        dataManager.setMonsterMagicList(jdbc.queryMonsterMagic());
     }
 
     private void isRegister() {
         //判断用户名是否重复
 
-
-
         //判断两次密码是否一致
-
-
     }
 
     private void playGame() {
@@ -90,6 +87,10 @@ public class GameLogic {
         RoleAttributeView battleAttributeView = new RoleAttributeView(attribute,equipment,null);
         dataManager.loadGoods();
         dataManager.setRoleAttribute(battleAttributeView);
+        dataManager.setMcgList(jdbc.queryPlayerMagicID());
+        dataManager.setPlayerMagicList(jdbc.queryPlayerMagic());
+
+
         //DataManager中的Role 存放的是当前的角色信息
 
         //加载主城地图

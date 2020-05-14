@@ -33,6 +33,13 @@ public class ChapterControllerBar extends JPanel {
                 //messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"移动"));
             }
         });
+        magic.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Message message = new Message(Message.Msgtype.graphics_msg,"打开魔法");
+                MessageManager.getInstance().sendMessage(message);
+            }
+        });
         UIManager.getInstance().add("ChapterControllerBar",this);
 
         this.add(move);

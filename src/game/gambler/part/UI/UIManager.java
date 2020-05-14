@@ -75,16 +75,28 @@ public class UIManager {
                 case "遇到怪物了":BattleController();break;
                 case "玩家胜利":Victory();break;
                 case "玩家失败":Defeat();break;
+                case "返回主城":HomeUI();break;
+                case "打开魔法":PlayerMagicUI();break;
                 case "test":test();break;
             }
         }
     }
+
+    private void PlayerMagicUI() {
+        new PlayerMagicBox("行动");
+    }
+
     private  void Defeat(){
         show(queryUIByName("ChapterControllerBar"));
+        new ResuscitateTalkBox("你死了,是否使用救命草");
     }
     private void Victory() {
-        show(queryUIByName("ChapterControllerBar"));
+       show(queryUIByName("ChapterControllerBar"));
+        new TalkBox("恭喜你打败了怪兽");
     }
+
+
+
 
     private void BattleController() {
         show(new BattleControllerBar());

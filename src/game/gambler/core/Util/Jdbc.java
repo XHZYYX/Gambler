@@ -8,9 +8,12 @@ import java.util.List;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import game.gambler.core.Render.Animation;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
+
+import javax.xml.crypto.Data;
 
 
 public class Jdbc {
@@ -45,7 +48,21 @@ public class Jdbc {
         }catch (ClassNotFoundException| SQLException e){
         }
     }
+    public static void main(String[] args) {
+       // System.out.println(1);
+        Jdbc jdbc = new Jdbc();
 
+        List<Magic_Career_Grade>magic_career_grades =jdbc.queryPlayerMagicID();
+        for (Magic_Career_Grade m:magic_career_grades){
+            System.out.println(m.getMagic_id());
+        }
+
+
+       // Monsters monsters=jdbc.queryMonsterById(1);
+        //System.out.println(monsters.getMonster_id());
+        //User user = jdbc.queryUserByName("fukang");
+        //System.out.println(user.toString());
+    }
 //    public List<User> jquery(String sql) throws SQLException{
 //        ArrayList<User> users= new ArrayList<>();
 //        ResultSet rs = statement.executeQuery(sql);
@@ -157,14 +174,7 @@ public class Jdbc {
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println(1);
-        Jdbc jdbc = new Jdbc();
-        Monsters monsters=jdbc.queryMonsterById(1);
-        System.out.println(monsters.getMonster_id());
-        //User user = jdbc.queryUserByName("fukang");
-        //System.out.println(user.toString());
-    }
+
     //注册用户
     public void newUser(String username,String password){
         String sql = "INSERT INTO `User` (`username`, `password`, `checkpoint`, `coin`)" +
@@ -381,5 +391,76 @@ public class Jdbc {
         }
     }
 
+    public List<Magic_Career_Grade> queryPlayerMagicID(){
+        int career_id =1;// DataManager.getInstance().getRole().getCareer_id();
+        int grade = 1;//DataManager.getInstance().getRole().getGrade();
+        String sql = "SELECT * FROM Maigc_Career_Grade WHERE career_id ="+career_id+
+                " AND grade <="+grade;
+        List<Magic_Career_Grade> mcgList = new ArrayList<>();
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                Magic_Career_Grade magic= new Magic_Career_Grade(rs.getInt(1),rs.getInt(2),
+                        rs.getInt(3));
+                mcgList.add(magic);
+            }
+        }catch (SQLException e){
+        }
+        return mcgList;
+    }
+
+    public List<Magic> queryPlayerMagic(){
+        List<Magic_Career_Grade> mcgList = DataManager.getInstance().getMcgList();
+        List<Magic> magics = new ArrayList<>();
+        for (Magic_Career_Grade mcg:mcgList){
+            String sql= "SELECT * FROM Magic WHERE magic_id ="+mcg.getMagic_id();
+            try{
+                ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()){
+                    Magic magic= new Magic(rs.getInt(1),rs.getString(2),
+                            rs.getInt(3),rs.getString(4),
+                            rs.getString(5), rs.getInt(6));
+                    magics.add(magic);
+                }
+            }catch (SQLException e){
+            }
+        }
+        return magics;
+    }
+
+
+    public List<Monsters_Magic> queryMMListById() {
+        String sql = "SELECT * FROM Monstaers_Magic WHERE monster_id ="+DataManager.getInstance().getMonsters().getMonster_id();
+        List<Monsters_Magic> mmlist = new ArrayList<>();
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                Monsters_Magic mm= new Monsters_Magic(rs.getInt(1),
+                        rs.getInt(2));
+                mmlist.add(mm);
+            }
+        }catch (SQLException e){
+        }
+        return mmlist;
+    }
+    public List<Magic> queryMonsterMagic(){
+        List<Monsters_Magic> mmList = DataManager.getInstance().getMmlist();
+        List<Magic> magics = new ArrayList<>();
+        for (Monsters_Magic mm:mmList){
+            String sql= "SELECT * FROM Magic WHERE magic_id ="+mm.getMagic_id();
+            try{
+                ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()){
+                    Magic magic= new Magic(rs.getInt(1),rs.getString(2),
+                            rs.getInt(3),rs.getString(4),
+                            rs.getString(5), rs.getInt(6));
+                    magics.add(magic);
+                }
+            }catch (SQLException e){
+            }
+        }
+        return magics;
+    }
 
 }
+

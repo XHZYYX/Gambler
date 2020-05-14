@@ -7,6 +7,7 @@ import game.gambler.core.Util.Jdbc;
 import game.gambler.core.Util.Random;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
+import game.gambler.part.UI.Box.TalkBox;
 import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
@@ -24,8 +25,6 @@ import java.util.Map;
 * */
 public class DataManager {
     Jdbc jdbc=Jdbc.getInstance();
-
-
     private static DataManager _instance;
     private MessageManager messageManager =MessageManager.getInstance();
     public static DataManager getInstance(){
@@ -34,14 +33,10 @@ public class DataManager {
         }
         return  _instance;
     }
-
-    Map<String,Animation> playerMagicAnimation;
-
     public DataManager(){
         //初始话时加载数据：
         //技能动画
         goodBaseList = jdbc.queryAllGoodBase();
-
         playerMagicAnimation = new HashMap<>();
         String rootpath = "resource/images/magic/";
         Animation animation= new Animation();
@@ -55,116 +50,45 @@ public class DataManager {
         playerMagicAnimation.put("火球术",animation);
     }
 
-
-    public RoleAttributeView getTemp() {
-        return temp;
-    }
-
-    public void setTemp(RoleAttributeView temp) {
-        this.temp = temp;
-    }
-
+    Map<String,Animation> playerMagicAnimation;
+    //角色计算后的属性
     public RoleAttributeView temp = new RoleAttributeView();
-
-
-    public GoodBase getWantToBuy() {
-        return wantToBuy;
-    }
-
-    public void setWantToBuy(GoodBase wantToBuy) {
-        this.wantToBuy = wantToBuy;
-    }
-
+    //角色想要购买的商品
     GoodBase wantToBuy;
-
-    public List<GoodBase> getGoodBaseList() {
-        return goodBaseList;
-    }
-
-    public void setGoodBaseList(List<GoodBase> goodBaseList) {
-        this.goodBaseList = goodBaseList;
-    }
-
-    List<GoodBase> goodBaseList = new ArrayList<>();
-
-    public List<Good> getGoodList() {
-        return goodList;
-    }
-
-    public void setGoodList(List<Good> goodList) {
-        this.goodList = goodList;
-    }
-
-    //保存当前登录的用户数据
+    //全部的基础商品集合
+    List<GoodBase> goodBaseList;
+    //角色的物品集合
     private List<Good> goodList;
+    //保存当前登录的用户数据
     private User user;
+    //人物的技能集合 魔法ID
+    private List<Magic_Career_Grade> mcgList;
+    private List<Monsters_Magic> mmlist;
+    //玩家魔法集合
+    private List<Magic> playerMagicList=new ArrayList<>();
+    //怪物魔法集合
+    private List<Magic> monsterMagicList = new ArrayList<>();
+    private Magic playerMagic;
+    private Magic monsterMagic;
 
-    public Monsters getMonsters() {
-        return monsters;
-    }
 
-    public void setMonsters(Monsters monsters) {
-        this.monsters = monsters;
-    }
-
+    //当前怪物
     private Monsters monsters;
-
     //保存当前选择的角色信息
     private Role role;
-
-    public RoleAttributeView getRoleAttribute() {
-        return roleAttribute;
-    }
-
-    public void setRoleAttribute(RoleAttributeView roleAttribute) {
-        this.roleAttribute = roleAttribute;
-    }
-
     //角色信息
     RoleAttributeView roleAttribute;
     //由当前角色生成的  精灵的 信息
     //当前的位置 以及动画的切换
     private Sprite playerSprite;
 
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
     int index = 0;//标明用户在关卡中的步数
 
-    public List<Road> getRoadList() {
-        return roadList;
-    }
-
-    public void setRoadList(List<Road> roadList) {
-        this.roadList = roadList;
-    }
-
     private List<Road>  roadList;
-
+    //玩家骰子值
     private int playerdice;
-
-    public int getMonsterdice() {
-        return monsterdice;
-    }
-
-    public void setMonsterdice(int monsterdice) {
-        this.monsterdice = monsterdice;
-    }
-
+    //怪物骰子值
     private int monsterdice;
-
-    public int getPlayerdice() {
-        return playerdice;
-    }
-
-    public void setPlayerdice(int playerdice) {
-        this.playerdice = playerdice;
-    }
 
     public Road move()  {
         Road road;
@@ -216,11 +140,10 @@ public class DataManager {
     private void setMonster(int Monsters_id) {
         Monsters m =jdbc.queryMonsterById(Monsters_id);
         setMonsters(m);
+        mmlist = jdbc.queryMMListById();
+        monsterMagicList=jdbc.queryMonsterMagic();
         System.out.println(m.getMonster_id());
     }
-
-
-
     private Map<String, Monsters> MonstersMap;
 
     private Map<String, Buff>BuffMap;
@@ -230,13 +153,7 @@ public class DataManager {
     //记录关卡
     private int checkPoint;
 
-    public int getCheckPoint() {
-        return checkPoint;
-    }
 
-    public void setCheckPoint(int checkPoint) {
-        this.checkPoint = checkPoint;
-    }
 
     public void update(){
         MessageManager messageManager = MessageManager.getInstance();
@@ -271,50 +188,17 @@ public class DataManager {
         this.setRoleList(crvs);
     }
 
-    public Role getRole() {
-        return role;
-    }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
     public void LoadRole(int role_id){
         this.role=jdbc.queryRoleByRoleId(role_id);
         System.out.println(role.toString());
     }
 
-
-
     //怪物的数据
-
-    public Sprite getPlayerSprite() {
-        return playerSprite;
-    }
-
-    public void setPlayerSprite(Sprite playerSprite) {
-        this.playerSprite = playerSprite;
-    }
-
 
 
     private List<ChooseRoleView> RoleList;
-    public List<ChooseRoleView> getRoleList() {
-        return RoleList;
-    }
-    public void setRoleList(List<ChooseRoleView> roleList) {
-        RoleList = roleList;
-    }
-
-
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     //注册用户
     public void newUser(String username,String password){
@@ -375,8 +259,12 @@ public class DataManager {
         monsterdice = Random.getInstance().getRandom(monsters.getMonster_max_Strength());
         if (playerdice>monsterdice){
             monsters.setMonster_HP(monsters.getMonster_HP()-temp.getAttribute().getBase_attack());
-        }else{
+           new TalkBox("怪物掷出了"+monsterdice+"点,"+"你掷出了"+playerdice+"点,怪物受到了"+temp.getAttribute().getBase_attack()+"伤害");
+        }else {
+
             temp.getAttribute().setBase_HP(temp.getAttribute().getBase_HP()-monsters.getMonster_attack());
+            System.out.println(temp.getAttribute().getBase_HP());
+            new TalkBox("怪物掷出了"+monsterdice+"点,"+"你掷出了"+playerdice+"点,你受的了"+monsters.getMonster_attack()+"伤害");
         }
         if (monsters.getMonster_HP()<=0)
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"玩家胜利"));
@@ -384,4 +272,163 @@ public class DataManager {
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"玩家失败"));
         }
     }
+
+
+
+
+
+
+
+    public RoleAttributeView getTemp() {
+        return temp;
+    }
+
+    public void setTemp(RoleAttributeView temp) {
+        this.temp = temp;
+    }
+
+    public GoodBase getWantToBuy() {
+        return wantToBuy;
+    }
+
+    public void setWantToBuy(GoodBase wantToBuy) {
+        this.wantToBuy = wantToBuy;
+    }
+    public List<Magic> getMonsterMagicList() {
+        return monsterMagicList;
+    }
+    public List<Magic> getPlayerMagicList() {
+        return playerMagicList;
+    }
+    public void setPlayerMagicList(List<Magic> playerMagicList) {
+        this.playerMagicList = playerMagicList;
+    }
+    public void setMonsterMagicList(List<Magic> monstaerMagicList) {
+        this.monsterMagicList = monstaerMagicList;
+    }
+    public int getCheckPoint() {
+        return checkPoint;
+    }
+
+    public void setCheckPoint(int checkPoint) {
+        this.checkPoint = checkPoint;
+    }
+    public List<Road> getRoadList() {
+        return roadList;
+    }
+
+    public void setRoadList(List<Road> roadList) {
+        this.roadList = roadList;
+    }
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+    public List<GoodBase> getGoodBaseList() {
+        return goodBaseList;
+    }
+
+    public void setGoodBaseList(List<GoodBase> goodBaseList) {
+        this.goodBaseList = goodBaseList;
+    }
+    public List<Good> getGoodList() {
+        return goodList;
+    }
+
+    public void setGoodList(List<Good> goodList) {
+        this.goodList = goodList;
+    }
+    public List<ChooseRoleView> getRoleList() {
+        return RoleList;
+    }
+    public void setRoleList(List<ChooseRoleView> roleList) {
+        RoleList = roleList;
+    }
+
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public Sprite getPlayerSprite() {
+        return playerSprite;
+    }
+
+    public void setPlayerSprite(Sprite playerSprite) {
+        this.playerSprite = playerSprite;
+    }
+    public int getMonsterdice() {
+        return monsterdice;
+    }
+
+    public void setMonsterdice(int monsterdice) {
+        this.monsterdice = monsterdice;
+    }
+
+    public int getPlayerdice() {
+        return playerdice;
+    }
+
+    public void setPlayerdice(int playerdice) {
+        this.playerdice = playerdice;
+    }
+    public Monsters getMonsters() {
+        return monsters;
+    }
+
+    public void setMonsters(Monsters monsters) {
+        this.monsters = monsters;
+    }
+    public RoleAttributeView getRoleAttribute() {
+        return roleAttribute;
+    }
+
+    public void setRoleAttribute(RoleAttributeView roleAttribute) {
+        this.roleAttribute = roleAttribute;
+    }
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+    public List<Magic_Career_Grade> getMcgList() {
+        return mcgList;
+    }
+
+    public void setMcgList(List<Magic_Career_Grade> mcgList) {
+        this.mcgList = mcgList;
+    }
+    public List<Monsters_Magic> getMmlist() {
+        return mmlist;
+    }
+
+    public void setMmlist(List<Monsters_Magic> mmlist) {
+        this.mmlist = mmlist;
+    }
+
+    public Magic getPlayerMagic() {
+        return playerMagic;
+    }
+
+    public void setPlayerMagic(Magic playerMagic) {
+        this.playerMagic = playerMagic;
+    }
+
+    public Magic getMonsterMagic() {
+        return monsterMagic;
+    }
+
+    public void setMonsterMagic(Magic monsterMagic) {
+        this.monsterMagic = monsterMagic;
+    }
+
 }
