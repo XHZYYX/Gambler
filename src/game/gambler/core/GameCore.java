@@ -108,6 +108,7 @@ public  class GameCore {
         gameLogic.update(elapsedTime);
         sceneManager.update(elapsedTime);
         uiManager.update(elapsedTime);
+        DataManager.getInstance().update();
 
         if ( messageManager.currentMessage!=null){
             messageManager.currentMessage.finish();

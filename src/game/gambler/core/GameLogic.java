@@ -46,7 +46,7 @@ public class GameLogic {
                 case "打开创建角色":;break;
                 case "进入关卡":cloneRoleAttribute();break;
                 case "遇到怪物了":loadingMonsterInformation();break;
-                case "5":;break;
+                case "使用技能":;break;
                 case "6":;break;
                 case "7":;break;
                 case "8":;break;

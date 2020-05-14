@@ -90,6 +90,30 @@ public class DataManager {
     //怪物骰子值
     private int monsterdice;
 
+
+    public void PlayerUseMagic(){
+        switch (playerMagic.getMagic_name()){
+            case "大火球术":break;
+            case "恢复":Magic_huifu();break;
+        }
+    }
+
+    public void Magic_huifu(){
+        Attribute attribute = temp.getAttribute();
+        if (attribute.getBase_MP()>=playerMagic.getMagic_mana()){
+            temp.getAttribute().setBase_HP(temp.getAttribute().getBase_HP()+playerMagic.getMagic_baseValue());
+            new TalkBox("使用恢复技能，恢复10点生命值");
+        }else{
+            new TalkBox("MP值不足");
+        }
+
+
+
+    }
+
+
+
+
     public Road move()  {
         Road road;
         while(playerdice>0){
@@ -158,9 +182,9 @@ public class DataManager {
     public void update(){
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
-        if (message!=null&&message.getMsg_type().equals(Message.Msgtype.graphics_msg)){
+        if (message!=null&&message.getMsg_type().equals(Message.Msgtype.all_msg)){
             switch (message.getMsg_Content()){
-
+                case "释放魔法":PlayerUseMagic();break;
             }
         }
     }
