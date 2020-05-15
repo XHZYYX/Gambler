@@ -2,6 +2,7 @@ package game.gambler.part.UI.Panel;
 
 import game.gambler.part.UI.Box.BackpackBox;
 import game.gambler.part.UI.Box.EquipmentBox;
+import game.gambler.part.UI.Box.PropertyBox;
 import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Equipment;
@@ -45,7 +46,7 @@ public class EquipmentPanel extends JPanel{
                 DataManager.getInstance().ChangeEquipment(equipment);
                 DataManager.getInstance().loadEquipment();
                 UIManager.getInstance().updateEquipmentBox();
-                new BackpackBox();
+                new PropertyBox();
             }
         });
 

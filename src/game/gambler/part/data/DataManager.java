@@ -138,14 +138,12 @@ public class DataManager {
                     UIManager.getInstance().updateEquipmentBox();
                 }
             }
+            UIManager.getInstance().updateStatusBarPanel();
         }
-
-
+        loadEquipment();
+        loadRoleAttribute();
 
     }
-
-
-
 
     public Road move()  {
         Road road;
@@ -218,15 +216,22 @@ public class DataManager {
         if (message!=null&&message.getMsg_type().equals(Message.Msgtype.all_msg)){
             switch (message.getMsg_Content()){
                 case "释放魔法":PlayerUseMagic();break;
-                case "获得buff":getBuff();break;
+                case "获得神的祝福buff":getBuff(1);break;
+                case "获得天使之翼buff":getBuff(2);break;
             }
         }
     }
 
-    private void getBuff() {
-        Buff buff = new Buff();
-
-
+    private void getBuff(int buff_id) {
+        List<Role_Buff> role_buffs = jdbc.queryRoleBuff();
+        for (Role_Buff role_buff:role_buffs){
+            if (role_buff.getBuff_id() == buff_id)
+                new TalkBox("你已经获得了这个buff");return;
+        }
+        jdbc.setPlayerBuff(buff_id);
+        new TalkBox("获得神的祝福buff,攻击+5,防御+5,血量+10");
+        loadRoleAttribute();
+        UIManager.getInstance().updateStatusBarPanel();
     }
 
     public void loadUserInformation() {
@@ -379,7 +384,16 @@ public class DataManager {
         }
     }
 
-
+    public void loadRoleAttribute() {
+        Attribute attribute= jdbc.queryAttribute(role);
+        List<Equipment> equipment=jdbc.queryTrueEquipment();
+        List<Buff> buffs = new ArrayList<>();
+        for (Role_Buff role_buff:jdbc.queryRoleBuff()){
+            buffs.add(jdbc.queryBuffbyId(role_buff.getBuff_id()));
+        }
+        RoleAttributeView battleAttributeView = new RoleAttributeView(attribute,equipment,buffs);
+        setRoleAttribute(battleAttributeView);
+    }
 
 
 
@@ -569,10 +583,5 @@ public class DataManager {
         this.equipmentFalse = equipmentFalse;
     }
 
-    public void loadRoleAttribute() {
-        Attribute attribute= jdbc.queryAttribute(role);
-        List<Equipment> equipment=jdbc.queryTrueEquipment();
-        RoleAttributeView battleAttributeView = new RoleAttributeView(attribute,equipment,null);
-        setRoleAttribute(battleAttributeView);
-    }
+
 }

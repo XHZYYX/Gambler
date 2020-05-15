@@ -1,5 +1,6 @@
 package game.gambler.part.UI.Panel;
 
+import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Role;
 
@@ -23,6 +24,7 @@ public class StatusBarPanel extends JPanel {
         mp.setBarColor(Color.CYAN);
         mp.setBorderColor(Color.white);
         mp.setTitle("MP");
+        UIManager.getInstance().add("StatusBarPanel",this);
     }
 
     public StatusBarPanel(int x,int y,int width,int height){
@@ -48,4 +50,8 @@ public class StatusBarPanel extends JPanel {
         hp.render(graphics);
     }
 
+    public void reset(){
+        hp.setCurrentValue(DataManager.getInstance().getRoleAttribute().getAttribute().getBase_HP());
+        mp.setCurrentValue(DataManager.getInstance().getRoleAttribute().getAttribute().getBase_MP());
+    }
 }

@@ -100,7 +100,7 @@ public class HomeScene extends Scene{
                         }else if(SceneManager.getInstance().SpriteList.get("npc3")!=null){
                             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"关卡选择"));
                         }else if(SceneManager.getInstance().SpriteList.get("npc4")!=null){
-                            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"获得buff"));
+                            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"获得神的祝福buff"));
                         }
                     }
                 }

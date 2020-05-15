@@ -99,12 +99,12 @@ public class UIManager {
 
     private  void Defeat(){
         show(queryUIByName("ChapterControllerBar"));
-        updateChpaterControllerBar();
+        updateChapterControllerBar();
         new ResuscitateTalkBox("你死了,是否使用救命草");
     }
     private void Victory() {
        show(queryUIByName("ChapterControllerBar"));
-        updateChpaterControllerBar();
+        updateChapterControllerBar();
         new TalkBox("恭喜你打败了怪兽");
     }
 
@@ -215,7 +215,7 @@ public class UIManager {
     }
 
     private void PropertyBoxUI(){
-        PropertyBox propertyBox = new PropertyBox(20,20);
+       // PropertyBox propertyBox = new PropertyBox(20,20);
         JFrame j =SceneManager.getInstance().getGameWindow();
         Scene scene  = SceneManager.getInstance().getNow();
         System.out.println("PropertyBoxUI");
@@ -231,8 +231,7 @@ public class UIManager {
     }
 
     public void showPropertyBox(){
-        new PropertyBox(440,234);
-        System.out.println("CCC");
+        new PropertyBox();
     }
 
     public Component queryUIByName(String name){
@@ -259,12 +258,17 @@ public class UIManager {
         equipmentBox.dispose();
         UImap.remove(equipmentBox);
     }
-    public void updateChpaterControllerBar(){
+    public void updateChapterControllerBar(){
         ChapterControllerBar chapterControllerBar=(ChapterControllerBar)queryUIByName("ChapterControllerBar");
         chapterControllerBar.setVisible(false);
         chapterControllerBar.reset();
         chapterControllerBar.setVisible(true);
-
+    }
+    public void updateStatusBarPanel(){
+        StatusBarPanel statusBarPanel = (StatusBarPanel)queryUIByName("StatusBarPanel");
+        statusBarPanel.setVisible(false);
+        statusBarPanel.reset();
+        statusBarPanel.setVisible(true);
     }
 
 }

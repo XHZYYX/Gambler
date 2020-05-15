@@ -92,6 +92,22 @@ public class Jdbc {
         return null;
     }
 
+    public List<Role_Buff> queryRoleBuff(){
+        int role_id=DataManager.getInstance().getRole().getRole_id();
+        String sql = "SELECT * " +
+                "FROM Role_Buff WHERE role_id="+role_id;
+        List<Role_Buff> Role_Buffs = new ArrayList<>();
+        try {
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                Role_Buff role_buff = new Role_Buff(rs.getInt(1), rs.getInt(2));
+                Role_Buffs.add(role_buff);
+            }
+
+        } catch (SQLException e) {
+        }
+        return Role_Buffs;
+    }
     //根据用户名 查询用户信息
     public User queryUserByName(String name) {
         try {
@@ -207,9 +223,7 @@ public class Jdbc {
                         rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8));
                 Career.add(career);
             }
-
         } catch (SQLException e) {
-
         }
         return Career;
     }
@@ -301,8 +315,8 @@ public class Jdbc {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Equipment equipment = new Equipment(rs.getInt(1), rs.getInt(2), rs.getString(3),
-                        rs.getBoolean(3), rs.getInt(4),
-                        rs.getInt(5), rs.getInt(6), rs.getInt(7));
+                        rs.getBoolean(4), rs.getInt(5),
+                        rs.getInt(6), rs.getInt(7), rs.getInt(8));
                 Equipments.add(equipment);
             }
 
@@ -325,8 +339,8 @@ public class Jdbc {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Equipment equipment = new Equipment(rs.getInt(1), rs.getInt(2), rs.getString(3),
-                        rs.getBoolean(3), rs.getInt(4),
-                        rs.getInt(5), rs.getInt(6), rs.getInt(7));
+                        rs.getBoolean(4), rs.getInt(5),
+                        rs.getInt(6), rs.getInt(7), rs.getInt(8));
                 Equipments.add(equipment);
             }
         } catch (SQLException e) {
@@ -540,6 +554,33 @@ public class Jdbc {
             e.printStackTrace();
         }
     }
+
+    public Buff queryBuffbyId(int id) {
+        Buff buff=new Buff();
+        String sql = "SELECT * FROM Buff WHERE Buff_id="+id;
+
+        try {
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                buff = new Buff(rs.getInt(1),
+                        rs.getInt(2),rs.getInt(2),
+                        rs.getInt(4),rs.getString(5),rs.getString(6));
+            }
+        } catch (SQLException e) {
+        }
+        return buff;
+    }
+
+    public void setPlayerBuff(int buff_id){
+        String sql="INSERT INTO `Role_Buff` (`role_id`,`Buff_id`) "+
+                " VALUES ('"+DataManager.getInstance().getRole().getRole_id()+ "', '" +buff_id+"')";
+        try {
+            statement.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 
