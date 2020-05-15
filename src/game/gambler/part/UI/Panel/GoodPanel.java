@@ -29,7 +29,7 @@ public class GoodPanel extends JPanel{
                 super.mouseClicked(e);
                 DataManager.getInstance().sellGood(good);
                 DataManager.getInstance().loadGoods();
-                UIManager.getInstance().updataBackpackBox();
+                UIManager.getInstance().updateBackpackBox();
                 new BackpackBox();
             }
         });

@@ -14,6 +14,21 @@ public class Equipment {
 
     //装备增加防御
     private int equipment_defence;
+
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "equipment_id=" + equipment_id +
+                ", role_id=" + role_id +
+                ", equipment_name='" + equipment_name + '\'' +
+                ", equipment_boolean=" + equipment_boolean +
+                ", equipment_enhancement=" + equipment_enhancement +
+                ", equipment_defence=" + equipment_defence +
+                ", equipment_attack=" + equipment_attack +
+                ", equipment_health=" + equipment_health +
+                '}';
+    }
+
     //装备增加攻击
     private int equipment_attack;
     //装备增加血量

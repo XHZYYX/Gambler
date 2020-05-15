@@ -117,7 +117,7 @@ public class PropertyBox extends JDialog {
         graphics.drawImage(img,60,60,null);
 
         //draw text weapon
-        graphics.drawString("武器           20",20,220);
+        graphics.drawString("武器           ",20,220);
 
 
         //draw text weather

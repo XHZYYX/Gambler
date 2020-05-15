@@ -62,11 +62,8 @@ public class DataManager {
     //保存当前登录的用户数据
 
 
-
     private List<EquipmentBase> equipmentBaseList;
-
     private List<Equipment> equipmentTrue;
-
     private List<Equipment> equipmentFalse;
 
 
@@ -82,6 +79,7 @@ public class DataManager {
     private List<Magic> monsterMagicList = new ArrayList<>();
     private Magic playerMagic;
     private Magic monsterMagic;
+
 
 
     //当前怪物
@@ -117,6 +115,29 @@ public class DataManager {
             new TalkBox("使用恢复技能，恢复10点生命值");
         }else{
             new TalkBox("MP值不足");
+        }
+    }
+    public void ChangeEquipment(Equipment equipment) {
+        String position="";
+        for (EquipmentBase equipmentBase:equipmentBaseList){
+            if (equipmentBase.getEquipment_name().equals(equipment.getEquipment_name())){
+                position=equipmentBase.getEquipment_position();
+                System.out.println(position);
+            }
+        }
+        for(Equipment equipment1:equipmentTrue){
+            System.out.println("2"+equipment1.getEquipment_name());
+            for(EquipmentBase equipmentBase:equipmentBaseList){
+                System.out.println(1+equipmentBase.getEquipment_name());
+                if (equipmentBase.getEquipment_name().equals(equipment1.getEquipment_name())
+                        &&equipmentBase.getEquipment_position().equals(position)){
+                    System.out.println(equipmentBase.getEquipment_name());
+                    System.out.println(equipment1.getEquipment_name());
+                    jdbc.changeTrueEquipment(equipment);
+                    jdbc.changeFalseEquipment(equipment1);
+                    UIManager.getInstance().updateEquipmentBox();
+                }
+            }
         }
 
 
@@ -197,8 +218,15 @@ public class DataManager {
         if (message!=null&&message.getMsg_type().equals(Message.Msgtype.all_msg)){
             switch (message.getMsg_Content()){
                 case "释放魔法":PlayerUseMagic();break;
+                case "获得buff":getBuff();break;
             }
         }
+    }
+
+    private void getBuff() {
+        Buff buff = new Buff();
+
+
     }
 
     public void loadUserInformation() {
@@ -207,7 +235,6 @@ public class DataManager {
         User user = DataManager.getInstance().getUser();
         //通过user 查询改user下的全部role
         List<Role> Roles= jdbc.queryRolesByUserId(user.getUser_id());
-
         //根据角色信息加载页面
         /*
          * 需要的内容如下
@@ -280,10 +307,10 @@ public class DataManager {
                 case "王大锤":jdbc.addEquipment(
                         new Equipment(0,role.getRole_id(),"王大锤",false,0,0,10,0));
 
+                case "青虹剑":jdbc.addEquipment(
+                        new Equipment(0,role.getRole_id(),"青虹剑",false,0,0,10,0)
+                );
             }
-
-
-
             jdbc.updataCoin(coin-sellPrice);
             this.user = jdbc.queryUserByName(user.getUsername());
             JLabel jLabel=(JLabel) UIManager.getInstance().queryUIByName("coin");
@@ -542,6 +569,10 @@ public class DataManager {
         this.equipmentFalse = equipmentFalse;
     }
 
-
-
+    public void loadRoleAttribute() {
+        Attribute attribute= jdbc.queryAttribute(role);
+        List<Equipment> equipment=jdbc.queryTrueEquipment();
+        RoleAttributeView battleAttributeView = new RoleAttributeView(attribute,equipment,null);
+        setRoleAttribute(battleAttributeView);
+    }
 }

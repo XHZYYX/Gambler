@@ -71,6 +71,10 @@ public class HomeScene extends Scene{
         npc3.setX(450);
         npc3.setY(680);
         this.npcMap.put("npc3",npc3);
+        NPC npc4=new NPC(down);
+        npc4.setX(864);
+        npc4.setY(256);
+        this.npcMap.put("npc4",npc4);
 
         move =new KeyAdapter() {
             @Override
@@ -95,6 +99,8 @@ public class HomeScene extends Scene{
                             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"打开购买商品页面"));
                         }else if(SceneManager.getInstance().SpriteList.get("npc3")!=null){
                             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"关卡选择"));
+                        }else if(SceneManager.getInstance().SpriteList.get("npc4")!=null){
+                            MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"获得buff"));
                         }
                     }
                 }

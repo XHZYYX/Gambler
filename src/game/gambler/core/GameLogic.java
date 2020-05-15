@@ -81,17 +81,13 @@ public class GameLogic {
     private void playGame() {
         //判断存档
         //加载人物数据
-        Role role =dataManager.getRole();
-        Attribute attribute= jdbc.queryAttribute(role);
-        List<Equipment> equipment=jdbc.queryTrueEquipment();
-        RoleAttributeView battleAttributeView = new RoleAttributeView(attribute,equipment,null);
+
         dataManager.loadGoods();
-        dataManager.setRoleAttribute(battleAttributeView);
+        dataManager.loadRoleAttribute();
         dataManager.setMcgList(jdbc.queryPlayerMagicID());
         dataManager.setPlayerMagicList(jdbc.queryPlayerMagic());
         dataManager.setEquipmentBaseList(jdbc.queryEquipmentBase());
-        dataManager.setEquipmentFalse(jdbc.queryFalseEquipment());
-        dataManager.setEquipmentTrue(jdbc.queryTrueEquipment());
+        dataManager.loadEquipment();
 
         //DataManager中的Role 存放的是当前的角色信息
 

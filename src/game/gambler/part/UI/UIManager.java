@@ -99,12 +99,12 @@ public class UIManager {
 
     private  void Defeat(){
         show(queryUIByName("ChapterControllerBar"));
-        updataChpaterControllerBar();
+        updateChpaterControllerBar();
         new ResuscitateTalkBox("你死了,是否使用救命草");
     }
     private void Victory() {
        show(queryUIByName("ChapterControllerBar"));
-        updataChpaterControllerBar();
+        updateChpaterControllerBar();
         new TalkBox("恭喜你打败了怪兽");
     }
 
@@ -249,17 +249,17 @@ public class UIManager {
         scene.setVisible(true);
     }
 
-    public void updataBackpackBox(){
+    public void updateBackpackBox(){
         BackpackBox backpackBox=(BackpackBox)queryUIByName("BackpackBox");
         backpackBox.dispose();
         UImap.remove(backpackBox);
     }
-    public void updataEquipmentBox(){
+    public void updateEquipmentBox(){
         EquipmentBox equipmentBox=(EquipmentBox)queryUIByName("EquipmentBox");
         equipmentBox.dispose();
         UImap.remove(equipmentBox);
     }
-    public void updataChpaterControllerBar(){
+    public void updateChpaterControllerBar(){
         ChapterControllerBar chapterControllerBar=(ChapterControllerBar)queryUIByName("ChapterControllerBar");
         chapterControllerBar.setVisible(false);
         chapterControllerBar.reset();

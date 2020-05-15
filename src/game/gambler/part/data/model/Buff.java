@@ -4,7 +4,7 @@ public class Buff {
     //主键id
     private int Buff_id;
     //攻击力增益
-    private int ActackIncrease;
+    private int AttackIncrease;
     //血量增益
     private int HPIncrease;
     //防御力增益
@@ -17,10 +17,10 @@ public class Buff {
     public Buff() {
     }
 
-    public Buff(int buff_id, int actackIncrease, int HPIncrease,
+    public Buff(int buff_id, int attackIncrease, int HPIncrease,
                 int defenseIncrease, String buff_name, String buff_description) {
         Buff_id = buff_id;
-        ActackIncrease = actackIncrease;
+        AttackIncrease = attackIncrease;
         this.HPIncrease = HPIncrease;
         DefenseIncrease = defenseIncrease;
         this.buff_name = buff_name;
@@ -31,8 +31,8 @@ public class Buff {
         return Buff_id;
     }
 
-    public int getActackIncrease() {
-        return ActackIncrease;
+    public int getAttackIncrease() {
+        return AttackIncrease;
     }
 
     public int getHPIncrease() {

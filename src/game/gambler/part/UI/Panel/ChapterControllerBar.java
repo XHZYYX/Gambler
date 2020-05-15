@@ -2,6 +2,7 @@ package game.gambler.part.UI.Panel;
 
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
+import game.gambler.part.UI.Box.BackpackBox;
 import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
 
@@ -22,7 +23,7 @@ public class ChapterControllerBar extends JPanel {
         this.add(MP);
         JButton move = new JButton("移动");
         JButton magic = new JButton("魔法");
-        JButton paoperty = new JButton("状况");
+        //JButton property = new JButton("状况");
         JButton util = new JButton("工具");
         move.setBounds(505,20,70,40);
         move.addMouseListener(new MouseAdapter() {
@@ -43,12 +44,17 @@ public class ChapterControllerBar extends JPanel {
             }
         });
         UIManager.getInstance().add("ChapterControllerBar",this);
-
+        util.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new BackpackBox();
+            }
+        });
         this.add(move);
         magic.setBounds(505,70,70,40);
         this.add(magic);
-        paoperty.setBounds(660,20,70,40);
-        this.add(paoperty);
+        //property.setBounds(660,20,70,40);
+        //this.add(property);
         util.setBounds(660,70,70,40);
         this.add(util);
         this.setBounds(195,600,890,125);

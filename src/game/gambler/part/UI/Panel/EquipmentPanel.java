@@ -1,6 +1,7 @@
 package game.gambler.part.UI.Panel;
 
 import game.gambler.part.UI.Box.BackpackBox;
+import game.gambler.part.UI.Box.EquipmentBox;
 import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Equipment;
@@ -32,12 +33,23 @@ public class EquipmentPanel extends JPanel{
                 DataManager.getInstance().sellEquipment(equipment);
                 DataManager.getInstance().loadEquipment();
 
-                UIManager.getInstance().updataEquipmentBox();
+                UIManager.getInstance().updateEquipmentBox();
                 new BackpackBox();
             }
         });
         this.add(use);
         this.setSize(250,40);
+        use.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DataManager.getInstance().ChangeEquipment(equipment);
+                DataManager.getInstance().loadEquipment();
+                UIManager.getInstance().updateEquipmentBox();
+                new BackpackBox();
+            }
+        });
+
+
 
         this.setLayout(null);
         this.setVisible(true);
