@@ -18,14 +18,8 @@ public class PropertyBox extends JDialog {
     int X_max,Y_max;
     int x,y;
     int width,height;
-
-
     //武器 防具 盾牌
-
     //力量骰  魔法骰
-
-
-
     Image  img =new ImageIcon("resource/images/sprite2.jpg").getImage().getScaledInstance(100,100,1);
     public PropertyBox(){
         //440,234
@@ -37,6 +31,7 @@ public class PropertyBox extends JDialog {
         DataManager dataManager =DataManager.getInstance();
         Role role = dataManager.getRole();
         Attribute attribute = dataManager.getRoleAttribute().getAttribute();
+        this.add(new PropertyBoxPanel());
         //等级  金币
 //        //draw text weapon
 //        graphics.drawString("武器           ",20,220);
@@ -44,14 +39,6 @@ public class PropertyBox extends JDialog {
 //        graphics.drawString("防具           20",20,240);
 //        //draw text sheild
 //        graphics.drawString("盾牌           20",20,260);
-        int i=1;
-        for(Equipment equipment:DataManager.getInstance().getEquipmentTrue()){
-            JLabel jLabel = new JLabel(equipment.getEquipment_name());
-            jLabel.setToolTipText("攻击力:"+equipment.getEquipment_attack()+"防御力:"+equipment.getEquipment_defence()+"血量:"+equipment.getEquipment_health());
-            jLabel.setBounds(20,200+i*20,70,20);
-            this.getContentPane().add(jLabel);
-            i++;
-        }
 
 
         this.setLayout(null);
@@ -63,63 +50,72 @@ public class PropertyBox extends JDialog {
     @Override
     public void paint(Graphics graphics){
         super.paint(graphics);
-
         Color oldc=graphics.getColor();
-        graphics.setColor(Color.PINK);
-        graphics.fillRect(0,0,super.getWidth(),super.getHeight());
+        //graphics.fillRect(0,0,super.getWidth(),super.getHeight());
         //graphics.drawImage(img,30,40,null);
-        graphics.setColor(Color.WHITE);
+        graphics.setColor(Color.black);
         //graphics.drawString("当前人物等级：30",30,40);
         draw(graphics);
         graphics.setColor(oldc);
+
     }
 
     public void draw(Graphics graphics){
-
         //draw name
         graphics.setFont(new Font("Dialog",Font.PLAIN,15));
         graphics.drawString("LV."+ DataManager.getInstance().getRole().getGrade() +
-                DataManager.getInstance().getRole().getRole_name() ,40,50);
-
-
+                DataManager.getInstance().getRole().getRole_name() ,40,80);
         //draw wires
         graphics.setColor(Color.black);
-        graphics.drawLine(20,20,180,20);
-        graphics.drawLine(180,20,180,170);
-        graphics.drawLine(180,170,20,170);
-        graphics.drawLine(20,170,20,20);
-
-
+        graphics.drawLine(20,50,180,50);
+        graphics.drawLine(180,50,180,200);
+        graphics.drawLine(180,200,20,200);
+        graphics.drawLine(20,200,20,50);
         //draw img
-        graphics.drawImage(img,60,60,null);
-
-
-
+        graphics.drawImage(img,60,90,null);
         //draw seperator
         graphics.drawLine(200,20,200,280);
-
         //draw text strength
-        graphics.drawString("力量           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_strength(),220,50);
-
-
+        graphics.drawString("力量           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_max_Strength(),220,50);
         //draw text mana
-        graphics.drawString("魔法           20",220,80);
-
+        graphics.drawString("魔法           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_max_Magic(),220,80);
         //draw seperator
         graphics.drawLine(220,100,380,100);
         graphics.drawLine(220,200,380,200);
 
         //draw te strength
-        graphics.drawString("手力           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_strength(),220,120);
+        graphics.drawString("手力           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_strength(),220,150);
         //draw brain strengeth
-        graphics.drawString("知力           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_Intellogence(),220,140);
+        graphics.drawString("知力           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_Intellogence(),220,170);
         //draw phyics strengeth
-        graphics.drawString("体力           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_physical(),220,160);
+        graphics.drawString("体力           "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_physical(),220,190);
 
         //draw attack
-        graphics.drawString("攻击力          "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_attack(),220,220);
+        graphics.drawString("攻击力          "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_attack(),220,250);
         //draw bouyoku
-        graphics.drawString("防御力          "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_defense(),220,240);
+        graphics.drawString("防御力          "+DataManager.getInstance().getRoleAttribute().getAttribute().getBase_defense(),220,270);
 
     }
+}
+    class PropertyBoxPanel extends JPanel{
+        public PropertyBoxPanel(){
+            int i=1;
+            for(Equipment equipment:DataManager.getInstance().getEquipmentTrue()){
+                JLabel jLabel = new JLabel(equipment.getEquipment_name());
+                jLabel.setToolTipText("攻击力:"+equipment.getEquipment_attack()+"防御力:"+equipment.getEquipment_defence()+"血量:"+equipment.getEquipment_health());
+                jLabel.setBounds(20,200+i*20,70,20);
+                this.add(jLabel);
+                i++;
+            }
+            this.setOpaque(true);
+            JLabel x = new JLabel("你大学也");
+            x.setBounds(20,300,80,30);
+            x.setBorder(new LineBorder(Color.red,1));
+            this.add(x);
+            this.setBounds(0,0,400,300);
+            this.setLayout(null);
+            this.setVisible(true);
+        }
+
+
 }

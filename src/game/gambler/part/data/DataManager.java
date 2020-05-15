@@ -60,14 +60,9 @@ public class DataManager {
     //角色的物品集合
     private List<Good> goodList;
     //保存当前登录的用户数据
-
-
     private List<EquipmentBase> equipmentBaseList;
     private List<Equipment> equipmentTrue;
     private List<Equipment> equipmentFalse;
-
-
-
 
     private User user;
     //人物的技能集合 魔法ID
@@ -136,12 +131,18 @@ public class DataManager {
                     jdbc.changeTrueEquipment(equipment);
                     jdbc.changeFalseEquipment(equipment1);
                     UIManager.getInstance().updateEquipmentBox();
+                    loadEquipment();
+                    loadRoleAttribute();
+                    UIManager.getInstance().updateStatusBarPanel();
+                    return;
                 }
             }
-            UIManager.getInstance().updateStatusBarPanel();
         }
+        jdbc.changeTrueEquipment(equipment);
+        UIManager.getInstance().updateEquipmentBox();
         loadEquipment();
         loadRoleAttribute();
+        UIManager.getInstance().updateStatusBarPanel();
 
     }
 
