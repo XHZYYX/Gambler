@@ -60,7 +60,6 @@ public class UIManager {
                 case "打开登录页面":loginUI();break;
                 case "打开注册框":registerUI();break;
                 case "登录成功": chooseRole();break;
-                //case "注册成功": loginUI();break;
                 case "进入游戏": HomeUI();break;
                 case "账号密码错误":reLogin();break;
                 case "打开属性面板": attributeBoxUI();break;
@@ -71,7 +70,6 @@ public class UIManager {
                 case "用户名重复": registerUserError();break;
                 case "两次密码不一致": registerPassWDError();break;
                 case "打开创建角色":newRoleUI();break;
-                case "购买物品":test();break;
                 case "打开背包":openBackPackBox();break;
                 case "遇到怪物了":BattleController();break;
                 case "玩家胜利":Victory();break;
@@ -80,7 +78,6 @@ public class UIManager {
                 case "打开魔法":PlayerMagicUI();break;
                 case "打开装备面板":openEquipmentBox();break;
                 case "打开购买装备页面":openEquipmentShopBox();break;
-                case "test":test();break;
             }
         }
     }
@@ -148,7 +145,7 @@ public class UIManager {
     }
 
     private void CheckPointChooseUI() {
-        new CheckPointChooseBox(256,128,6);
+        new CheckPointChooseBox(256,128,DataManager.getInstance().getUser().getCheckpoint());
     }
 
     private void ShopUI() {
@@ -157,16 +154,9 @@ public class UIManager {
     }
 
     private void attributeBoxUI() {
-        showPropertyBox();
-        //PropertyBoxUI();
+        new PropertyBox();
     }
 
-    private void test() {
-        showPropertyBox();
-    }
-//    public void remove(String name){
-//        this.UImap.remove(name);
-//    }
     private void chooseRole() {
 
         //根据获取的信息组织页面
@@ -182,6 +172,7 @@ public class UIManager {
 
         JPasswordField jPasswordField = (JPasswordField)queryUIByName("UI-login-password-input");
         JTextField username = (JTextField)queryUIByName("UI_login_username_input");
+        new TalkBox("账号密码错误");
         //jPasswordField.setText("");
     }
 
@@ -231,7 +222,7 @@ public class UIManager {
     }
 
     public void showPropertyBox(){
-        new PropertyBox();
+
     }
 
     public Component queryUIByName(String name){

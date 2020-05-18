@@ -1,25 +1,14 @@
 package game.gambler.part.UI;
 
-
-
-import game.gambler.core.Adaptor.ListenerAdaptor;
 import game.gambler.core.Window.GameWindow;
 import game.gambler.part.Scene.SceneManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class ImageButton extends JButton{
 
-    private class Listener extends ListenerAdaptor{
-        @Override
-        public void keyPressed(KeyEvent e) {
-            System.out.println(e.getKeyCode());
-        }
-    }
     public ImageButton(String toolTip,int width,int height,ImageIcon iconDefault,ImageIcon iconPressed,ImageIcon iconRollover){
         Cursor cursor =
                 Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);

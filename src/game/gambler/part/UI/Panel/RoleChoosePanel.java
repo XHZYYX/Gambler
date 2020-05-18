@@ -1,10 +1,7 @@
 package game.gambler.part.UI.Panel;
 
-import game.gambler.part.Message.Message;
-import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
-import game.gambler.part.data.model.Role;
 import game.gambler.part.data.view.ChooseRoleView;
 
 import javax.swing.*;
@@ -22,7 +19,7 @@ public class RoleChoosePanel extends JPanel {
 
 
     List<ChooseRoleView> crvs;
-    Map<Integer,RoleView> RoleViews=new HashMap<>();
+    Map<Integer, RoleViewPanel> RoleViews=new HashMap<>();
 
 
     public RoleChoosePanel(){
@@ -48,9 +45,9 @@ public class RoleChoosePanel extends JPanel {
 
         this.crvs =  DataManager.getInstance().getRoleList();
         for (ChooseRoleView chooseRoleView :crvs){
-            RoleView roleView = new RoleView(chooseRoleView,x,y);
-            this.add(roleView);
-            RoleViews.put(chooseRoleView.getRole_id(),roleView);
+            RoleViewPanel roleViewPanel = new RoleViewPanel(chooseRoleView,x,y);
+            this.add(roleViewPanel);
+            RoleViews.put(chooseRoleView.getRole_id(), roleViewPanel);
             x +=256;
         }
         for (Integer role_id :RoleViews.keySet()){
@@ -60,7 +57,7 @@ public class RoleChoosePanel extends JPanel {
                     for (Integer role_id :RoleViews.keySet()){
                         RoleViews.get(role_id).setBorder(null);
                     }
-                    ((RoleView)e.getSource()).setBorder(new LineBorder(Color.red,1));
+                    ((RoleViewPanel)e.getSource()).setBorder(new LineBorder(Color.red,1));
                     DataManager.getInstance().LoadRole(role_id);
                 }
             });

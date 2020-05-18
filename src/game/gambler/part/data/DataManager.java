@@ -143,7 +143,6 @@ public class DataManager {
         loadEquipment();
         loadRoleAttribute();
         UIManager.getInstance().updateStatusBarPanel();
-
     }
 
     public Road move()  {
@@ -208,8 +207,6 @@ public class DataManager {
 
     //记录关卡
     private int checkPoint;
-
-
 
     public void update(){
         MessageManager messageManager = MessageManager.getInstance();

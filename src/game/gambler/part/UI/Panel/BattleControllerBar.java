@@ -23,8 +23,8 @@ public class BattleControllerBar extends JPanel {
         MonsterHP.setBounds(350,20,100,30);
         this.add(MonsterHP);
         JButton battle = new JButton("战斗");
-        JButton magic = new JButton("魔法");
-        JButton good = new JButton("物品");
+        //JButton magic = new JButton("魔法");
+       // JButton good = new JButton("物品");
 
         battle.setBounds(505, 20, 70, 40);
         battle.addMouseListener(new MouseAdapter() {
@@ -38,10 +38,10 @@ public class BattleControllerBar extends JPanel {
         });
 
         this.add(battle);
-        magic.setBounds(505, 70, 70, 40);
-        this.add(magic);
-        good.setBounds(660, 20, 70, 40);
-        this.add(good);
+       // magic.setBounds(505, 70, 70, 40);
+       // this.add(magic);
+       // good.setBounds(660, 20, 70, 40);
+       // this.add(good);
 
         this.add(HP);
         this.add(MP);

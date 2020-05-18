@@ -37,14 +37,9 @@ public class MessageManager {
         //return MessageStack.pop();
     }
 
-    public void handle(){
-
-    }
-
     public void init(){
 
     }
-
 
     public void update(long elapsedTime){
             currentMessage = MessageQueue.peek();
@@ -54,7 +49,5 @@ public class MessageManager {
                 System.out.println(currentMessage.getMsg_Content());
                 currentMessage = MessageQueue.peek();
             }
-
-
     }
 }

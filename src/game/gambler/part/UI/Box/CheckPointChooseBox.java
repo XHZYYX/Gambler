@@ -50,7 +50,7 @@ public class CheckPointChooseBox extends JDialog {
             });
         }
         JButton play = new JButton("进入游戏");
-        play.setBounds(500,450,100,50);
+        play.setBounds(500,350,100,50);
         play.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

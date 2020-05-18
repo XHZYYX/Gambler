@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent;
 
 public class attitudeButton extends ImageButton {
     public attitudeButton(){
-        super("背包",34,34,
+        super("属性",34,34,
                 new ImageIcon("resource/images/gui/attitudeNormal.png"),
                 new ImageIcon("resource/images/gui/attitudePressed.png"),
                 new ImageIcon("resource/images/gui/attitudeNormal.png"));

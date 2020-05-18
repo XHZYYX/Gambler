@@ -119,7 +119,6 @@ public class HomeScene extends Scene{
     public void stop(){
         this.running = false;
         SceneManager.getInstance().getGameWindow().removeKeyListener(move);
-        // sceneRender.stop();
     }
 
 

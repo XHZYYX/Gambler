@@ -16,16 +16,14 @@ public  class GameCore {
      * 游戏运行状态
      * */
     private boolean isRunning;
-
     /*
      * 游戏主窗口
      * */
     private GameWindow gameWindow;
-
     private SceneManager sceneManager;
     private UIManager uiManager;
     private MessageManager messageManager;
-
+    private DataManager dataManager;
     private GameLogic gameLogic;
     /**
      Signals the game loop that it's time to quit
@@ -34,68 +32,46 @@ public  class GameCore {
     public void stop() {
         isRunning = false;
     }
-
     /**
      Calls init() and gameLoop()
      调用初始化函数 和 游戏循环函数
      */
     public void run() {
-        try {
             init();
-
             gameLoop();
-        }
-        finally {
-            //screen.restoreScreen();
-        }
     }
     public void init() {
         //初始化窗口
         gameWindow = new GameWindow();
-        Image icon = loadImage("resource/images/icon.jpg");
+        Image icon = new ImageIcon("resource/images/icon.jpg").getImage();
         gameWindow.setIconImage(icon);
         gameWindow.setFont(new Font("Dialog", Font.PLAIN, FONT_SIZE));
         gameWindow.getContentPane().setBackground(Color.blue);
         gameWindow.setForeground(Color.blue);
-
         //获取全部组件引用
         sceneManager = SceneManager.getInstance();
         sceneManager.setGameWindow(gameWindow);
         uiManager = UIManager.getInstance();
+        dataManager = DataManager.getInstance();
         messageManager = MessageManager.getInstance();
         gameLogic = new GameLogic();
         //初始化全部组件
         messageManager.init();
         sceneManager.init();
         uiManager.init();
-        //uiManager.loginUI();
-        //开启游戏运行
         messageManager.sendMessage(new Message(Message.Msgtype.graphics_msg,"打开登录页面"));
-        //messageManager.sendMessage(new Message(Message.Msgtype.graphics_msg,"test"));
-
         isRunning = true;
         gameWindow.setVisible(true);
-    }
-    public Image loadImage(String fileName) {
-        return new ImageIcon(fileName).getImage();
     }
     public void gameLoop() {
         long startTime = System.currentTimeMillis();
         long currTime = startTime;
-
         while (isRunning) {
             long elapsedTime =
                     System.currentTimeMillis() - currTime;
             currTime += elapsedTime;
             //更新游戏组件
             update(elapsedTime);
-            gameWindow.update();
-
-            // take a nap
-//            try {
-//                Thread.sleep(20);
-//            }
-//            catch (InterruptedException ex) { }
         }
     }
     /**
@@ -108,38 +84,13 @@ public  class GameCore {
         gameLogic.update(elapsedTime);
         sceneManager.update(elapsedTime);
         uiManager.update(elapsedTime);
-        DataManager.getInstance().update();
-
+        dataManager.getInstance().update();
         if ( messageManager.currentMessage!=null){
             messageManager.currentMessage.finish();
         }
-
-
     }
-
     public static void main(String[] args) {
 
         new GameCore().run();
-//        SwingUtilities.invokeLater(new Runnable() {
-//            @Override
-//            public void run(){
-//
-//            }
-//        });
     }
-
-
-
-
-    public void draw(){
-        //执行全部组件的绘制
-        sceneManager.draw();
-        uiManager.draw();
-    }
-
-    /**
-     Draws to the screen. Subclasses must override this
-     method.
-     */
-    //public abstract void draw(Graphics2D g);
 }

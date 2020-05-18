@@ -31,16 +31,6 @@ public class Player extends Creature {
         setVelocityY(0);
     }
 
-
-    public void setY(float y) {
-        // check if falling
-        if (Math.round(y) > Math.round(getY())) {
-            //onGround = false;
-        }
-        super.setY(y);
-    }
-
-
     public void wakeUp() {
         // do nothing
     }

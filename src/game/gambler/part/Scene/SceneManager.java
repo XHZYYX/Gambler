@@ -26,7 +26,6 @@ public class SceneManager {
     Map<String,Sprite> SpriteList = new HashMap<>();
     Boolean CollisionDetetctionFlag = false;
 
-
     public Scene getNow() {
         return Now;
     }
@@ -51,17 +50,11 @@ public class SceneManager {
         if (Now!=null){
             Now.update(elapsedTime);
         }
-
         if(SpriteList.isEmpty()){
             CollisionDetetctionFlag= false;
         }else {
             CollisionDetetctionFlag= true;
         }
-
-       // if(!CollisionDetetctionFlag){
-
-       // }
-
         MessageManager messageManager = MessageManager.getInstance();
         Message message = messageManager.currentMessage;
         if (message!=null&&(message.getMsg_type().equals(Message.Msgtype.graphics_msg)
@@ -71,7 +64,6 @@ public class SceneManager {
                 case "登录成功": loadingChooseRole();break;
                 case "账号密码错误":break;
                 case "进入游戏":loadingHome();break;
-                case "打开购买物品的页面":shopping();break;
                 case "进入关卡":loadingCheckPoint();break;
                 case "移动":dice6();break;
                 case "战斗":battle();break;
@@ -80,9 +72,6 @@ public class SceneManager {
                 case "玩家胜利":Victory();break;
                 case "玩家失败":Defeat();break;
                 case "返回主城":backHome();break;
-
-                case "test":test();break;
-
             }
         }
     }
@@ -153,23 +142,11 @@ public class SceneManager {
 
     }
 
-    private void shopping() {
-
-    }
-
-    private void test() {
-        Now= new FirstChapterScene();
-        //Now.setFrameRate(frameRate);
-        gameWindow.setVisible(false);
-        gameWindow.getContentPane().add(Now);
-        gameWindow.setVisible(true);
-    }
 
     private void loadingChooseRole() {
         Scene scene = new ChooseRoleScene();
         changeScene(scene);
     }
-
 
     private void loadingHome() {
         Scene scene = new HomeScene();
@@ -184,14 +161,6 @@ public class SceneManager {
         gameWindow.setVisible(true);
     }
 
-    public void shutdown(){
-
-    }
-
-
-
-
-
     public void changeScene(Scene scene){
         //将旧的场景移除 并加入新的场景
         gameWindow.setVisible(false);
@@ -203,30 +172,4 @@ public class SceneManager {
         Now = scene;
         gameWindow.setVisible(true);
     }
-
-
-
-
-
-    public void draw(){
-        //绘制当前场景
-        //因为场景是主动绘制 所以不用管
-    }
-
-
-
-
-
-
-
-//    public void saveSceneToMap(Scene scene){
-//        if(!SceneMap.containsKey(scene.getName())){
-//            SceneMap.put(scene.getSceneName(),scene);
-//        }
-//    }
-
-//    public Scene querySceneByName(String name){
-//        return SceneMap.get(name);
-//    }
-
 }

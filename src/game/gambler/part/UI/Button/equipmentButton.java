@@ -13,9 +13,9 @@ import java.awt.event.MouseEvent;
 public class equipmentButton extends ImageButton {
     public equipmentButton(){
         super("装备",34,34,
-                new ImageIcon("resource/images/gui/attitudeNormal.png"),
-                new ImageIcon("resource/images/gui/attitudePressed.png"),
-                new ImageIcon("resource/images/gui/attitudeNormal.png"));
+                new ImageIcon("resource/images/gui/equipmentNormal.png"),
+                new ImageIcon("resource/images/gui/equipmentPressed.png"),
+                new ImageIcon("resource/images/gui/equipmentNormal.png"));
         this.setLocation(140,20);
         this.setBorder(new LineBorder(Color.white,1,true));
         this.addMouseListener(new MouseAdapter() {

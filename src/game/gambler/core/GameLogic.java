@@ -111,7 +111,6 @@ public class GameLogic {
         System.out.println(user_.toString());
         //System.out.println(user_.getUser_id());
         if(user_.getUser_id() !=0){
-
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"用户名重复"));
         }else if (!password.equals(repassword)){
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.graphics_msg,"两次密码不一致"));
@@ -130,8 +129,6 @@ public class GameLogic {
     private void islogin()  {
         //获取用户名和密码
         LoginPanel loginPanel = (LoginPanel)UIManager.getInstance().queryUIByName("ui_login_panel");
-
-
         String username =  loginPanel.getUserName();
         String password = loginPanel.getPasswd();
         System.out.println("username"+username);

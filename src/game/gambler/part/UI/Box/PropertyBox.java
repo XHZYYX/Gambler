@@ -20,7 +20,7 @@ public class PropertyBox extends JDialog {
     int width,height;
     //武器 防具 盾牌
     //力量骰  魔法骰
-    Image  img =new ImageIcon("resource/images/sprite2.jpg").getImage().getScaledInstance(100,100,1);
+
     public PropertyBox(){
         //440,234
         super(SceneManager.getInstance().getGameWindow(),"角色属性",true);
@@ -72,7 +72,7 @@ public class PropertyBox extends JDialog {
         graphics.drawLine(180,200,20,200);
         graphics.drawLine(20,200,20,50);
         //draw img
-        graphics.drawImage(img,60,90,null);
+        graphics.drawImage(new ImageIcon("resource/images/sprite3.jpg").getImage(),60,90,null);
         //draw seperator
         graphics.drawLine(200,20,200,280);
         //draw text strength
@@ -108,10 +108,6 @@ public class PropertyBox extends JDialog {
                 i++;
             }
             this.setOpaque(true);
-            JLabel x = new JLabel("你大学也");
-            x.setBounds(20,300,80,30);
-            x.setBorder(new LineBorder(Color.red,1));
-            this.add(x);
             this.setBounds(0,0,400,300);
             this.setLayout(null);
             this.setVisible(true);
