@@ -169,14 +169,19 @@ public class DataManager {
             }else if(road.getType()==102){
                 playerdice = 0;
                 messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"102剧情"));
-            }else if(road.getType()==10){
+            }else if(road.getType()==0){
                 playerdice = 0;
-                messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"第一关boss"));
+                messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"过关"));
             }
         }
         road = roadList.get(index);
         switch(road.getType()){
-            //蚂蚁
+            //大红蚁 1
+            //大黄蜂 2
+            //蜥蜴  3
+            //野猪  4
+            //粘痰  5
+            //哥布林 6
             case 1:Battle(1);break;
             case 2:Battle(2);break;
             case 3:Battle(3);break;
@@ -375,8 +380,22 @@ public class DataManager {
             System.out.println(temp.getAttribute().getBase_HP());
             new TalkBox("怪物掷出了"+monsterdice+"点,"+"你掷出了"+playerdice+"点,你受的了"+monsters.getMonster_attack()+"伤害");
         }
-        if (monsters.getMonster_HP()<=0)
+        if (monsters.getMonster_HP()<=0) {
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"玩家胜利"));
+            role.setCurrentEmpiricalValue(role.getCurrentEmpiricalValue()+50);
+            int cEmpirical = role.getCurrentEmpiricalValue();//当前经验值
+            int requestEmpirical = jdbc.getUpgradeExperience(role.getGrade());
+            if (cEmpirical>requestEmpirical){
+                jdbc.setExperience(cEmpirical-requestEmpirical);
+                jdbc.upgrade(role);
+                new TalkBox("升级了");
+            }else {
+                jdbc.setExperience(cEmpirical);
+            }
+            LoadRole(role.getRole_id());
+            loadRoleAttribute();
+
+        }
         else if (temp.getAttribute().getBase_HP()<=0){
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"玩家失败"));
         }

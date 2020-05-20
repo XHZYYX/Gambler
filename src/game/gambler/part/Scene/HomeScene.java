@@ -25,31 +25,31 @@ public class HomeScene extends Scene{
 
 
         //根据Role_id 获取 对应的职业，
-        String carrer_name;
+        String career_name="";
         int roleid=DataManager.getInstance().getRole().getRole_id();
         for (ChooseRoleView c :DataManager.getInstance().getRoleList()) {
             if(roleid == c.getRole_id()){
-                carrer_name = c.getCareer_name();
+                career_name = c.getCareer_name();
                 break;
             }
         }
 
         Animation left = new Animation();
         for (int i  =1;i<4;i++){
-            left.addFrame(new ImageIcon("resource/images/sprite/法师/left"+i+".png").getImage(),250);
+            left.addFrame(new ImageIcon("resource/images/sprite/"+career_name+"/left"+i+".png").getImage(),250);
         }
 
         Animation up = new Animation();
         for (int i  =1;i<4;i++){
-            up.addFrame(new ImageIcon("resource/images/sprite/法师/up"+i+".png").getImage(),250);
+            up.addFrame(new ImageIcon("resource/images/sprite/"+career_name+"/up"+i+".png").getImage(),250);
         }
         Animation right = new Animation();
         for (int i  =1;i<4;i++){
-            right.addFrame(new ImageIcon("resource/images/sprite/法师/right"+i+".png").getImage(),250);
+            right.addFrame(new ImageIcon("resource/images/sprite/"+career_name+"/right"+i+".png").getImage(),250);
         }
         Animation down = new Animation();
         for (int i  =1;i<4;i++){
-            down.addFrame(new ImageIcon("resource/images/sprite/法师/down"+i+".png").getImage(),250);
+            down.addFrame(new ImageIcon("resource/images/sprite/"+career_name+"/down"+i+".png").getImage(),250);
         }
 
         Player player = new Player(left,right,up,down,down,down);
@@ -58,20 +58,28 @@ public class HomeScene extends Scene{
         //加载Sprite
         this.spriteMap.put("player",player);
 
-        DataManager.getInstance().setPlayerSprite(player );
-        NPC npc1=new NPC(down);
+        DataManager.getInstance().setPlayerSprite(player);
+        Animation npc1Animation = new Animation();
+        npc1Animation.addFrame(new ImageIcon("resource/images/sprite/npc/npc1.png").getImage(),1000);
+        NPC npc1=new NPC(npc1Animation);
         npc1.setX(160);
-        npc1.setY(220);
+        npc1.setY(190);
         this.npcMap.put("npc1",npc1);
-        NPC npc2=new NPC(down);
+        Animation npc2Animation = new Animation();
+        npc2Animation.addFrame(new ImageIcon("resource/images/sprite/npc/npc2.png").getImage(),1000);
+        NPC npc2=new NPC(npc2Animation);
         npc2.setX(160);
         npc2.setY(450);
         this.npcMap.put("npc2",npc2);
-        NPC npc3=new NPC(down);
+        Animation npc3Animation = new Animation();
+        npc3Animation.addFrame(new ImageIcon("resource/images/sprite/npc/npc3.png").getImage(),1000);
+        NPC npc3=new NPC(npc3Animation);
         npc3.setX(450);
         npc3.setY(680);
         this.npcMap.put("npc3",npc3);
-        NPC npc4=new NPC(down);
+        Animation npc4Animation = new Animation();
+        npc4Animation.addFrame(new ImageIcon("resource/images/sprite/npc/npc4.png").getImage(),1000);
+        NPC npc4=new NPC(npc4Animation);
         npc4.setX(864);
         npc4.setY(256);
         this.npcMap.put("npc4",npc4);
@@ -140,8 +148,6 @@ public class HomeScene extends Scene{
             sprite.update(elapsedTime);
         }
     }
-
-
     @Override
     public void render(Graphics2D graphics) {
         tileMap.draw(graphics);
@@ -152,5 +158,4 @@ public class HomeScene extends Scene{
             graphics.drawImage(sprite.getImage(),(int)sprite.getX(),(int)sprite.getY(),null);
         }
     }
-
 }

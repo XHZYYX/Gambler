@@ -16,40 +16,9 @@ public class FirstChapterScene extends Scene{
     List<Road> RoadList = new ArrayList<>();
     int index = DataManager.getInstance().getIndex();
 
-
-
-//    int[][] map= {
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,1,2,3, 1000,4,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,5,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,11,10,1001,1001,9,102,8,101,101,7,6,0,0,0,0,0,0,0,0},
-//
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0},
-//            {0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0}
-//};
-
     public FirstChapterScene(){
         super("FirstChapter");
         DataManager.getInstance().setRoadList(RoadList);
-
         RoadList.add(new Road(0,27,7));
         RoadList.add(new Road(1,28,7));
         RoadList.add(new Road(1,29,7));
@@ -60,44 +29,51 @@ public class FirstChapterScene extends Scene{
         RoadList.add(new Road(3,30,9));
         RoadList.add(new Road(200,29,9));
         RoadList.add(new Road(200,28,9));
-        RoadList.add(new Road(201,27,9));
-        RoadList.add(new Road(1,26,9));
-        RoadList.add(new Road(101,25,9));
+        RoadList.add(new Road(1,27,9));
+        RoadList.add(new Road(201,26,9));
+        RoadList.add(new Road(1,25,9));
         RoadList.add(new Road(101,24,9));
-        RoadList.add(new Road(4,23,9));
         RoadList.add(new Road(4,22,9));
-        RoadList.add(new Road(200,21,9));
-        RoadList.add(new Road(3,21,10));
-        RoadList.add(new Road(200,21,11));
-        RoadList.add(new Road(2,22,11));
+        RoadList.add(new Road(4,21,9));
+        RoadList.add(new Road(200,21,10));
+        RoadList.add(new Road(3,21,11));
+        RoadList.add(new Road(200,22,11));
         RoadList.add(new Road(2,23,11));
-        RoadList.add(new Road(200,24,11));
+        RoadList.add(new Road(2,24,11));
         RoadList.add(new Road(200,25,11));
-        RoadList.add(new Road(202,26,11));
-        RoadList.add(new Road(200,27,11));
-        RoadList.add(new Road(3,28,11));
-        RoadList.add(new Road(1,29,11));
+        RoadList.add(new Road(200,26,11));
+        RoadList.add(new Road(202,27,11));
+        RoadList.add(new Road(200,28,11));
+        RoadList.add(new Road(3,29,11));
         RoadList.add(new Road(1,29,12));
         RoadList.add(new Road(1,29,13));
         RoadList.add(new Road(102,30,13));
         RoadList.add(new Road(1,31,13));
         RoadList.add(new Road(1,31,14));
-        RoadList.add(new Road(1,31,15));
-        RoadList.add(new Road(1,30,15));
-        RoadList.add(new Road(1,29,15));
-        RoadList.add(new Road(1,29,16));
+        RoadList.add(new Road(999,31,15));
+        RoadList.add(new Road(999,30,15));
+        RoadList.add(new Road(999,29,15));
+        RoadList.add(new Road(999,29,16));
         RoadList.add(new Road(3,28,16));
-        RoadList.add(new Road(1,27,16));
+        RoadList.add(new Road(999,27,16));
         RoadList.add(new Road(1,26,16));
-        RoadList.add(new Road(10,25,16));
+        RoadList.add(new Road(999,25,16));
 
-        RoadList.add(new Road(1,24,26));
-        RoadList.add(new Road(1,23,26));
+        RoadList.add(new Road(1,24,16));
+        RoadList.add(new Road(999,23,16));
+        RoadList.add(new Road(999,22,16));
+        RoadList.add(new Road(1,21,16));
+        RoadList.add(new Road(1,20,16));
 
+        RoadList.add(new Road(1,20,15));
+        RoadList.add(new Road(1,20,14));
 
-       // RoadList.add(new Road(1,22,));
-        //RoadList.add(new Road(1,29,7));
-        //RoadList.add(new Road(1,29,7));
+        RoadList.add(new Road(1,21,14));
+        RoadList.add(new Road(1,22,14));
+
+        RoadList.add(new Road(1,23,14));
+        RoadList.add(new Road(1,25,14));
+        RoadList.add(new Road(0,26,14));
 
 
 
@@ -113,15 +89,12 @@ public class FirstChapterScene extends Scene{
 
     //人物
 
-
-
     @Override
     public void update(long elapsedTime){
         for (Sprite sprite:spriteMap.values()){
             sprite.update(elapsedTime);
         }
     }
-
 
     @Override
     public void render(Graphics2D graphics) {

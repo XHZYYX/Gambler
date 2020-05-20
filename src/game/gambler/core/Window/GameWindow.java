@@ -11,6 +11,7 @@ public class GameWindow extends JFrame {
         this.setSize(1280, 768);
         this.setAlwaysOnTop(true);
         this.setResizable(false);
+        this.setTitle("赌神");
         this.setLocationRelativeTo(null);
     }
 

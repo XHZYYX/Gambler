@@ -78,6 +78,7 @@ public class UIManager {
                 case "打开魔法":PlayerMagicUI();break;
                 case "打开装备面板":openEquipmentBox();break;
                 case "打开购买装备页面":openEquipmentShopBox();break;
+                case "过关":HomeUI();
             }
         }
     }

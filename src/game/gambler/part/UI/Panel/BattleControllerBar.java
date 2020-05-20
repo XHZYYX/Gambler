@@ -56,4 +56,8 @@ public class BattleControllerBar extends JPanel {
         graphics.fillRect(0,0,890,125);
 
     }
+
+    public void reset(){
+
+    }
 }

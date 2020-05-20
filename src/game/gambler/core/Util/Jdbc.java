@@ -54,8 +54,12 @@ public class Jdbc {
         // System.out.println(1);
         Jdbc jdbc = new Jdbc();
 
-        List<Equipment> equipment = jdbc.queryTrueEquipment();
-        System.out.println(equipment.size());
+//        List<Equipment> equipment = jdbc.queryTrueEquipment();
+//        System.out.println(equipment.size());
+        Role role = new Role(5,1,1,1,1,"",12);
+        jdbc.upgrade(role);
+        int x = jdbc.getUpgradeExperience(1);
+        System.out.println(x);
 
 //        List<Magic_Career_Grade> magic_career_grades = jdbc.queryPlayerMagicID();
 //        for (Magic_Career_Grade m : magic_career_grades) {
@@ -80,7 +84,6 @@ public class Jdbc {
 //        }
 //        return users;
 //    }
-
 
     public String queryUserByid(String sql) {
         try {
@@ -442,6 +445,44 @@ public class Jdbc {
         }
         return mcgList;
     }
+
+    public void setExperience(int value){
+        Role role =DataManager.getInstance().getRole();
+        String sql = "UPDATE Role SET currentEmpiricalValue = "+value+" WHERE role_id="+role.getRole_id();
+        try {
+            statement.execute(sql);
+        } catch (SQLException e) {
+        }
+    }
+
+    //升级
+    public void upgrade(Role role){
+        int grade = role.getGrade();
+        grade++;
+        int id = role.getRole_id();
+        String sql = "UPDATE Role SET grade = "+grade+" WHERE role_id="+id;
+        try {
+            statement.execute(sql);
+        } catch (SQLException e) {
+        }
+    }
+
+    //查询当前玩家升级所需经验值
+    public int getUpgradeExperience(int grade){
+        String sql = "SELECT Grade.EmpiricalValue FROM Grade WHERE grade= "+grade;
+        int experience=0;
+        try {
+            System.out.println(1);
+            ResultSet rs = statement.executeQuery(sql);
+            System.out.println(2);
+            while (rs.next()) {
+                experience=rs.getInt(1);
+            }
+        } catch (SQLException e) {
+        }
+        return experience;
+    }
+
 
     public List<Magic> queryPlayerMagic() {
         List<Magic_Career_Grade> mcgList = DataManager.getInstance().getMcgList();

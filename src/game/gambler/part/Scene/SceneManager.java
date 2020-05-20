@@ -6,6 +6,7 @@ import game.gambler.core.Window.GameWindow;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.Scene.Sprite.Dice;
+import game.gambler.part.UI.Box.TalkBox;
 import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Monsters;
 
@@ -72,8 +73,16 @@ public class SceneManager {
                 case "玩家胜利":Victory();break;
                 case "玩家失败":Defeat();break;
                 case "返回主城":backHome();break;
+                case "过关":Pass();break;
             }
         }
+    }
+
+    private void Pass() {
+        Scene scene =new HomeScene();
+        changeScene(scene);
+        new TalkBox("过关了");
+
     }
 
     private void backHome() {
@@ -93,12 +102,12 @@ public class SceneManager {
     }
     //胜利后返回关卡页面
     private void Victory() {
-        String sceneName="";
-        switch (dataManager.getCheckPoint()){
-            case 1:sceneName = "FirstChapter";
-            case 2:sceneName = "SecondChapter";
-            case 3:sceneName = "ThirdChapter";
-        }
+//        String sceneName="";
+//        switch (dataManager.getCheckPoint()){
+//            case 1:sceneName = "FirstChapter";
+//            case 2:sceneName = "SecondChapter";
+//            case 3:sceneName = "ThirdChapter";
+//        }
         loadingCheckPoint();
     }
     //点击战斗后 触发掷骰子的动画
@@ -168,6 +177,7 @@ public class SceneManager {
         //saveSceneToMap(Now);
         SceneMap.push(Now);
         Now.stop();
+        SpriteList.clear();
         gameWindow.getContentPane().add(scene);
         Now = scene;
         gameWindow.setVisible(true);
