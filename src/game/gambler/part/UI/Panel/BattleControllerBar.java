@@ -2,6 +2,7 @@ package game.gambler.part.UI.Panel;
 
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
+import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
 
 import javax.swing.*;
@@ -11,15 +12,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class BattleControllerBar extends JPanel {
+    JLabel HP;
+    JLabel MP;
+    JLabel MonsterHP;
     public BattleControllerBar() {
 
         MessageManager messageManager = MessageManager.getInstance();
 
-        JLabel HP = new JLabel("人物HP:"+ DataManager.getInstance().getTemp().getAttribute().getBase_HP());
-        JLabel MP = new JLabel("人物MP:"+DataManager.getInstance().getTemp().getAttribute().getBase_MP());
+        HP = new JLabel("人物HP:"+ DataManager.getInstance().getTemp().getAttribute().getBase_HP());
+        MP = new JLabel("人物MP:"+DataManager.getInstance().getTemp().getAttribute().getBase_MP());
         HP.setBounds(150,20,200,30);
         MP.setBounds(150,70,200,30);
-        JLabel MonsterHP = new JLabel("怪物HP"+DataManager.getInstance().getMonsters().getMonster_HP());
+        MonsterHP = new JLabel("怪物HP"+DataManager.getInstance().getMonsters().getMonster_HP());
         MonsterHP.setBounds(350,20,100,30);
         this.add(MonsterHP);
         JButton battle = new JButton("战斗");
@@ -48,6 +52,7 @@ public class BattleControllerBar extends JPanel {
         this.setBounds(195, 600, 890, 125);
         this.setLayout(null);
         this.setBorder(new LineBorder(Color.red, 2, true));
+        UIManager.getInstance().add("BattleControllerBar",this);
     }
     @Override
     public void paintComponent(Graphics graphics) {
@@ -58,6 +63,10 @@ public class BattleControllerBar extends JPanel {
     }
 
     public void reset(){
-
+        this.setVisible(false);
+        HP.setText("人物HP:"+ DataManager.getInstance().getTemp().getAttribute().getBase_HP());
+        MP.setText("人物MP:"+DataManager.getInstance().getTemp().getAttribute().getBase_MP());
+        MonsterHP.setText("怪物HP"+DataManager.getInstance().getMonsters().getMonster_HP());
+        this.setVisible(true);
     }
 }

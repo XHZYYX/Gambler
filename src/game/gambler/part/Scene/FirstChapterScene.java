@@ -15,7 +15,6 @@ public class FirstChapterScene extends Scene{
     //int Road = 1;
     List<Road> RoadList = new ArrayList<>();
     int index = DataManager.getInstance().getIndex();
-
     public FirstChapterScene(){
         super("FirstChapter");
         DataManager.getInstance().setRoadList(RoadList);

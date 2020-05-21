@@ -245,6 +245,11 @@ public class UIManager {
         backpackBox.dispose();
         UImap.remove(backpackBox);
     }
+    public void updateGoodBox(){
+        GoodBox goodBox=(GoodBox)queryUIByName("GoodBox");
+        goodBox.dispose();
+        UImap.remove(goodBox);
+    }
     public void updateEquipmentBox(){
         EquipmentBox equipmentBox=(EquipmentBox)queryUIByName("EquipmentBox");
         equipmentBox.dispose();
@@ -261,6 +266,10 @@ public class UIManager {
         statusBarPanel.setVisible(false);
         statusBarPanel.reset();
         statusBarPanel.setVisible(true);
+    }
+    public void updateBattleControllerBar(){
+        BattleControllerBar b=(BattleControllerBar)UIManager.getInstance().queryUIByName("BattleControllerBar");
+        b.reset();
     }
 
 }

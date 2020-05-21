@@ -7,24 +7,23 @@ import game.gambler.part.data.DataManager;
 import game.gambler.part.data.model.Good;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class BackpackBox extends JDialog {
+public class GoodBox extends JDialog {
     DataManager dataManager = DataManager.getInstance();
 
-    public BackpackBox(){
+    public GoodBox(){
         //显示全部道具
-        super(SceneManager.getInstance().getGameWindow(),"背包",true);
+        super(SceneManager.getInstance().getGameWindow(),"工具",true);
         int i = 0;
         this.setLayout(null);
         for(Good good:dataManager.getGoodList()){
-            GoodPanel goodPanel = new GoodPanel(good,false);
+            GoodPanel goodPanel = new GoodPanel(good,true);
             goodPanel.setLocation(10,30+i*40);
             this.add(goodPanel);
             i++;
         }
-        UIManager.getInstance().add("BackpackBox",this);
+        UIManager.getInstance().add("GoodBox",this);
         this.setBounds(SceneManager.getInstance().getGameWindow().getX()+256,SceneManager.getInstance().getGameWindow().getY()+256,300,400);
         this.setVisible(true);
     }

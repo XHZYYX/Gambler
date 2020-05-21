@@ -8,6 +8,7 @@ import game.gambler.core.Util.Random;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.Box.TalkBox;
+import game.gambler.part.UI.Panel.BattleControllerBar;
 import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.model.*;
 import game.gambler.part.data.view.ChooseRoleView;
@@ -108,6 +109,7 @@ public class DataManager {
         if (attribute.getBase_MP()>=playerMagic.getMagic_mana()){
             temp.getAttribute().setBase_HP(temp.getAttribute().getBase_HP()+playerMagic.getMagic_baseValue());
             new TalkBox("使用恢复技能，恢复10点生命值");
+            UIManager.getInstance().updateChapterControllerBar();
         }else{
             new TalkBox("MP值不足");
         }
@@ -161,11 +163,14 @@ public class DataManager {
             }
             if(road.getType()==100){
                 playerdice = 0;
-                messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到城堡了"));
+                new TalkBox("勇士 你要多加小心啊");
+
+                //messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到城堡了"));
                 break;
             }else if(road.getType()==101){
                 playerdice = 0;
-                messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到xxx了"));
+                new TalkBox("有人来救我们了，太好了");
+                //messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"遇到xxx了"));
             }else if(road.getType()==102){
                 playerdice = 0;
                 messageManager.sendMessage(new Message(Message.Msgtype.all_msg,"102剧情"));
@@ -188,8 +193,17 @@ public class DataManager {
             case 4:Battle(4);break;
             case 5:Battle(5);break;
             case 10:Battle(6);break;
+            //泉水
+            case 200:addHP();break;
+
         }
         return null;
+    }
+
+    private void addHP() {
+        new TalkBox("血量增加了");
+        DataManager.getInstance().getTemp().getAttribute().setBase_HP(DataManager.getInstance().getTemp().getAttribute().getBase_HP()+10);
+        UIManager.getInstance().updateChapterControllerBar();
     }
 
     private void Battle(int Monsters_id) {
@@ -221,6 +235,7 @@ public class DataManager {
                 case "释放魔法":PlayerUseMagic();break;
                 case "获得神的祝福buff":getBuff(1);break;
                 case "获得天使之翼buff":getBuff(2);break;
+                case "进入关卡":index = 0;break;
             }
         }
     }
@@ -363,6 +378,14 @@ public class DataManager {
         jdbc.updataCoin(user.getCoin()+temp);
         this.user = jdbc.queryUserByName(user.getUsername());
     }
+    public void useGoods(Good good) {
+        jdbc.reducegood(good);
+        switch (good.getGood_name()){
+            case "出口":MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"返回主城"));break;
+            case "奶酪":addHP();break;
+            case "救命草":break;
+        }
+    }
 
     public void cloneRoleAttribute() {
         temp=roleAttribute.clone(roleAttribute);
@@ -380,6 +403,7 @@ public class DataManager {
             System.out.println(temp.getAttribute().getBase_HP());
             new TalkBox("怪物掷出了"+monsterdice+"点,"+"你掷出了"+playerdice+"点,你受的了"+monsters.getMonster_attack()+"伤害");
         }
+        UIManager.getInstance().updateBattleControllerBar();
         if (monsters.getMonster_HP()<=0) {
             MessageManager.getInstance().sendMessage(new Message(Message.Msgtype.all_msg,"玩家胜利"));
             role.setCurrentEmpiricalValue(role.getCurrentEmpiricalValue()+50);

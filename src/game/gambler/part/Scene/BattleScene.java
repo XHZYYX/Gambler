@@ -17,7 +17,7 @@ public class BattleScene extends Scene{
      Monsters tempMonster = new Monsters(DataManager.getInstance().getMonsters());
 
      public BattleScene(){
-         super("Battle",null,null,null);
+         super("Battle",null,null,new ImageIcon("resource/images/battleBackGround.jpg").getImage());
          Sprite dice = new Dice();
          this.spriteMap.put("dice",dice);
     }
@@ -36,12 +36,12 @@ public class BattleScene extends Scene{
 
     @Override
     public void render(Graphics2D graphics) {
-        graphics.setColor(Color.BLACK);
+        graphics.setColor(Color.white);
         graphics.setFont(new Font("Diolog", 1, 20));
         graphics.drawString("" + tempMonster.getMonster_name(), 850, 150);
 
-        graphics.drawImage(new ImageIcon("resource/images/renwu.png").getImage(), 300, 200, null);
-        graphics.drawImage(new ImageIcon("resource/images/monster/monster_" + tempMonster.getMonster_id() + ".png").getImage(), 850, 200, null);
+        graphics.drawImage(new ImageIcon("resource/images/renwu.png").getImage(), 300, 250, null);
+        graphics.drawImage(new ImageIcon("resource/images/monster/monster_" + tempMonster.getMonster_id() + ".png").getImage(), 850, 250, null);
         for (Sprite sprite:spriteMap.values()){
             graphics.drawImage(sprite.getImage(),(int)sprite.getX(),(int)sprite.getY(),null);
         }

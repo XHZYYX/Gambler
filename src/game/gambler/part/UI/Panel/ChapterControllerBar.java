@@ -3,6 +3,7 @@ package game.gambler.part.UI.Panel;
 import game.gambler.part.Message.Message;
 import game.gambler.part.Message.MessageManager;
 import game.gambler.part.UI.Box.BackpackBox;
+import game.gambler.part.UI.Box.GoodBox;
 import game.gambler.part.UI.UIManager;
 import game.gambler.part.data.DataManager;
 
@@ -44,15 +45,15 @@ public class ChapterControllerBar extends JPanel {
             }
         });
         UIManager.getInstance().add("ChapterControllerBar",this);
-        util.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                new BackpackBox();
-            }
-        });
         this.add(move);
         magic.setBounds(505,70,70,40);
         this.add(magic);
+        util.addMouseListener(new MouseAdapter() {
+              @Override
+              public void mouseClicked(MouseEvent e) {
+                   new GoodBox();
+            }
+        });
         //property.setBounds(660,20,70,40);
         //this.add(property);
         util.setBounds(660,70,70,40);

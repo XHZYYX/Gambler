@@ -82,9 +82,9 @@ public  class GameCore {
         //全部组件的更新
         messageManager.update(elapsedTime);
         gameLogic.update(elapsedTime);
+        dataManager.getInstance().update();
         sceneManager.update(elapsedTime);
         uiManager.update(elapsedTime);
-        dataManager.getInstance().update();
         if ( messageManager.currentMessage!=null){
             messageManager.currentMessage.finish();
         }
